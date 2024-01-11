@@ -1,0 +1,56 @@
+.nav-block-start {
+    z-index:var(--layer-5);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    clip-path: inset(0px);
+
+
+
+     a {
+        color:var(--surface-1);
+    }
+
+    &:after {
+        content:'';
+        position: absolute;
+        inset:0px;
+        background:var(--surface-1);
+        border: var(--border-size-1) solid var(--surface-4);
+        box-shadow: 0 20px 32px -12px #3226621f, 0 1px 2px #3226620f;
+        z-index:-1;
+        pointer-events: none;
+        transform: translateY(100%);
+
+    }
+}
+
+
+@keyframes navBlockStartTextAnimation {
+    to { color: var(--text-1) }
+  }
+  .nav-block-start,   .nav-block-start a {
+    animation: navBlockStartTextAnimation linear both;
+    animation-timeline: scroll(block root);
+    animation-range: calc(80vh - var(--nav-block-start-height) / 2) calc(80vh + var(--nav-block-start-height) / 2);
+  }
+
+  @keyframes navBlockStartShadowAnimation {
+    to {    clip-path: inset(-32px);}
+  }
+  .nav-block-start {
+    animation: navBlockStartShadowAnimation linear both;
+    animation-timeline: scroll(block root);
+    animation-range: calc(80vh - var(--announcement-bar-height)) calc(80vh + var(--nav-block-start-height));
+  }
+
+
+
+@keyframes navBlockStartBackgroundAnimation {
+    to { transform: translateY(0%) }
+  }
+  .nav-block-start:after {
+    animation: navBlockStartBackgroundAnimation linear both;
+    animation-timeline: scroll(block root);
+    animation-range: calc(80vh - var(--announcement-bar-height)) 80vh;
+  }

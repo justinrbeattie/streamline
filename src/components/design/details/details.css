@@ -1,0 +1,23 @@
+details {
+    margin-block: var(--size-fluid-1);
+    background: var(--surface-1);
+    max-height: 40px;
+    box-shadow: var(--shadow-1);
+    transition: all .25s ease-in-out;
+
+    >summary {
+        background: transparent;
+        transition: all .25s ease-in-out;
+        list-style: none;
+    }
+
+    &[open] {
+        margin-block: var(--size-fluid-2);
+        background: var(--surface-0);
+        box-shadow: var(--shadow-4);
+        max-height: 800px;
+
+    }
+
+
+}

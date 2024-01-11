@@ -1,12 +1,14 @@
-import { component$ } from "@builder.io/qwik";
+import { component$,  useVisibleTask$ } from "@builder.io/qwik";
 import {
   QwikCityProvider,
   RouterOutlet,
   ServiceWorkerRegister,
 } from "@builder.io/qwik-city";
-import { RouterHead } from "./components/router-head/router-head";
+import { RouterHead } from "./components/common/router-head/router-head";
 
 import "./global.css";
+// @ts-ignore comment
+import cssHasPseudo from 'css-has-pseudo/browser';
 
 export default component$(() => {
   /**
@@ -16,11 +18,19 @@ export default component$(() => {
    * Don't remove the `<head>` and `<body>` elements.
    */
 
+  /* Miss */
+
+  useVisibleTask$(() => {
+    cssHasPseudo(document);
+  });
+
+
   return (
     <QwikCityProvider>
       <head>
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
+        <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
         <RouterHead />
         <ServiceWorkerRegister />
       </head>

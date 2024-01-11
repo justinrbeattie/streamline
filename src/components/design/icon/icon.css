@@ -1,0 +1,38 @@
+.size-small {
+    min-width: 24px;
+    height: 24px
+}
+
+.size-medium {
+    min-width: 44px;
+    height: 44px;
+}
+
+.size-large {
+    min-width: 56px;
+    height: 56px;
+}
+
+.variant-default {
+    color: inherit;
+}
+
+.variant-primary {
+    color: var(--primary);
+}
+
+.variant-secondary {
+    color: var(--secondary);
+}
+
+.variant-success {
+    color: var(--success);
+}
+
+.variant-warning {
+    color: var(--warning);
+}
+
+.variant-danger {
+    color: var(--danger);
+}

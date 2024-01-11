@@ -3,6 +3,11 @@ import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
 import styles from "./layout.css?inline";
+import { AnnouncementBar } from "~/components/layout/announcement-bar/announcement-bar";
+import { AsideInlineEnd } from "~/components/layout/aside-inline-end/aside-inline-end";
+import { AsideInlineStart } from "~/components/layout/aside-inline-start/aside-inline-start";
+import { NavBlockEnd } from "~/components/layout/nav-block-end/nav-block-end";
+import { NavBlockStart } from "~/components/layout/nav-block-start/nav-block-start";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -25,7 +30,12 @@ export default component$(() => {
   useStyles$(styles);
   return (
     <>
-        <Slot />
+      <AnnouncementBar />
+      <NavBlockStart />
+      <AsideInlineStart/>
+      <Slot />
+      <AsideInlineEnd/>
+      <NavBlockEnd/>
     </>
   );
 });

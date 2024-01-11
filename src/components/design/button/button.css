@@ -1,0 +1,133 @@
+:where(.btn, button, input:is([type=button], [type=submit], [type=reset])),
+:where(input[type=file])::-webkit-file-upload-button,
+:where(input[type=file])::file-selector-button {
+    --_border: transparent;
+    --_box-shadow: var(--shadow-2), 0 1px var(--surface-3), 0 0 0 var(--_highlight-size) var(--_highlight);
+    box-shadow: 0 0 0 var(--_highlight-size) var(--_highlight);
+    border-width:2px;
+    font-weight:500;
+}
+
+
+[disabled] {
+    opacity: .5;
+}
+
+.size-small {
+    width: auto;
+    min-height: 24px
+}
+
+.size-medium {
+    width: auto;
+    min-height: 44px;
+}
+
+.size-large {
+    width: auto;
+    min-height: 56px;
+}
+
+
+
+.variant-default {
+
+    &.style-filled {
+        border-color: var(--text-1);
+        background: var(--text-1);
+        color: var(--surface-0);
+        text-shadow: none;
+        box-shadow: none;
+    }
+}
+
+
+.variant-primary {
+    color:var(--primary);
+    border-color: var(--primary);
+    text-shadow:none;
+    background:transparent;
+
+    &.style-filled {
+        color:var(--surface-1);
+        background:var(--primary-2);
+    }
+}
+
+.variant-secondary {
+    border-color: var(--secondary);
+    color: var(--secondary);
+
+    &.style-filled {
+        background: var(--secondary);
+        color: var(--surface-0);
+        text-shadow: none;
+        box-shadow: none;
+    }
+}
+
+.variant-success {
+    border-color: var(--success);
+    color: var(--success);
+
+    &.style-filled {
+        background: var(--success);
+        color: var(--surface-0);
+        text-shadow: none;
+        box-shadow: none;
+    }
+}
+
+.variant-warning {
+    border-color: var(--warning);
+    color: var(--warning);
+
+    &.style-filled {
+        background: var(--warning);
+        color: var(--surface-0);
+        text-shadow: none;
+        box-shadow: none;
+    }
+}
+
+.variant-danger {
+    border-color: var(--danger);
+    color: var(--danger);
+
+    &.style-filled {
+        background: var(--danger);
+        color: var(--surface-0);
+        text-shadow: none;
+        box-shadow: none;
+    }
+}
+
+.style-transparent {
+    background: transparent;
+    border-color: transparent;
+    text-shadow: none;
+    box-shadow: none;
+}
+
+.shape-circle {
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-round);
+    box-shadow: var(--shadow-5) !important;
+
+    &.size-small {
+        width: var(--size-fluid-5);
+        height: auto;
+    }
+
+    &.size-medium {
+        width: var(--size-fluid-6);
+        height: auto;
+    }
+
+    &.size-large {
+        width: var(--size-fluid-7);
+        height: auto;
+    }
+}
+

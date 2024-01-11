@@ -1,0 +1,7 @@
+.announcement-bar {
+    display:flex;
+    color:white;
+    background:black;
+    justify-content: center;
+    align-items: center;
+}

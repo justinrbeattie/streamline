@@ -1,0 +1,368 @@
+
+
+:root {
+
+    /* Fix order of darkness in dark mode */
+
+    --lightness-0: 100%;
+    --lightness-1: 95%;
+    --lightness-2: 88%;
+    --lightness-3: 80%;
+    --lightness-4: 74%;
+    --lightness-5: 68%;
+    --lightness-6: 63%;
+    --lightness-7: 58%;
+    --lightness-8: 53%;
+    --lightness-9: 49%;
+    --lightness-10: 43%;
+    --lightness-11: 37%;
+    --lightness-12: 31%;
+    --lightness-13: 25%;
+    --lightness-14: 18%;
+    --lightness-15: 2%;
+    --lightness-16: 0%;
+
+    --chroma-0: 0%;
+    --chroma-1: 12.5%;
+    --chroma-2: 25%;
+    --chroma-3: 37.5%;
+    --chroma-4: 50%;
+
+
+    --hue-red: 25;
+    --hue-pink: 350;
+    --hue-purple: 310;
+    --hue-violet: 290;
+    --hue-indigo: 270;
+    --hue-blue: 240;
+    --hue-cyan: 210;
+    --hue-teal: 185;
+    --hue-green: 145;
+    --hue-lime: 125;
+    --hue-yellow: 100;
+    --hue-orange: 75;
+
+    --opacity-0: 0;
+    --opacity-1: 0.1;
+    --opacity-2: 0.2;
+    --opacity-3: 0.3;
+    --opacity-4: 0.4;
+    --opacity-5: 0.5;
+    --opacity-6: 0.6;
+    --opacity-7: 0.7;
+    --opacity-8: 0.8;
+    --opacity-9: 0.9;
+    --opacity-10: 1;
+
+    --gray-0: oklch(var(--lightness-0, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-1: oklch(var(--lightness-1, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-2: oklch(var(--lightness-2, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-3: oklch(var(--lightness-3, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-4: oklch(var(--lightness-4, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-5: oklch(var(--lightness-5, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-6: oklch(var(--lightness-6, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-7: oklch(var(--lightness-7, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-8: oklch(var(--lightness-8, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-9: oklch(var(--lightness-9, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-10: oklch(var(--lightness-10, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-11: oklch(var(--lightness-11, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-12: oklch(var(--lightness-12, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-13: oklch(var(--lightness-13, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-14: oklch(var(--lightness-14, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-15: oklch(var(--lightness-15, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --gray-16: oklch(var(--lightness-16, none) var(--chroma-0, none) var(--hue-blue, none) / var(--opacity-10, none));
+
+    /* light */
+    --surface-0-light: var(--gray-0);
+    --surface-1-light: var(--gray-1);
+    --surface-2-light: var(--gray-2);
+    --surface-3-light: var(--gray-3);
+    --surface-4-light: var(--gray-4);
+    --surface-5-light: var(--gray-5);
+    --surface-6-light: var(--gray-6);
+    --surface-7-light: var(--gray-7);
+    --surface-8-light: var(--gray-8);
+    --surface-shadow-light: var(--gray-8-hsl);
+    --shadow-strength-light: 2%;
+
+
+
+    /* dark */
+    --surface-0-dark: var(--gray-8);
+    --surface-1-dark: var(--gray-9);
+    --surface-2-dark: var(--gray-10);
+    --surface-3-dark: var(--gray-11);
+    --surface-4-dark: var(--gray-12);
+    --surface-5-dark: var(--gray-13);
+    --surface-6-dark: var(--gray-14);
+    --surface-7-dark: var(--gray-15);
+    --surface-8-dark: var(--gray-16);
+    --surface-shadow-dark: var(--gray-12-hsl);
+    --shadow-strength-dark: 80%;
+
+}
+
+
+
+:is(:root, [color-scheme="light"]) {
+    color-scheme: light;
+
+    /* set defaults */
+    --surface-0: var(--surface-0-light);
+    --surface-1: var(--surface-1-light);
+    --surface-2: var(--surface-2-light);
+    --surface-3: var(--surface-3-light);
+    --surface-4: var(--surface-4-light);
+    --surface-5: var(--surface-5-light);
+    --surface-6: var(--surface-6-light);
+    --surface-7: var(--surface-7-light);
+    --surface-8: var(--surface-8-light);
+    --text-1: var(--grey-14);
+    --text-2: var(--grey-15);
+
+
+    --surface-shadow: var(--surface-shadow-light);
+    --shadow-strength: var(--shadow-strength-light);
+
+    --relative-lightness-0: var(--lightness-0);
+    --relative-lightness-1: var(--lightness-1);
+    --relative-lightness-2: var(--lightness-2);
+    --relative-lightness-3: var(--lightness-3);
+    --relative-lightness-4: var(--lightness-4);
+    --relative-lightness-5: var(--lightness-5);
+    --relative-lightness-6: var(--lightness-6);
+    --relative-lightness-7: var(--lightness-7);
+    --relative-lightness-8: var(--lightness-8);
+
+
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+    :root {
+    }
+}
+
+[color-scheme="dark"] {
+        color-scheme: dark;
+        --surface-0: var(--surface-0-dark);
+        --surface-1: var(--surface-1-dark);
+        --surface-2: var(--surface-2-dark);
+        --surface-3: var(--surface-3-dark);
+        --surface-4: var(--surface-4-dark);
+        --surface-5: var(--surface-5-dark);
+        --surface-6: var(--surface-6-dark);
+        --surface-7: var(--surface-7-dark);
+        --surface-8: var(--surface-8-dark);
+        --text-1: var(--grey-2);
+        --text-2: var(--grey-3);
+        --surface-shadow: var(--surface-shadow-dark);
+        --shadow-strength: var(--shadow-strength-dark);
+
+        --relative-lightness-0: var(--lightness-13);
+        --relative-lightness-1: var(--lightness-12);
+        --relative-lightness-2: var(--lightness-11);
+        --relative-lightness-3: var(--lightness-10);
+        --relative-lightness-4: var(--lightness-9);
+        --relative-lightness-5: var(--lightness-8);
+        --relative-lightness-6: var(--lightness-7);
+        --relative-lightness-7: var(--lightness-6);
+        --relative-lightness-8: var(--lightness-5);
+
+}
+
+
+:where(html) {
+
+    --surface-red-0:oklch(var(--relative-lightness-0, none) var(--chroma-2, none) var(--hue-red, none) / var(--opacity-10, none));
+    --surface-red-1:oklch(var(--relative-lightness-1, none) var(--chroma-3, none) var(--hue-red, none) / var(--opacity-10, none));
+    --surface-red-2:oklch(var(--relative-lightness-2, none) var(--chroma-3, none) var(--hue-red, none) / var(--opacity-10, none));
+    --surface-red-3:oklch(var(--relative-lightness-3, none) var(--chroma-3, none) var(--hue-red, none) / var(--opacity-10, none));
+    --surface-red-4:oklch(var(--relative-lightness-4, none) var(--chroma-4, none) var(--hue-red, none) / var(--opacity-10, none));
+    --surface-red-5:oklch(var(--relative-lightness-5, none) var(--chroma-3, none) var(--hue-red, none) / var(--opacity-10, none));
+    --surface-red-6:oklch(var(--relative-lightness-6, none) var(--chroma-3, none) var(--hue-red, none) / var(--opacity-10, none));
+    --surface-red-7:oklch(var(--relative-lightness-7, none) var(--chroma-3, none) var(--hue-red, none) / var(--opacity-10, none));
+    --surface-red-8:oklch(var(--relative-lightness-8, none) var(--chroma-2, none) var(--hue-red, none) / var(--opacity-10, none));
+
+    --surface-pink-0:oklch(var(--relative-lightness-0, none) var(--chroma-2, none) var(--hue-pink, none) / var(--opacity-10, none));
+    --surface-pink-1:oklch(var(--relative-lightness-1, none) var(--chroma-3, none) var(--hue-pink, none) / var(--opacity-10, none));
+    --surface-pink-2:oklch(var(--relative-lightness-2, none) var(--chroma-3, none) var(--hue-pink, none) / var(--opacity-10, none));
+    --surface-pink-3:oklch(var(--relative-lightness-3, none) var(--chroma-3, none) var(--hue-pink, none) / var(--opacity-10, none));
+    --surface-pink-4:oklch(var(--relative-lightness-4, none) var(--chroma-4, none) var(--hue-pink, none) / var(--opacity-10, none));
+    --surface-pink-5:oklch(var(--relative-lightness-5, none) var(--chroma-3, none) var(--hue-pink, none) / var(--opacity-10, none));
+    --surface-pink-6:oklch(var(--relative-lightness-6, none) var(--chroma-3, none) var(--hue-pink, none) / var(--opacity-10, none));
+    --surface-pink-7:oklch(var(--relative-lightness-7, none) var(--chroma-3, none) var(--hue-pink, none) / var(--opacity-10, none));
+    --surface-pink-8:oklch(var(--relative-lightness-8, none) var(--chroma-2, none) var(--hue-pink, none) / var(--opacity-10, none));
+
+    --surface-purple-0:oklch(var(--relative-lightness-0, none) var(--chroma-2, none) var(--hue-purple, none) / var(--opacity-10, none));
+    --surface-purple-1:oklch(var(--relative-lightness-1, none) var(--chroma-3, none) var(--hue-purple, none) / var(--opacity-10, none));
+    --surface-purple-2:oklch(var(--relative-lightness-2, none) var(--chroma-3, none) var(--hue-purple, none) / var(--opacity-10, none));
+    --surface-purple-3:oklch(var(--relative-lightness-3, none) var(--chroma-3, none) var(--hue-purple, none) / var(--opacity-10, none));
+    --surface-purple-4:oklch(var(--relative-lightness-4, none) var(--chroma-4, none) var(--hue-purple, none) / var(--opacity-10, none));
+    --surface-purple-5:oklch(var(--relative-lightness-5, none) var(--chroma-3, none) var(--hue-purple, none) / var(--opacity-10, none));
+    --surface-purple-6:oklch(var(--relative-lightness-6, none) var(--chroma-3, none) var(--hue-purple, none) / var(--opacity-10, none));
+    --surface-purple-7:oklch(var(--relative-lightness-7, none) var(--chroma-3, none) var(--hue-purple, none) / var(--opacity-10, none));
+    --surface-purple-8:oklch(var(--relative-lightness-8, none) var(--chroma-2, none) var(--hue-purple, none) / var(--opacity-10, none));
+
+    --surface-violet-0:oklch(var(--relative-lightness-0, none) var(--chroma-2, none) var(--hue-violet, none) / var(--opacity-10, none));
+    --surface-violet-1:oklch(var(--relative-lightness-1, none) var(--chroma-3, none) var(--hue-violet, none) / var(--opacity-10, none));
+    --surface-violet-2:oklch(var(--relative-lightness-2, none) var(--chroma-3, none) var(--hue-violet, none) / var(--opacity-10, none));
+    --surface-violet-3:oklch(var(--relative-lightness-3, none) var(--chroma-3, none) var(--hue-violet, none) / var(--opacity-10, none));
+    --surface-violet-4:oklch(var(--relative-lightness-4, none) var(--chroma-4, none) var(--hue-violet, none) / var(--opacity-10, none));
+    --surface-violet-5:oklch(var(--relative-lightness-5, none) var(--chroma-3, none) var(--hue-violet, none) / var(--opacity-10, none));
+    --surface-violet-6:oklch(var(--relative-lightness-6, none) var(--chroma-3, none) var(--hue-violet, none) / var(--opacity-10, none));
+    --surface-violet-7:oklch(var(--relative-lightness-7, none) var(--chroma-3, none) var(--hue-violet, none) / var(--opacity-10, none));
+    --surface-violet-8:oklch(var(--relative-lightness-8, none) var(--chroma-2, none) var(--hue-violet, none) / var(--opacity-10, none));
+
+    --surface-indigo-0:oklch(var(--relative-lightness-0, none) var(--chroma-2, none) var(--hue-indigo, none) / var(--opacity-10, none));
+    --surface-indigo-1:oklch(var(--relative-lightness-1, none) var(--chroma-3, none) var(--hue-indigo, none) / var(--opacity-10, none));
+    --surface-indigo-2:oklch(var(--relative-lightness-2, none) var(--chroma-3, none) var(--hue-indigo, none) / var(--opacity-10, none));
+    --surface-indigo-3:oklch(var(--relative-lightness-3, none) var(--chroma-3, none) var(--hue-indigo, none) / var(--opacity-10, none));
+    --surface-indigo-4:oklch(var(--relative-lightness-4, none) var(--chroma-4, none) var(--hue-indigo, none) / var(--opacity-10, none));
+    --surface-indigo-5:oklch(var(--relative-lightness-5, none) var(--chroma-3, none) var(--hue-indigo, none) / var(--opacity-10, none));
+    --surface-indigo-6:oklch(var(--relative-lightness-6, none) var(--chroma-3, none) var(--hue-indigo, none) / var(--opacity-10, none));
+    --surface-indigo-7:oklch(var(--relative-lightness-7, none) var(--chroma-3, none) var(--hue-indigo, none) / var(--opacity-10, none));
+    --surface-indigo-8:oklch(var(--relative-lightness-8, none) var(--chroma-2, none) var(--hue-indigo, none) / var(--opacity-10, none));
+
+    --surface-blue-0:oklch(var(--relative-lightness-0, none) var(--chroma-2, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --surface-blue-1:oklch(var(--relative-lightness-1, none) var(--chroma-3, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --surface-blue-2:oklch(var(--relative-lightness-2, none) var(--chroma-3, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --surface-blue-3:oklch(var(--relative-lightness-3, none) var(--chroma-3, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --surface-blue-4:oklch(var(--relative-lightness-4, none) var(--chroma-4, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --surface-blue-5:oklch(var(--relative-lightness-5, none) var(--chroma-3, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --surface-blue-6:oklch(var(--relative-lightness-6, none) var(--chroma-3, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --surface-blue-7:oklch(var(--relative-lightness-7, none) var(--chroma-3, none) var(--hue-blue, none) / var(--opacity-10, none));
+    --surface-blue-8:oklch(var(--relative-lightness-8, none) var(--chroma-2, none) var(--hue-blue, none) / var(--opacity-10, none));
+
+    --surface-cyan-0:oklch(var(--relative-lightness-0, none) var(--chroma-2, none) var(--hue-cyan, none) / var(--opacity-10, none));
+    --surface-cyan-1:oklch(var(--relative-lightness-1, none) var(--chroma-3, none) var(--hue-cyan, none) / var(--opacity-10, none));
+    --surface-cyan-2:oklch(var(--relative-lightness-2, none) var(--chroma-3, none) var(--hue-cyan, none) / var(--opacity-10, none));
+    --surface-cyan-3:oklch(var(--relative-lightness-3, none) var(--chroma-3, none) var(--hue-cyan, none) / var(--opacity-10, none));
+    --surface-cyan-4:oklch(var(--relative-lightness-4, none) var(--chroma-4, none) var(--hue-cyan, none) / var(--opacity-10, none));
+    --surface-cyan-5:oklch(var(--relative-lightness-5, none) var(--chroma-3, none) var(--hue-cyan, none) / var(--opacity-10, none));
+    --surface-cyan-6:oklch(var(--relative-lightness-6, none) var(--chroma-3, none) var(--hue-cyan, none) / var(--opacity-10, none));
+    --surface-cyan-7:oklch(var(--relative-lightness-7, none) var(--chroma-3, none) var(--hue-cyan, none) / var(--opacity-10, none));
+    --surface-cyan-8:oklch(var(--relative-lightness-8, none) var(--chroma-2, none) var(--hue-cyan, none) / var(--opacity-10, none));
+
+    --surface-teal-0:oklch(var(--relative-lightness-0, none) var(--chroma-2, none) var(--hue-teal, none) / var(--opacity-10, none));
+    --surface-teal-1:oklch(var(--relative-lightness-1, none) var(--chroma-3, none) var(--hue-teal, none) / var(--opacity-10, none));
+    --surface-teal-2:oklch(var(--relative-lightness-2, none) var(--chroma-3, none) var(--hue-teal, none) / var(--opacity-10, none));
+    --surface-teal-3:oklch(var(--relative-lightness-3, none) var(--chroma-3, none) var(--hue-teal, none) / var(--opacity-10, none));
+    --surface-teal-4:oklch(var(--relative-lightness-4, none) var(--chroma-4, none) var(--hue-teal, none) / var(--opacity-10, none));
+    --surface-teal-5:oklch(var(--relative-lightness-5, none) var(--chroma-3, none) var(--hue-teal, none) / var(--opacity-10, none));
+    --surface-teal-6:oklch(var(--relative-lightness-6, none) var(--chroma-3, none) var(--hue-teal, none) / var(--opacity-10, none));
+    --surface-teal-7:oklch(var(--relative-lightness-7, none) var(--chroma-3, none) var(--hue-teal, none) / var(--opacity-10, none));
+    --surface-teal-8:oklch(var(--relative-lightness-8, none) var(--chroma-2, none) var(--hue-teal, none) / var(--opacity-10, none));
+
+    --surface-green-0:oklch(var(--relative-lightness-0, none) var(--chroma-2, none) var(--hue-green, none) / var(--opacity-10, none));
+    --surface-green-1:oklch(var(--relative-lightness-1, none) var(--chroma-3, none) var(--hue-green, none) / var(--opacity-10, none));
+    --surface-green-2:oklch(var(--relative-lightness-2, none) var(--chroma-3, none) var(--hue-green, none) / var(--opacity-10, none));
+    --surface-green-3:oklch(var(--relative-lightness-3, none) var(--chroma-3, none) var(--hue-green, none) / var(--opacity-10, none));
+    --surface-green-4:oklch(var(--relative-lightness-4, none) var(--chroma-4, none) var(--hue-green, none) / var(--opacity-10, none));
+    --surface-green-5:oklch(var(--relative-lightness-5, none) var(--chroma-3, none) var(--hue-green, none) / var(--opacity-10, none));
+    --surface-green-6:oklch(var(--relative-lightness-6, none) var(--chroma-3, none) var(--hue-green, none) / var(--opacity-10, none));
+    --surface-green-7:oklch(var(--relative-lightness-7, none) var(--chroma-3, none) var(--hue-green, none) / var(--opacity-10, none));
+    --surface-green-8:oklch(var(--relative-lightness-8, none) var(--chroma-2, none) var(--hue-green, none) / var(--opacity-10, none));
+
+
+    --surface-lime-0:oklch(var(--relative-lightness-0, none) var(--chroma-2, none) var(--hue-lime, none) / var(--opacity-10, none));
+    --surface-lime-1:oklch(var(--relative-lightness-1, none) var(--chroma-3, none) var(--hue-lime, none) / var(--opacity-10, none));
+    --surface-lime-2:oklch(var(--relative-lightness-2, none) var(--chroma-3, none) var(--hue-lime, none) / var(--opacity-10, none));
+    --surface-lime-3:oklch(var(--relative-lightness-3, none) var(--chroma-3, none) var(--hue-lime, none) / var(--opacity-10, none));
+    --surface-lime-4:oklch(var(--relative-lightness-4, none) var(--chroma-4, none) var(--hue-lime, none) / var(--opacity-10, none));
+    --surface-lime-5:oklch(var(--relative-lightness-5, none) var(--chroma-3, none) var(--hue-lime, none) / var(--opacity-10, none));
+    --surface-lime-6:oklch(var(--relative-lightness-6, none) var(--chroma-3, none) var(--hue-lime, none) / var(--opacity-10, none));
+    --surface-lime-7:oklch(var(--relative-lightness-7, none) var(--chroma-3, none) var(--hue-lime, none) / var(--opacity-10, none));
+    --surface-lime-8:oklch(var(--relative-lightness-8, none) var(--chroma-2, none) var(--hue-lime, none) / var(--opacity-10, none));
+
+    --surface-yellow-0:oklch(var(--relative-lightness-0, none) var(--chroma-2, none) var(--hue-yellow, none) / var(--opacity-10, none));
+    --surface-yellow-1:oklch(var(--relative-lightness-1, none) var(--chroma-3, none) var(--hue-yellow, none) / var(--opacity-10, none));
+    --surface-yellow-2:oklch(var(--relative-lightness-2, none) var(--chroma-3, none) var(--hue-yellow, none) / var(--opacity-10, none));
+    --surface-yellow-3:oklch(var(--relative-lightness-3, none) var(--chroma-3, none) var(--hue-yellow, none) / var(--opacity-10, none));
+    --surface-yellow-4:oklch(var(--relative-lightness-4, none) var(--chroma-4, none) var(--hue-yellow, none) / var(--opacity-10, none));
+    --surface-yellow-5:oklch(var(--relative-lightness-5, none) var(--chroma-3, none) var(--hue-yellow, none) / var(--opacity-10, none));
+    --surface-yellow-6:oklch(var(--relative-lightness-6, none) var(--chroma-3, none) var(--hue-yellow, none) / var(--opacity-10, none));
+    --surface-yellow-7:oklch(var(--relative-lightness-7, none) var(--chroma-3, none) var(--hue-yellow, none) / var(--opacity-10, none));
+    --surface-yellow-8:oklch(var(--relative-lightness-8, none) var(--chroma-2, none) var(--hue-yellow, none) / var(--opacity-10, none));
+
+    --surface-orange-0:oklch(var(--relative-lightness-0, none) var(--chroma-2, none) var(--hue-orange, none) / var(--opacity-10, none));
+    --surface-orange-1:oklch(var(--relative-lightness-1, none) var(--chroma-3, none) var(--hue-orange, none) / var(--opacity-10, none));
+    --surface-orange-2:oklch(var(--relative-lightness-2, none) var(--chroma-3, none) var(--hue-orange, none) / var(--opacity-10, none));
+    --surface-orange-3:oklch(var(--relative-lightness-3, none) var(--chroma-3, none) var(--hue-orange, none) / var(--opacity-10, none));
+    --surface-orange-4:oklch(var(--relative-lightness-4, none) var(--chroma-4, none) var(--hue-orange, none) / var(--opacity-10, none));
+    --surface-orange-5:oklch(var(--relative-lightness-5, none) var(--chroma-3, none) var(--hue-orange, none) / var(--opacity-10, none));
+    --surface-orange-6:oklch(var(--relative-lightness-6, none) var(--chroma-3, none) var(--hue-orange, none) / var(--opacity-10, none));
+    --surface-orange-7:oklch(var(--relative-lightness-7, none) var(--chroma-3, none) var(--hue-orange, none) / var(--opacity-10, none));
+    --surface-orange-8:oklch(var(--relative-lightness-8, none) var(--chroma-2, none) var(--hue-orange, none) / var(--opacity-10, none));
+}
+
+
+:root {
+    /* semantics */
+    --primary-0: var(--surface-indigo-0);
+    --primary-1: var(--surface-indigo-1);
+    --primary-2: var(--surface-indigo-2);
+    --primary-3: var(--surface-indigo-3);
+    --primary-4: var(--surface-indigo-4);
+    --primary-5: var(--surface-indigo-5);
+    --primary-6: var(--surface-indigo-6);
+    --primary-7: var(--surface-indigo-7);
+    --primary-8: var(--surface-indigo-8);
+    --primary: var(--primary-6);
+    --primary-hue: var(--hue-pink);
+
+
+    --secondary-0:var(--surface-teal-0);
+    --secondary-1:var(--surface-teal-1);
+    --secondary-2:var(--surface-teal-2);
+    --secondary-3:var(--surface-teal-3);
+    --secondary-4:var(--surface-teal-4);
+    --secondary-5:var(--surface-teal-5);
+    --secondary-6:var(--surface-teal-6);
+    --secondary-7:var(--surface-teal-7);
+    --secondary-8:var(--surface-teal-8);
+    --secondary: var(--secondary-6);
+    --secondary-hue: var(--hue-teal);
+
+
+
+    --success-0: var(--surface-teal-0);
+    --success-1: var(--surface-teal-1);
+    --success-2: var(--surface-teal-2);
+    --success-3: var(--surface-teal-3);
+    --success-4: var(--surface-teal-4);
+    --success-5: var(--surface-teal-5);
+    --success-6: var(--surface-teal-6);
+    --success-7: var(--surface-teal-7);
+    --success-8: var(--surface-teal-8);
+    --success: var(--success-6);
+    --success-hue: var(--hue-teal);
+
+
+    --warning-0:var(--surface-orange-0);
+    --warning-1:var(--surface-orange-1);
+    --warning-2:var(--surface-orange-2);
+    --warning-3:var(--surface-orange-3);
+    --warning-4:var(--surface-orange-4);
+    --warning-5:var(--surface-orange-5);
+    --warning-6:var(--surface-orange-6);
+    --warning-7:var(--surface-orange-7);
+    --warning-8:var(--surface-orange-8);
+    --warning: var(--warning-6);
+    --warning-hue: var(--hue-orange);
+
+
+    --danger-0: var(--surface-red-0);
+    --danger-1: var(--surface-red-1);
+    --danger-2: var(--surface-red-2);
+    --danger-3: var(--surface-red-3);
+    --danger-4: var(--surface-red-4);
+    --danger-5: var(--surface-red-5);
+    --danger-6: var(--surface-red-6);
+    --danger-7: var(--surface-red-7);
+    --danger-8: var(--surface-red-8);
+    --danger: var(--danger-6);
+    --danger-hue: var(--hue-red);
+
+}

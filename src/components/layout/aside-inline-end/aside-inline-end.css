@@ -1,0 +1,15 @@
+.aside-inline-end {
+    background:lightblue;
+
+}
+
+aside{
+    max-height: calc(var(--viewport-height));
+    animation: asideHeightAnimation linear both;
+    animation-timeline: scroll(block root);
+    animation-range: 0px var(--announcement-bar-height);
+}
+
+@keyframes asideHeightAnimation {
+    to {     max-height: calc(var(--viewport-height) + var(--announcement-bar-height)); }
+  }
