@@ -1,6 +1,6 @@
 import { component$, useSignal, $ } from "@builder.io/qwik";
 import styles from "./counter.module.css";
-import Gauge from "../gauge";
+import Gauge from "../../qwik-starter/gauge";
 
 export default component$((props: { initialValue: number }) => {
   const count = useSignal(props.initialValue || 99);
