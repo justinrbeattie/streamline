@@ -1,3 +1,4 @@
+import { $ } from "@builder.io/qwik";
 import type { Meta, StoryObj } from "storybook-framework-qwik";
 import { ButtonComponent, type ButtonProps } from "./button";
 
@@ -9,6 +10,7 @@ type Story = StoryObj<ButtonProps>;
 
 export default meta;
 
+
 export const Button: Story = {
   args: {
     size: "medium",
@@ -18,6 +20,8 @@ export const Button: Story = {
     href: "",
     newWindow: false,
     disabled: false,
+    cms: false,
+    onClick$: $(() => { console.log("clicked") }),
   },
   argTypes: {
     size: {
@@ -26,12 +30,12 @@ export const Button: Story = {
     },
 
     variant: {
-      options: ["default", "primary", "secondary", "warning", "success", "danger"],
+      options: ["default" , "primary" , "secondary" , "warning" , "success" , "danger"],
       control: { type: 'select' },
     },
 
     style: {
-      options: ["standard", "transparent", "filled", "outlined"],
+      options: ["standard" , "outlined" , "filled" , "transparent" , "blurred"],
       control: { type: 'select' },
     },
 
@@ -39,7 +43,6 @@ export const Button: Story = {
       options: ["rectangle", "circle"],
       control: { type: 'select' },
     },
-
 
   },
   render: (props) => <ButtonComponent {...props}>Some button</ButtonComponent>,

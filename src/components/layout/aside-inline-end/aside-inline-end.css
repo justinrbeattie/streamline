@@ -1,13 +1,18 @@
 .aside-inline-end {
-    background:lightblue;
-
-}
-
-aside{
+    background:var(--surface-1);
+    box-shadow:var(--shadow-2);
+    min-width: 320px;
+    width:20dvw;
+    transform:translateX(100%);
+    transition: transform .125s var(--ease-in-out-2);
     max-height: calc(var(--viewport-height));
     animation: asideHeightAnimation linear both;
     animation-timeline: scroll(block root);
     animation-range: 0px var(--announcement-bar-height);
+}
+
+body:has(#aside-inline-end-button[aria-expanded="true"]) .aside-inline-end {
+    transform:translateX(0%);
 }
 
 @keyframes asideHeightAnimation {

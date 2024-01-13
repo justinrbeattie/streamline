@@ -2,12 +2,18 @@
 :where(input[type=file])::-webkit-file-upload-button,
 :where(input[type=file])::file-selector-button {
     --_border: transparent;
-    --_box-shadow: var(--shadow-2), 0 1px var(--surface-3), 0 0 0 var(--_highlight-size) var(--_highlight);
-    box-shadow: 0 0 0 var(--_highlight-size) var(--_highlight);
-    border-width:2px;
-    font-weight:500;
+    border-width: 2px;
+    font-weight: 500;
+    text-shadow: none;
+    margin:unset;
+
+
 }
 
+
+[aria-pressed="true"] {
+    filter:brightness(1.2);
+}
 
 [disabled] {
     opacity: .5;
@@ -32,102 +38,137 @@
 
 .variant-default {
 
+    &.style-outlined {
+        border-color: var(--surface-3);
+        background: transparent;
+    }
+
     &.style-filled {
-        border-color: var(--text-1);
-        background: var(--text-1);
-        color: var(--surface-0);
-        text-shadow: none;
-        box-shadow: none;
+        color: var(--surface-1);
+        background: var(--surface-8);
     }
 }
 
 
 .variant-primary {
-    color:var(--primary);
-    border-color: var(--primary);
-    text-shadow:none;
-    background:transparent;
+    color: var(--primary);
+
+    &.style-outlined {
+        border-color: var(--primary);
+        background: transparent;
+    }
 
     &.style-filled {
-        color:var(--surface-1);
-        background:var(--primary-2);
+        color: var(--surface-1);
+        background: var(--primary);
     }
 }
 
 .variant-secondary {
-    border-color: var(--secondary);
     color: var(--secondary);
 
+    &.style-outlined {
+        border-color: var(--secondary);
+        background: transparent;
+    }
+
     &.style-filled {
+        color: var(--surface-1);
         background: var(--secondary);
-        color: var(--surface-0);
-        text-shadow: none;
-        box-shadow: none;
     }
 }
 
 .variant-success {
-    border-color: var(--success);
     color: var(--success);
 
+    &.style-outlined {
+        border-color: var(--success);
+        background: transparent;
+    }
+
     &.style-filled {
+        color: var(--surface-1);
         background: var(--success);
-        color: var(--surface-0);
-        text-shadow: none;
-        box-shadow: none;
     }
 }
 
 .variant-warning {
-    border-color: var(--warning);
     color: var(--warning);
 
+    &.style-outlined {
+        border-color: var(--warning);
+        background: transparent;
+    }
+
     &.style-filled {
+        color: var(--surface-1);
         background: var(--warning);
-        color: var(--surface-0);
-        text-shadow: none;
-        box-shadow: none;
+    }
+
+}
+
+.variant-danger {
+    color: var(--danger);
+
+    &.style-outlined {
+        border-color: var(--danger);
+        background: transparent;
+    }
+
+    &.style-filled {
+        color: var(--surface-1);
+        background: var(--danger);
     }
 }
 
 .variant-danger {
-    border-color: var(--danger);
     color: var(--danger);
 
+    &.style-outlined {
+        border-color: var(--danger);
+        background: transparent;
+    }
+
     &.style-filled {
+        color: var(--surface-1);
         background: var(--danger);
-        color: var(--surface-0);
-        text-shadow: none;
-        box-shadow: none;
     }
 }
 
 .style-transparent {
+    color:currentColor;
     background: transparent;
     border-color: transparent;
-    text-shadow: none;
-    box-shadow: none;
 }
+
+.style-blurred {
+    color:currentColor;
+    background: transparent;
+    border-color: transparent;
+    backdrop-filter: blur(2px);
+}
+
 
 .shape-circle {
     padding: 0;
     aspect-ratio: 1 / 1;
     border-radius: var(--radius-round);
-    box-shadow: var(--shadow-5) !important;
 
     &.size-small {
-        width: var(--size-fluid-5);
+        width: var(--size-fluid-4);
         height: auto;
+        box-shadow: var(--shadow-2) !important;
     }
 
     &.size-medium {
-        width: var(--size-fluid-6);
+        width: var(--size-fluid-5);
         height: auto;
+        box-shadow: var(--shadow-4) !important;
     }
 
     &.size-large {
         width: var(--size-fluid-7);
         height: auto;
+        box-shadow: var(--shadow-5) !important;
     }
 }
-

@@ -9,6 +9,9 @@ import { RouterHead } from "./components/common/router-head/router-head";
 import "./global.css";
 // @ts-ignore comment
 import cssHasPseudo from 'css-has-pseudo/browser';
+import * as icon from "@qwikest/icons/iconoir";
+export const Icon = icon;
+
 
 export default component$(() => {
   /**
