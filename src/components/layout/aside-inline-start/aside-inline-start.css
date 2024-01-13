@@ -1,23 +1,15 @@
-
 .aside-inline-start {
-    background:var(--surface-1);
-    box-shadow:var(--shadow-2);
+    padding-block-start: calc(var(--announcement-bar-height) + var(--nav-block-start-height) );
+    background: var(--surface-1);
+    box-shadow: var(--shadow-2);
     min-width: 320px;
-    width:20dvw;
-    transform:translateX(-100%);
+    width: 20dvw;
+    transform: translateX(-200%);
     transition: transform .125s var(--ease-in-out-2);
-    max-height: calc(var(--viewport-height));
-    animation: asideHeightAnimation linear both;
-    animation-timeline: scroll(block root);
-    animation-range: 0px var(--announcement-bar-height);
+    height: calc(var(--announcement-bar-height) + var(--nav-block-start-height) + var(--viewport-height));
+    box-shadow: var(--shadow-3);
 }
 
 body:has(#aside-inline-start-button[aria-expanded="true"]) .aside-inline-start {
-    transform:translateX(0%);
+    transform: translateX(0%);
 }
-
-@keyframes asideHeightAnimation {
-    to {     max-height: calc(var(--viewport-height) + var(--announcement-bar-height)); }
-  }
-
-

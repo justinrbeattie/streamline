@@ -117,8 +117,8 @@
     --surface-6: var(--surface-6-light);
     --surface-7: var(--surface-7-light);
     --surface-8: var(--surface-8-light);
-    --text-1: var(--grey-14);
-    --text-2: var(--grey-15);
+    --text-1: var(--gray-14);
+    --text-2: var(--gray-15);
 
 
     --surface-shadow: var(--surface-shadow-light);
@@ -155,8 +155,8 @@
         --surface-6: var(--surface-6-dark);
         --surface-7: var(--surface-7-dark);
         --surface-8: var(--surface-8-dark);
-        --text-1: var(--grey-2);
-        --text-2: var(--grey-3);
+        --text-1: var(--gray-2);
+        --text-2: var(--gray-3);
         --surface-shadow: var(--surface-shadow-dark);
         --shadow-strength: var(--shadow-strength-dark);
 

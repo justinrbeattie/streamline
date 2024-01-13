@@ -26,17 +26,19 @@ body {
 
     >.aside-inline-start{
         grid-area:aside-start;
+        grid-row:1/4;
         position:sticky;
-        inset-block-start:var(--nav-block-start-height);
+        inset-block-start:0px;
         inset-inline-start:0px;
  
     }
 
     >.aside-inline-end{
         grid-area:aside-end;
+        grid-row:1/4;
         position:sticky;
-        inset-block-start:var(--nav-block-start-height);
-        inset-inline-end:0px;
+        inset-block-start:0px;
+        inset-inline-start:0px;
     }
 
     >.nav-block-end{

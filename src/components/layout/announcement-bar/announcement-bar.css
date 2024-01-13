@@ -4,4 +4,5 @@
     background:black;
     justify-content: center;
     align-items: center;
+    z-index:var(--layer-5);
 }
