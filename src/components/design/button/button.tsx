@@ -11,12 +11,12 @@ export interface ButtonProps {
   newWindow?: boolean,
   disabled?: boolean,
   cms?: boolean,
-  onClick$?: QRL<() => void>,
   ariaLabel?: string;
   ariaControls?: string,
   ariaHaspopup?: boolean,
   ariaRoledescription?: string,
-  id?: string
+  id?: string,
+  onClick$?: QRL<() => void>,
 
 }
 export const ButtonComponent = component$<ButtonProps>((
@@ -28,12 +28,12 @@ export const ButtonComponent = component$<ButtonProps>((
     newWindow = false,
     disabled = false,
     cms = false,
-    onClick$ = $(() => { }),
     ariaLabel = "",
     ariaRoledescription = "",
     ariaHaspopup = false,
     ariaControls = "",
-    id=""
+    id="",
+    onClick$ = $(() => { }),
   }
 ) => {
 
