@@ -21,6 +21,11 @@ export const Button: Story = {
     newWindow: false,
     disabled: false,
     cms: false,
+    ariaLabel: "",
+    ariaRoledescription: "",
+    ariaHaspopup: false,
+    ariaControls: "",
+    id:"",
     onClick$: $(() => { console.log("clicked") }),
   },
   argTypes: {
