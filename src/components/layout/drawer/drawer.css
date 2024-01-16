@@ -1,22 +1,62 @@
-.drawer-container {
+.drawer-wrapper {
+
+    --drawer-offset: 1rem;
+    --drawer-clip-height: calc(100dvh - var(--nav-block-end-height) - var(--drawer-header-height));
+    --drawer-scroll-height: calc(100% - var(--drawer-header-height));
+    --drawer-content-height: calc(var(--drawer-clip-height) - var(--drawer-offset));
+    --drawer-header-height:clamp(2.5rem, 8vh, 4rem);
+    --drawer-collapsed-height:clamp(2.5rem, 8vh, 4rem);
+    
+    display: flex;
+    justify-content: center;
     position: fixed;
-    width:100%;
-    height:var(--viewport-height);
+    width: 100%;
+    height: calc(100dvh - var(--nav-block-end-height));
     inset-block-end: var(--nav-block-end-height);
-    max-height: var(--viewport-height);
-    overflow:scroll;
+    z-index: var(--layer-5);
+    filter:drop-shadow( 0 -2px 10px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)));
+    pointer-events: none;
 
-    &:before {
-        content: '';
-        display:block;
-        width:100%; 
-        min-height:calc(100% - var(--nav-block-start-height))
-    }
+    >.drawer-container {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        width: 100%;
+        height: calc(100dvh - var(--nav-block-end-height));
+        max-width: 80dvw;
+        overflow: scroll;
+        clip-path: inset(var(--drawer-clip-height) 0px 0px 0px);
+        animation: clip-effect linear both;
+        animation-timeline: scroll(block self);
+        animation-range: 0dvh var(--drawer-clip-height);
+        pointer-events: all;
 
-    .drawer {
-        width:100%;
-        min-height:200vh;
-        background:orange;
+        &:before {
+            content: '';
+            display: block;
+            width: 100%;
+            min-height: var(--drawer-scroll-height);
+        }
+
+        >.drawer-header {
+            width: 100%;
+            min-height: var(--drawer-header-height);
+            background: mintcream;
+        }
+
+        >.drawer-content {
+            width: 100%;
+            min-height: var(--drawer-content-height);
+            background: orange;
+
+        }
 
     }
 }
+
+@keyframes clip-effect {
+    to {
+        clip-path: inset(0dvh 0px 0px 0px);
+    }
+}
+

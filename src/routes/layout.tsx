@@ -34,11 +34,10 @@ export default component$(() => {
       <AnnouncementBar />
       <NavBlockStart />
       <AsideInlineStart/>
-      <Drawer></Drawer>
       <Slot />
-
       <AsideInlineEnd/>
       <NavBlockEnd/>
+      <Drawer></Drawer>
     </>
   );
 });
