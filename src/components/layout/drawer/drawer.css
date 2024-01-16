@@ -1,0 +1,22 @@
+.drawer-container {
+    position: fixed;
+    width:100%;
+    height:var(--viewport-height);
+    inset-block-end: var(--nav-block-end-height);
+    max-height: var(--viewport-height);
+    overflow:scroll;
+
+    &:before {
+        content: '';
+        display:block;
+        width:100%; 
+        min-height:calc(100% - var(--nav-block-start-height))
+    }
+
+    .drawer {
+        width:100%;
+        min-height:200vh;
+        background:orange;
+
+    }
+}
