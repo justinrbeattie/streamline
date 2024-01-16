@@ -6,7 +6,7 @@
     --drawer-content-height: calc(var(--drawer-clip-height) - var(--drawer-offset));
     --drawer-header-height:clamp(2.5rem, 8vh, 4rem);
     --drawer-collapsed-height:clamp(2.5rem, 8vh, 4rem);
-    
+
     display: flex;
     justify-content: center;
     position: fixed;

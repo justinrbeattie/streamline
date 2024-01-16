@@ -1,4 +1,4 @@
-import { component$, Slot, useStyles$ } from "@builder.io/qwik";
+import { component$, Slot, useSignal, useStyles$ } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
@@ -29,15 +29,21 @@ export const useServerTimeLoader = routeLoader$(() => {
 
 export default component$(() => {
   useStyles$(styles);
+  const layoutRef = useSignal<Element>();
   return (
     <>
-      <AnnouncementBar />
-      <NavBlockStart />
-      <AsideInlineStart/>
-      <Slot />
-      <AsideInlineEnd/>
-      <NavBlockEnd/>
-      <Drawer></Drawer>
+      <div ref={layoutRef} class="layout">
+        <AnnouncementBar />
+        <NavBlockStart />
+        <AsideInlineStart />
+        <Slot />
+        <AsideInlineEnd />
+        <NavBlockEnd />
+      </div>
+
+      <Drawer layoutRef={layoutRef}></Drawer>
+
     </>
+
   );
 });
