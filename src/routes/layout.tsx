@@ -32,16 +32,18 @@ export default component$(() => {
   const layoutRef = useSignal<Element>();
   return (
     <>
-      <div ref={layoutRef} class="layout">
-        <AnnouncementBar />
-        <NavBlockStart />
-        <AsideInlineStart />
-        <Slot />
-        <AsideInlineEnd />
-        <NavBlockEnd />
+      <div class="layout-wrapper">
+        <div ref={layoutRef} class="layout">
+          <AnnouncementBar />
+          <NavBlockStart />
+          <AsideInlineStart />
+          <Slot />
+          <AsideInlineEnd />
+        </div>
       </div>
 
       <Drawer layoutRef={layoutRef}></Drawer>
+      <NavBlockEnd />
 
     </>
 

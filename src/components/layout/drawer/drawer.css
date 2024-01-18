@@ -1,53 +1,129 @@
-.drawer-wrapper {
 
+body {
+    &:has([open]:where([transitioning], [expanded])) {
+        overflow: hidden;
+
+        .layout {
+            transform: translateZ(-2rem);
+
+            .nav-block-start {
+                opacity:0;
+            }
+        }
+
+        .drawer-wrapper:after {
+            transform:scale(1);
+            opacity:1;
+        }
+
+    } 
+}
+
+.drawer-wrapper {
     --drawer-offset: 1rem;
     --drawer-clip-height: calc(100dvh - var(--nav-block-end-height) - var(--drawer-header-height));
     --drawer-scroll-height: calc(100% - var(--drawer-header-height));
     --drawer-content-height: calc(var(--drawer-clip-height) - var(--drawer-offset));
     --drawer-header-height:clamp(2.5rem, 8vh, 4rem);
     --drawer-collapsed-height:clamp(2.5rem, 8vh, 4rem);
-
+    
     display: flex;
     justify-content: center;
     position: fixed;
-    width: 100%;
+    width: var(--page-width);
     height: calc(100dvh - var(--nav-block-end-height));
+    background:rgba(0,0,0,0);
     inset-block-end: var(--nav-block-end-height);
     z-index: var(--layer-5);
     filter:drop-shadow( 0 -2px 10px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)));
     pointer-events: none;
+    transition: all .5s var(--ease-in-out-2);
+
+    &:after {
+        content:'';
+        width:calc(100% - 3.5rem);
+        height:calc(100% - 3.5rem);
+        position:absolute;
+        inset:1.75rem;
+        box-shadow: 0 0 0 8rem rgba(0,0,0,1);
+        border-radius:1rem;
+        pointer-events: none;
+        transform:scale(1.25);
+        opacity:0;
+        transition: all .5s var(--ease-in-out-2);
+    }
+
+
+    &[open]:where([transitioning], [expanded]) {
+        background:rgba(30,30,30,0.7);
+
+    }
+
+    &[closable] {
+        .drawer-container {
+            clip-path: inset(calc(100% + 6px) 0px 0px 0px);
+
+            &::before {
+                min-height: 100%;
+
+            }
+        }
+    }
+    
 
     >.drawer-container {
         display: flex;
         flex-direction: column;
         position: fixed;
-        width: 100%;
+        width: inherit;
         height: calc(100dvh - var(--nav-block-end-height));
         max-width: 80dvw;
         overflow: scroll;
-        clip-path: inset(var(--drawer-clip-height) 0px 0px 0px);
+        clip-path: inset(var(--drawer-scroll-height) 0px 0px 0px);
+        scroll-snap-type: y mandatory;
         animation: clip-effect linear both;
         animation-timeline: scroll(block self);
-        animation-range: 0dvh var(--drawer-clip-height);
+        animation-range: 0dvh var(--drawer-scroll-height);
         pointer-events: all;
+        z-index:var(--layer-3);
 
         &:before {
             content: '';
             display: block;
             width: 100%;
             min-height: var(--drawer-scroll-height);
+            scroll-snap-align: end;
         }
 
         >.drawer-header {
             width: 100%;
             min-height: var(--drawer-header-height);
-            background: mintcream;
+            background: var(--surface-0);
+            scroll-snap-align: end;
+            border-top-right-radius: var(--radius-4);
+            border-top-left-radius: var(--radius-4);
+            position: relative;
+            transition: all .25s var(--ease-in-out-2);
+
+            &:before {
+                content:"";
+                width:4rem;
+                height:4px;
+                position: absolute;
+                inset-block-start: 4px;
+                inset-inline-start: calc(50% - 2rem);
+                border-radius:4px;
+                background:var(--surface-2);
+            }
         }
 
         >.drawer-content {
             width: 100%;
             min-height: var(--drawer-content-height);
-            background: orange;
+            scroll-snap-align: start;
+            position:relative;
+            background: var(--surface-1);
+
 
         }
 
@@ -56,7 +132,7 @@
 
 @keyframes clip-effect {
     to {
-        clip-path: inset(0dvh 0px 0px 0px);
+        clip-path: inset(var(--drawer-offset) 0px 0px 0px);
     }
 }
 
