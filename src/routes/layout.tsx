@@ -1,4 +1,4 @@
-import { component$, Slot, useSignal, useStyles$ } from "@builder.io/qwik";
+import { component$, createContextId, Signal, Slot, useContextProvider, useSignal, useStore, useStyles$, } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
@@ -27,9 +27,57 @@ export const useServerTimeLoader = routeLoader$(() => {
   };
 });
 
+export type LayoutContext = {
+  theme:'light' | 'dark',
+  currentScreenWidth:number,
+  selectedBreakpoint: string,
+  asideInlineStartOpened: boolean,
+  asideInlineEndOpened: boolean,
+  drawerClosable: boolean,
+  drawerClosed: boolean,
+  drawerOpen: boolean,
+  drawerExpanded: boolean,
+  drawerCollapsed: boolean,
+  drawerTransitioning:boolean,
+  drawerHeaderIntersectionRatio: number,
+  drawerContentIntersectionRatio: number,
+  layoutRef: Signal<Element | undefined>,
+  headerRef: Signal<Element | undefined>,
+  mainRef: Signal<Element | undefined>,
+  footerRef: Signal<Element | undefined>
+}
+
+export const LayoutContext = createContextId<LayoutContext>(
+  'docs.layout-context'
+);
+
+
 export default component$(() => {
   useStyles$(styles);
   const layoutRef = useSignal<Element>();
+  // Add Store for layout and pass in context // can you update a context with a store value  
+  const layout = useStore<LayoutContext>(
+    {
+      theme:'light',
+      currentScreenWidth:0,
+      selectedBreakpoint: 'lg',
+      asideInlineStartOpened: false,
+      asideInlineEndOpened: false,
+      drawerClosable: false,
+      drawerClosed: false,
+      drawerOpen: false,
+      drawerExpanded: false,
+      drawerCollapsed: false,
+      drawerTransitioning:false,
+      drawerHeaderIntersectionRatio: 0,
+      drawerContentIntersectionRatio: 0,
+      layoutRef: layoutRef,
+      headerRef: useSignal(undefined),
+      mainRef: useSignal(undefined),
+      footerRef: useSignal(undefined),
+    }
+  );
+  useContextProvider(LayoutContext, layout);
   return (
     <>
       <div class="layout-wrapper">
