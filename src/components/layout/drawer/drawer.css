@@ -4,7 +4,7 @@ body {
         overflow: hidden;
 
         .layout {
-            transform: translateZ(-2rem);
+            transform: translateZ(-.5rem);
 
             .nav-block-start {
                 opacity:0;
@@ -20,7 +20,7 @@ body {
 }
 
 .drawer-wrapper {
-    --drawer-offset: 1rem;
+    --drawer-offset: 2rem;
     --drawer-clip-height: calc(100dvh - var(--nav-block-end-height) - var(--drawer-header-height));
     --drawer-scroll-height: calc(100% - var(--drawer-header-height));
     --drawer-content-height: calc(var(--drawer-clip-height) - var(--drawer-offset));
@@ -41,16 +41,18 @@ body {
 
     &:after {
         content:'';
-        width:calc(100% - 3.5rem);
-        height:calc(100% - 3.5rem);
+        width:calc(100% - 1rem);
+        height:calc(100% - 1rem);
         position:absolute;
-        inset:1.75rem;
+        inset-inline:0.5rem;
+        inset-block-start: 1rem;
         box-shadow: 0 0 0 8rem rgba(0,0,0,1);
-        border-radius:1rem;
+        border-top-left-radius:1rem;
+        border-top-right-radius: 1rem;
         pointer-events: none;
         transform:scale(1.25);
         opacity:0;
-        transition: all .5s var(--ease-in-out-2);
+        transition: all .25s var(--ease-in-out-2);
     }
 
 

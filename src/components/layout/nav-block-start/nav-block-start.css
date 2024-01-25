@@ -30,18 +30,6 @@
   button[aria-expanded="true"]  {
     color:var(--text-1);
    }
-
-   @media (max-width: 680px) {
-    #aside-inline-start-button[aria-expanded="true"] ~ #aside-inline-end-button,
-   #aside-inline-start-button:has(~ #aside-inline-end-button[aria-expanded="true"]) {
-    opacity:.5;
-    pointer-events: none;
-   }
-
-  }
-
-
-  
  
 
 }
