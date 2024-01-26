@@ -18,7 +18,7 @@ export type  ButtonProps = {
   ariaExpanded?: boolean,
   ariaPressed?: boolean,
   id?: string,
-  onClick: QRL<() => void>;
+  onClick?: QRL<() => void>;
 
 }
 export const ButtonComponent = component$<ButtonProps>((

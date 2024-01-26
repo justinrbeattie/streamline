@@ -25,8 +25,10 @@ export const Button: Story = {
     ariaRoledescription: "aria role description",
     ariaHaspopup: false,
     ariaControls: "aside",
+    ariaExpanded: false,
+    ariaPressed: false,
     id:"aside-button",
-    onClick$: $(() => { console.log("clicked") }),
+    onClick: $(() => { console.log("clicked") }),
   },
   argTypes: {
     size: {
