@@ -1,0 +1,31 @@
+.content {
+  background: red;
+}
+
+@media only screen and (max-width: 640px) {
+  .content {
+    grid-column: var(--mobile-cols);
+    grid-row: var(--mobile-rows);
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 991px) {
+  .content {
+    grid-column: var(--tablet-cols);
+    grid-row: var(--tablet-rows);
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .content {
+    grid-column: var(--desktop-cols);
+    grid-row: var(--desktop-rows);
+  }
+}
+
+
+
+/* copy section for content */
+/* add decorative prop */
+/* add object for each breackpoiunt */
+/* colum start and end + row dsicrete   possible drop down */
