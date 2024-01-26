@@ -10,8 +10,8 @@
   min-height: var(--carousel-item-min-height, 50dvh);
   transition: all 0.25s ease-in-out;
   &::after {
-    --shadow-inline-start-opacity:.25;
-    --shadow-inline-end-opacity:.25;
+    --shadow-inline-start-opacity:.125;
+    --shadow-inline-end-opacity:.125;
     content:'';
     position:absolute;
     width:100%;
