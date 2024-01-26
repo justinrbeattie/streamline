@@ -1,10 +1,15 @@
 .nav-block-start {
   z-index: var(--layer-4);
+  position: sticky;
+  inset-block-start: 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: var(--surface-0);
   opacity:1;
+  width: 100%;
+  height: var(--nav-block-start-height);
+  margin-bottom:calc(var(--nav-block-start-height) * -1);
   transition: all .125s var(--ease-in-out-2);
 
 
@@ -13,7 +18,7 @@
     color: inherit;
   }
 
-  &:after {
+  .placeholder {
     content: '';
     position: absolute;
     inset: 0px;
@@ -30,20 +35,18 @@
   button[aria-expanded="true"]  {
     color:var(--text-1);
    }
- 
-
 }
 
 
 @keyframes navBlockStartScrollAnimation {
-  to {
+  20%,100% {
     color: var(--text-0);
     transform: translateY(0%)
   }
 }
 
 .nav-block-start,
-.nav-block-start:after {
+.placeholder  {
   animation: navBlockStartScrollAnimation linear both;
   animation-timeline: scroll(block root);
   animation-range: 80vh calc(80vh + var(--nav-block-start-height));

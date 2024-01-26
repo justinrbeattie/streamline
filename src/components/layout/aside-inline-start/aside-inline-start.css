@@ -5,7 +5,7 @@
     max-width: 0px;
     width: 20dvw;
     transform: translateX(-100vw);
-    transition: transform .125s var(--ease-in-out-2);
+    transition: all .5s var(--ease-in-out-2);
     height: calc(var(--announcement-bar-height) + var(--nav-block-start-height) + var(--viewport-height));
     box-shadow: var(--shadow-3);
 }

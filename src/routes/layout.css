@@ -13,9 +13,8 @@ body {
         display: grid;
         width: var(--page-width);
         grid-template-columns: auto 1fr auto;
-        grid-template-rows: var(--announcement-bar-height) var(--nav-block-start-height) auto var(--nav-block-end-height);
+        grid-template-rows: var(--nav-block-start-height) auto var(--nav-block-end-height);
         grid-template-areas:
-            "announcement-bar announcement-bar announcement-bar"
             "nav-block-start nav-block-start nav-block-start"
             "aside-start content aside-end"
             "nav-block-end nav-block-end nav-block-end";
@@ -26,17 +25,6 @@ body {
         transform: translateZ(0px);
         transition: all .5s ease-in-out;
 
-
-        >.announcement-bar {
-            grid-area: announcement-bar;
-        }
-
-        >.nav-block-start {
-            grid-area: nav-block-start;
-            position: sticky;
-            inset-block-start: 0px;
-            inset-inline-start: 0px;
-        }
 
         >.aside-inline-start {
             grid-area: aside-start;

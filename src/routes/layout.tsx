@@ -1,4 +1,5 @@
-import { component$, createContextId, Signal, Slot, useContextProvider, useSignal, useStore, useStyles$, } from "@builder.io/qwik";
+import type { Signal} from "@builder.io/qwik";
+import { component$, createContextId, Slot, useContextProvider, useOnWindow, useSignal, useStore, useStyles$, $} from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
@@ -27,26 +28,6 @@ export const useServerTimeLoader = routeLoader$(() => {
   };
 });
 
-export type LayoutContext = {
-  theme:'light' | 'dark',
-  currentScreenWidth:number,
-  selectedBreakpoint: string,
-  asideInlineStartOpened: boolean,
-  asideInlineEndOpened: boolean,
-  drawerClosable: boolean,
-  drawerClosed: boolean,
-  drawerOpen: boolean,
-  drawerExpanded: boolean,
-  drawerCollapsed: boolean,
-  drawerTransitioning:boolean,
-  drawerHeaderIntersectionRatio: number,
-  drawerContentIntersectionRatio: number,
-  layoutRef: Signal<Element | undefined>,
-  headerRef: Signal<Element | undefined>,
-  mainRef: Signal<Element | undefined>,
-  footerRef: Signal<Element | undefined>
-}
-
 export const LayoutContext = createContextId<LayoutContext>(
   'docs.layout-context'
 );
@@ -55,11 +36,11 @@ export const LayoutContext = createContextId<LayoutContext>(
 export default component$(() => {
   useStyles$(styles);
   const layoutRef = useSignal<Element>();
-  // Add Store for layout and pass in context // can you update a context with a store value  
   const layout = useStore<LayoutContext>(
     {
       theme:'light',
-      currentScreenWidth:0,
+      windowWidth:0,
+      windowHeight:0,
       selectedBreakpoint: 'lg',
       asideInlineStartOpened: false,
       asideInlineEndOpened: false,
@@ -78,14 +59,21 @@ export default component$(() => {
     }
   );
   useContextProvider(LayoutContext, layout);
+  useOnWindow(
+    'resize',
+    $(() => {
+      layout.windowWidth = window.innerWidth;
+      layout.windowHeight = window.innerHeight;
+    })
+  );
   return (
     <>
+              <AnnouncementBar />
+              <NavBlockStart />
       <div class="layout-wrapper">
         <div ref={layoutRef} class="layout">
-          <AnnouncementBar />
-          <NavBlockStart />
           <AsideInlineStart />
-          <Slot />
+          <Slot /> 
           <AsideInlineEnd />
         </div>
       </div>
@@ -97,3 +85,26 @@ export default component$(() => {
 
   );
 });
+
+
+
+export type LayoutContext = {
+  theme:'light' | 'dark',
+  windowWidth:number,
+  windowHeight:number,
+  selectedBreakpoint: string,
+  asideInlineStartOpened: boolean,
+  asideInlineEndOpened: boolean,
+  drawerClosable: boolean,
+  drawerClosed: boolean,
+  drawerOpen: boolean,
+  drawerExpanded: boolean,
+  drawerCollapsed: boolean,
+  drawerTransitioning:boolean,
+  drawerHeaderIntersectionRatio: number,
+  drawerContentIntersectionRatio: number,
+  layoutRef: Signal<Element | undefined>,
+  headerRef: Signal<Element | undefined>,
+  mainRef: Signal<Element | undefined>,
+  footerRef: Signal<Element | undefined>
+}

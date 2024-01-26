@@ -3,12 +3,12 @@ body {
     &:has([open]:where([transitioning], [expanded])) {
         overflow: hidden;
 
+        .nav-block-start {
+            opacity:0;
+        }
+
         .layout {
             transform: translateZ(-.5rem);
-
-            .nav-block-start {
-                opacity:0;
-            }
         }
 
         .drawer-wrapper:after {

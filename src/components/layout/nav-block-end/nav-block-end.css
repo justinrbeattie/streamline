@@ -3,7 +3,7 @@
   width: 100%;
   height: var(--nav-block-end-height);
   position: fixed;
-  bottom: 0;
+  inset-block-end: 0;
   z-index: var(--layer-5);
   display: flex;
   justify-content: space-between;

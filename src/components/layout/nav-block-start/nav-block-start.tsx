@@ -9,27 +9,28 @@ export const NavBlockStart = component$(() => {
   const layoutContext = useContext(LayoutContext);
 
   const asideInlineStartButtonToggle = $(() => {
-    const { asideInlineStartOpened, currentScreenWidth } = layoutContext;
+    const { asideInlineStartOpened, windowWidth } = layoutContext;
 
     layoutContext.asideInlineStartOpened = !asideInlineStartOpened;
 
-    if (asideInlineStartOpened && currentScreenWidth < 0) {
+    if (asideInlineStartOpened && windowWidth < 0) {
       layoutContext.asideInlineEndOpened = false;
     }
   });
 
   const asideInlineEndButtonToggle = $(() => {
-    const { asideInlineEndOpened, currentScreenWidth } = layoutContext;
+    const { asideInlineEndOpened, windowWidth } = layoutContext;
 
     layoutContext.asideInlineEndOpened = !asideInlineEndOpened;
 
-    if (asideInlineEndOpened && currentScreenWidth < 0) {
+    if (asideInlineEndOpened && windowWidth < 0) {
       layoutContext.asideInlineStartOpened = false;
     }
   });
 
   return (
     <div class="nav-block-start">
+        <div class="placeholder"></div>
       <ButtonComponent
         onClick={asideInlineStartButtonToggle}
         id="aside-inline-start-button"
