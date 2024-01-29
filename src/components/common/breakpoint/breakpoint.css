@@ -1,0 +1,25 @@
+#width {
+    width:100%;
+    height:20px;
+    &::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 1rem;
+      }
+}
+
+.breakpoint:before {
+    display: block;
+    position:absolute;
+    width:120px;
+    height:.8rem;
+    font-size:.8rem;
+    line-height: .8rem;
+    text-align: center;
+    top:.5rem;
+    left:calc(50%  - 60px);
+    content:  attr(data-current-breakpoint) attr(data-screen-width);
+    font-weight: bold;
+    z-index:1;
+    pointer-events: none;
+
+  }

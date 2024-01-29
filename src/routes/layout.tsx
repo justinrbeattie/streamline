@@ -1,5 +1,5 @@
 import type { Signal} from "@builder.io/qwik";
-import { component$, createContextId, Slot, useContextProvider, useOnWindow, useSignal, useStore, useStyles$, $} from "@builder.io/qwik";
+import { component$, createContextId, Slot, useContext, useContextProvider, useSignal, useStore, useStyles$} from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
@@ -10,6 +10,7 @@ import { AsideInlineStart } from "~/components/layout/aside-inline-start/aside-i
 import { NavBlockEnd } from "~/components/layout/nav-block-end/nav-block-end";
 import { NavBlockStart } from "~/components/layout/nav-block-start/nav-block-start";
 import { Drawer } from "~/components/layout/drawer/drawer";
+import { ScreenContext } from "~/root";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -29,19 +30,18 @@ export const useServerTimeLoader = routeLoader$(() => {
 });
 
 export const LayoutContext = createContextId<LayoutContext>(
-  'docs.layout-context'
+  "app.layout-context"
 );
 
 
 export default component$(() => {
   useStyles$(styles);
+  const screenContext = useContext(ScreenContext);
   const layoutRef = useSignal<Element>();
   const layout = useStore<LayoutContext>(
     {
       theme:'light',
-      windowWidth:0,
-      windowHeight:0,
-      selectedBreakpoint: 'lg',
+      currentBreakpoint: screenContext.currentBreakpoint,
       asideInlineStartOpened: false,
       asideInlineEndOpened: false,
       drawerClosable: false,
@@ -59,13 +59,6 @@ export default component$(() => {
     }
   );
   useContextProvider(LayoutContext, layout);
-  useOnWindow(
-    'resize',
-    $(() => {
-      layout.windowWidth = window.innerWidth;
-      layout.windowHeight = window.innerHeight;
-    })
-  );
   return (
     <>
               <AnnouncementBar />
@@ -90,9 +83,7 @@ export default component$(() => {
 
 export type LayoutContext = {
   theme:'light' | 'dark',
-  windowWidth:number,
-  windowHeight:number,
-  selectedBreakpoint: string,
+  currentBreakpoint: string,
   asideInlineStartOpened: boolean,
   asideInlineEndOpened: boolean,
   drawerClosable: boolean,

@@ -1,31 +1,93 @@
-.content {
-  background: red;
-}
+.section-content {
+  display:var(--xs-hidden);
+  grid-column: var(--xs-cols);
+  grid-row: var(--xs-rows);
 
-@media only screen and (max-width: 640px) {
-  .content {
-    grid-column: var(--mobile-cols);
-    grid-row: var(--mobile-rows);
+
+  .section-content-inner{
+    position:relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width:100%;
+    min-height:100%;
+    height: fit-content;
+    &:empty  {
+      background: rgba(255,0,0,.25);
+    }
+
+  }
+
+  &.is-editing   .section-content-inner 
+  {
+    background: rgba(255,0,0,.25);
+    &:hover:before {
+      display: block;
+      position:absolute;
+      width:120px;
+      height:.8rem;
+      font-size:.6rem;
+      line-height: .8rem;
+      text-align: center;
+      top: -1rem;
+      left:calc(50%  - 60px);
+      content: 'Recommended Rows:' attr(data-rows);
+      background: black;
+      color:white;
+      font-weight: bold;
+      z-index:1;
+      border-radius: .8rem;
+    }
+
+
+  }
+  
+
+  &.section-content-type-text {
+    z-index: var(--layer-2);
+  }
+
+  &.section-content-type-image {
+    z-index: var(--layer-1);
   }
 }
 
-@media only screen and (min-width: 641px) and (max-width: 991px) {
-  .content {
-    grid-column: var(--tablet-cols);
-    grid-row: var(--tablet-rows);
+
+
+.screen-sm  .section-content {
+    grid-column: var(--sm-cols);
+    grid-row: var(--sm-rows);
+    display:var(--sm-hidden);
   }
-}
 
-@media only screen and (min-width: 992px) {
-  .content {
-    grid-column: var(--desktop-cols);
-    grid-row: var(--desktop-rows);
+
+
+
+  .screen-md .section-content {
+    grid-column: var(--md-cols);
+    grid-row: var(--md-rows);
+    display:var(--md-hidden);
   }
-}
 
 
 
-/* copy section for content */
-/* add decorative prop */
-/* add object for each breackpoiunt */
-/* colum start and end + row dsicrete   possible drop down */
+
+  .screen-lg  .section-content {
+    grid-column: var(--lg-cols);
+    grid-row: var(--lg-rows);
+    display:var(--lg-hidden);
+  }
+
+
+
+  .screen-xl .section-content {
+    grid-column: var(--xl-cols);
+    grid-row: var(--xl-rows);
+    display:var(--xl-hidden);
+  }
+
+
+/* auto adjust colums > */
+/* add guidelines for section */
+/* edit mode sections grey out rest of screen  */
+/* work out overflow */

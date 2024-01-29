@@ -14,10 +14,6 @@ export const Section: Story = {
 
       tag: "section",
       id: "section-101",
-      mobileRows: 20,
-      tabletRows: 15,
-      desktopRows: 10,
-
   },
   argTypes: {},
   render: (props) => <SectionComponent {...props}></SectionComponent>,

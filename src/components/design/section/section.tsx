@@ -1,23 +1,30 @@
-import { component$, Slot, useStylesScoped$ } from "@builder.io/qwik";
-import styles from './section.css?inline';
+import {
+  component$,
+  Slot,
+  useStyles$,
+} from "@builder.io/qwik";
+import styles from "./section.css?inline";
 export interface SectionProps {
   tag: "header" | "section";
   id: string;
-  mobileRows: number;
-  tabletRows: number;
-  desktopRows: number;
 }
 
+
 export const SectionComponent = component$<SectionProps>((props) => {
-    useStylesScoped$(styles)
+  useStyles$(styles);
+
   return (
     <>
       {props.tag === "header" ? (
-        <header class="page-section" style={`--mobile-rows:${props.mobileRows}; --tablet-rows:${props.tabletRows}; --desktop-rows:${props.desktopRows};`}>
+        <header
+          class="page-section"
+        >
           <Slot></Slot>
         </header>
       ) : (
-        <section class="page-section" style={`--mobile-rows:${props.mobileRows}; --tablet-rows:${props.tabletRows}; --desktop-rows:${props.desktopRows};`}>
+        <section
+          class="page-section"
+        >
           <Slot></Slot>
         </section>
       )}

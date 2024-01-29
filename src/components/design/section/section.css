@@ -1,12 +1,22 @@
 .page-section {
   --page-grid-gap: var(--size-fluid-1);
-  --page-grid-rows: 10;
-  --page-grid-row-gutter-height: calc(var(--page-grid-gap) * (var(--page-grid-rows) + 3));
-  --page-grid-row-height: max(4rem,calc((var(--viewport-height) - var(--page-grid-row-gutter-height)) / 10));
+  --page-grid-rows: 4;
+  --page-grid-row-gutter-height: calc(
+    var(--page-grid-gap) * (var(--page-grid-rows) + 3)
+  );
+  --page-grid-row-height: max(
+    4rem,
+    calc((var(--viewport-height) - var(--page-grid-row-gutter-height)) / 10)
+  );
   --page-grid-gutter-x: clamp(1rem, 5vw, 10rem);
   --page-grid-gutter-y: var(--page-grid-gap);
-  --page-grid-template-columns: [left-gutter] var(--page-grid-gutter-x) [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col right-gutter] var(--page-grid-gutter-x);
-  --page-grid--template-rows: [top-gutter] var(--page-grid-gutter-y) repeat(var(--page-grid-rows), [row] var(--page-grid-row-height)) [bottom-gutter] var(--page-grid-gutter-y);
+  --page-grid-template-columns: [left-gutter] var(--page-grid-gutter-x) [col]
+    1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr
+    [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] var(--page-grid-gutter-x)
+    [right-gutter];
+  --page-grid--template-rows: [top-gutter] var(--page-grid-gutter-y)
+    repeat(var(--page-grid-rows), [row] var(--page-grid-row-height))
+    [bottom-gutter] var(--page-grid-gutter-y);
   display: grid;
   position: relative;
   width: var(--page-width);
@@ -14,18 +24,9 @@
   grid-template-rows: var(--page-grid--template-rows);
   grid-auto-rows: var(--page-grid-row-height);
   gap: var(--page-grid-gap);
-  background:white;
+  background: white;
 }
 
-@media only screen and (max-width: 640px) {
-  .page-section {  --page-grid-rows: var(--mobile-rows);};
+.breakpoint .page-section {
+  width: 100%;
 }
-
-@media only screen and (min-width: 641px) and (max-width: 991px) {
-  .page-section {  --page-grid-rows:var(--tablet-rows);};
-}
-
-@media only screen and (min-width: 992px) {
-  .page-section {  --page-grid-rows:var(--desktop-rows);};
-}
-
