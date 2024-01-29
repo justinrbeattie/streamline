@@ -9,21 +9,21 @@ export const NavBlockStart = component$(() => {
   const layoutContext = useContext(LayoutContext);
 
   const asideInlineStartButtonToggle = $(() => {
-    const { asideInlineStartOpened, windowWidth } = layoutContext;
+    const { asideInlineStartOpened, currentBreakpoint } = layoutContext;
 
     layoutContext.asideInlineStartOpened = !asideInlineStartOpened;
 
-    if (asideInlineStartOpened && windowWidth < 0) {
+    if (asideInlineStartOpened && (currentBreakpoint === 'xs' || currentBreakpoint === "sm")) {
       layoutContext.asideInlineEndOpened = false;
     }
   });
 
   const asideInlineEndButtonToggle = $(() => {
-    const { asideInlineEndOpened, windowWidth } = layoutContext;
+    const { asideInlineEndOpened, currentBreakpoint } = layoutContext;
 
     layoutContext.asideInlineEndOpened = !asideInlineEndOpened;
 
-    if (asideInlineEndOpened && windowWidth < 0) {
+    if (asideInlineEndOpened && (currentBreakpoint === 'xs' || currentBreakpoint === "sm")) {
       layoutContext.asideInlineStartOpened = false;
     }
   });

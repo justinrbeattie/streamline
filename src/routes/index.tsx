@@ -1,26 +1,53 @@
 import { component$, useContext } from "@builder.io/qwik";
 import { type DocumentHead } from "@builder.io/qwik-city";
-import { ButtonComponent } from "~/components/design/button/button";
 import { LayoutContext } from "./layout";
+import { routeLoader$ } from "@builder.io/qwik-city";
+import {
+  getContent,
+  RenderContent,
+  getBuilderSearchParams,
+} from "@builder.io/sdk-qwik";
+import { CUSTOM_COMPONENTS } from "~/components/builder-registry";
 
+export const BUILDER_MODEL = "page";
+
+// Use Qwik City's `useBuilderContent` to get your content from Builder.
+// `routeLoader$()` takes an async function to fetch content
+// from Builder with `getContent()`.
+export const useBuilderContent = routeLoader$(async ({ url, error }) => {
+  const isPreviewing = url.searchParams.has("builder.preview");
+
+  const builderContent = await getContent({
+    model: BUILDER_MODEL,
+    apiKey: import.meta.env.PUBLIC_BUILDER_API_KEY,
+    options: getBuilderSearchParams(url.searchParams),
+    userAttributes: {
+      urlPath: url.pathname,
+    },
+  });
+
+  // If there's no content, throw a 404.
+  // You can use your own 404 component here
+  if (!builderContent && !isPreviewing) {
+    throw error(404, "Page not found");
+  }
+  // return content fetched from Builder, which is JSON
+  return builderContent;
+});
 
 export default component$(() => {
+  const content = useBuilderContent();
   const layoutContext = useContext(LayoutContext);
   return (
     <div class="content">
-      <header ref={layoutContext.headerRef} style=" display:flex; background-attachment:fixed; place-content:center; height:80vh; margin-top:calc(var(--nav-block-start-height) * -1);">   
-        
-        <img style="width:100%; height:100%" src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
-            
-            </header>
-      <main ref={layoutContext.mainRef} >
-        <section >
-          <h6>Section</h6>
-        </section>
-
-        <section style="display:grid; place-content:center;">
-        <ButtonComponent href="ddd" variant={"primary"} > Learn More </ButtonComponent>
-        </section>
+      <header ref={layoutContext.headerRef}></header>
+      <main ref={layoutContext.mainRef}>
+        <RenderContent
+          model={BUILDER_MODEL}
+          content={content.value}
+          apiKey={import.meta.env.PUBLIC_BUILDER_API_KEY}
+          customComponents={CUSTOM_COMPONENTS}
+        />
       </main>
 
       <footer ref={layoutContext.footerRef}>
