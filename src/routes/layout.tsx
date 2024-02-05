@@ -1,5 +1,14 @@
-import type { Signal} from "@builder.io/qwik";
-import { component$, createContextId, Slot, useContext, useContextProvider, useSignal, useStore, useStyles$} from "@builder.io/qwik";
+import type { Signal } from "@builder.io/qwik";
+import {
+  component$,
+  createContextId,
+  Slot,
+  useContext,
+  useContextProvider,
+  useSignal,
+  useStore,
+  useStyles$,
+} from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
@@ -29,73 +38,65 @@ export const useServerTimeLoader = routeLoader$(() => {
   };
 });
 
-export const LayoutContext = createContextId<LayoutContext>(
-  "app.layout-context"
-);
-
+export const LayoutContext =
+  createContextId<LayoutContext>("app.layout-context");
 
 export default component$(() => {
   useStyles$(styles);
   const screenContext = useContext(ScreenContext);
   const layoutRef = useSignal<Element>();
-  const layout = useStore<LayoutContext>(
-    {
-      theme:'light',
-      currentBreakpoint: screenContext.currentBreakpoint,
-      asideInlineStartOpened: false,
-      asideInlineEndOpened: false,
-      drawerClosable: false,
-      drawerClosed: false,
-      drawerOpen: false,
-      drawerExpanded: false,
-      drawerCollapsed: false,
-      drawerTransitioning:false,
-      drawerHeaderIntersectionRatio: 0,
-      drawerContentIntersectionRatio: 0,
-      layoutRef: layoutRef,
-      headerRef: useSignal(undefined),
-      mainRef: useSignal(undefined),
-      footerRef: useSignal(undefined),
-    }
-  );
+  const layout = useStore<LayoutContext>({
+    theme: "light",
+    currentBreakpoint: screenContext.currentBreakpoint,
+    asideInlineStartOpened: false,
+    asideInlineEndOpened: false,
+    drawerClosable: false,
+    drawerClosed: false,
+    drawerOpen: false,
+    drawerExpanded: false,
+    drawerCollapsed: false,
+    drawerTransitioning: false,
+    drawerHeaderIntersectionRatio: 0,
+    drawerContentIntersectionRatio: 0,
+    layoutRef: layoutRef,
+    headerRef: useSignal(undefined),
+    mainRef: useSignal(undefined),
+    footerRef: useSignal(undefined),
+  });
   useContextProvider(LayoutContext, layout);
   return (
     <>
-              <AnnouncementBar />
-              <NavBlockStart />
+      <AnnouncementBar />
+      <NavBlockStart />
       <div class="layout-wrapper">
         <div ref={layoutRef} class="layout">
           <AsideInlineStart />
-          <Slot /> 
+          <Slot />
           <AsideInlineEnd />
         </div>
       </div>
 
-      <Drawer layoutRef={layoutRef}></Drawer>
+      <Drawer></Drawer>
       <NavBlockEnd />
-
     </>
-
   );
 });
 
-
-
 export type LayoutContext = {
-  theme:'light' | 'dark',
-  currentBreakpoint: string,
-  asideInlineStartOpened: boolean,
-  asideInlineEndOpened: boolean,
-  drawerClosable: boolean,
-  drawerClosed: boolean,
-  drawerOpen: boolean,
-  drawerExpanded: boolean,
-  drawerCollapsed: boolean,
-  drawerTransitioning:boolean,
-  drawerHeaderIntersectionRatio: number,
-  drawerContentIntersectionRatio: number,
-  layoutRef: Signal<Element | undefined>,
-  headerRef: Signal<Element | undefined>,
-  mainRef: Signal<Element | undefined>,
-  footerRef: Signal<Element | undefined>
-}
+  theme: "light" | "dark";
+  currentBreakpoint: string;
+  asideInlineStartOpened: boolean;
+  asideInlineEndOpened: boolean;
+  drawerClosable: boolean;
+  drawerClosed: boolean;
+  drawerOpen: boolean;
+  drawerExpanded: boolean;
+  drawerCollapsed: boolean;
+  drawerTransitioning: boolean;
+  drawerHeaderIntersectionRatio: number;
+  drawerContentIntersectionRatio: number;
+  layoutRef: Signal<Element | undefined>;
+  headerRef: Signal<Element | undefined>;
+  mainRef: Signal<Element | undefined>;
+  footerRef: Signal<Element | undefined>;
+};

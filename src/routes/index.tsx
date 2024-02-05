@@ -39,7 +39,7 @@ export default component$(() => {
   const content = useBuilderContent();
   const layoutContext = useContext(LayoutContext);
   return (
-    <div class="content">
+    <div class="layout-inner">
       <header ref={layoutContext.headerRef}></header>
       <main ref={layoutContext.mainRef}>
         <RenderContent

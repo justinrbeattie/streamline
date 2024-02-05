@@ -34,7 +34,9 @@ export default component$(() => {
     width: 0,
     height: 0,
     currentBreakpoint: "xs",
+    classes: "",
   });
+
   useContextProvider(ScreenContext, screen);
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
@@ -57,6 +59,17 @@ export default component$(() => {
           } else if (screen.width > 1440) {
             screen.currentBreakpoint = "xl";
           }
+
+          screen.classes = [
+            screen.width > 0 && "screen-xs",
+            screen.width > 480 && "screen-sm",
+            screen.width > 768 && "screen-md",
+            screen.width > 1024 && "screen-lg",
+            screen.width > 1440 && "screen-xl",
+            "current-screen-" + screen.currentBreakpoint,
+          ]
+            .filter(Boolean)
+            .join(" ");
         });
       });
       observer.observe(bodyRef.value);
@@ -74,27 +87,22 @@ export default component$(() => {
         <RouterHead />
         <ServiceWorkerRegister />
       </head>
-      <body
-        lang="en"
-        ref={bodyRef}
-        class={`
-      ${screen.width > 0 ? "screen-xs " : ''} 
-      ${screen.width > 480 ? "screen-sm " : ''}
-      ${screen.width > 768 ? "screen-md " : ''}
-      ${screen.width > 1024 ? "screen-lg " : ''}
-      ${screen.width > 1440 ? "screen-xl " : ''}
-      ${"current-screen-" + screen.currentBreakpoint}
-      `}
-      >
+      <body lang="en" ref={bodyRef}>
+
+        <div  class={screen.classes}>
         <RouterOutlet />
+        </div>
+  
+
         <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
       </body>
     </QwikCityProvider>
   );
 });
 
- type ScreenContext = {
+type ScreenContext = {
   width: number;
   height: number;
   currentBreakpoint: string;
+  classes: string;
 };

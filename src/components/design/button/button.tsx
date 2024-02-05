@@ -1,5 +1,5 @@
 import type { QRL} from "@builder.io/qwik";
-import { component$, useStylesScoped$, Slot, $} from "@builder.io/qwik";
+import { component$, useStyles$, Slot, $} from "@builder.io/qwik";
 import styles from "./button.css?inline";
 import { Link } from "@builder.io/qwik-city";
 export type  ButtonProps = {
@@ -18,7 +18,8 @@ export type  ButtonProps = {
   ariaExpanded?: boolean,
   ariaPressed?: boolean,
   id?: string,
-  onClick?: QRL<() => void>;
+  onClick?: QRL<() => void>,
+  attributes?:any
 
 }
 export const ButtonComponent = component$<ButtonProps>((
@@ -38,20 +39,22 @@ export const ButtonComponent = component$<ButtonProps>((
     ariaPressed = undefined,
     id = "",
     onClick = $(() => console.log('Button clicked!')),
+    attributes = undefined
   }
 ) => {
 
   const Tag = getHTMLTag(href !== "", cms, Link);
 
-  useStylesScoped$(styles);
+  useStyles$(styles);
   return (
     //@ts-ignore
     <Tag
+    {...attributes} 
       href={href}
       disabled={disabled}
       aria-disabled={disabled}
       target={newWindow ? "_blank" : undefined}
-      class={`btn size-${size} variant-${variant} style-${style} shape-${shape}`}
+      class={`btn size-${size} variant-${variant} style-${style} shape-${shape} ${attributes?.className || ''}`}
       // eslint-disable-next-line qwik/valid-lexical-scope
       onClick$={onClick}
       aria-label={ariaLabel ? ariaLabel : null}

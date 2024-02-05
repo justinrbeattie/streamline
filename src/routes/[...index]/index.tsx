@@ -40,7 +40,7 @@ export default component$(() => {
   // render the content of the given model, here a page,
   // of your space (specified by the API Key)
   return (
-    <RenderContent
+       <RenderContent
       model={BUILDER_MODEL}
       content={content.value}
       apiKey={import.meta.env.PUBLIC_BUILDER_API_KEY}
