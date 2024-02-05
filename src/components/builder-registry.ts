@@ -1,3 +1,4 @@
+import type { BuilderElement } from "@builder.io/sdk-qwik/types/types/element";
 import type { RegisteredComponent } from "@builder.io/sdk-qwik";
 import { ButtonComponent } from "./design/button/button";
 import {
@@ -5,7 +6,9 @@ import {
   CarouselItemComponent,
 } from "./design/carousel/carousel";
 import Counter from "./starters/builder-starter/counter/counter";
-import type { BuilderElement } from "@builder.io/sdk-qwik/types/types/element";
+import { MainComponent } from "./design/main/main";
+import { SectionComponent } from "./design/section/section";
+
 /**
  * This array is used to integrate custom components within Builder.
  * https://www.builder.io/c/docs/custom-components-intro
@@ -16,31 +19,30 @@ import type { BuilderElement } from "@builder.io/sdk-qwik/types/types/element";
  * editing to only these components.
  * https://www.builder.io/c/docs/guides/components-only-mode
  */
-
 const carouselChildConfig: BuilderElement[] = [
-    {
-      "@type": "@builder.io/sdk:Element",
-      component: {
-        name: "Box",
-        options: {},
-      },
-      children: [
-        {
-          "@type": "@builder.io/sdk:Element",
-          component: {
-            name: "Text",
-            options: { text: "Insert Text Here" },
-          },
-        },
-      ],
+  {
+    "@type": "@builder.io/sdk:Element",
+    component: {
+      name: "Box",
+      options: {},
     },
-  ];
+    children: [
+      {
+        "@type": "@builder.io/sdk:Element",
+        component: {
+          name: "Text",
+          options: { text: "Insert Text Here" },
+        },
+      },
+    ],
+  },
+];
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
     component: ButtonComponent,
     name: "Button",
-    image:'https://img.icons8.com/ios/50/button2.png',
+    image: "https://img.icons8.com/ios/50/button2.png",
     noWrap: true,
     inputs: [
       {
@@ -129,7 +131,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
     component: CarouselComponent,
     name: "Carousel",
-    image: 'https://img.icons8.com/ios/50/view-carousel.png',
+    image: "https://img.icons8.com/ios/50/view-carousel.png",
     noWrap: true,
     canHaveChildren: true,
     childRequirements: {
@@ -194,7 +196,6 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         },
         children: [...carouselChildConfig],
       },
-
       {
         "@type": "@builder.io/sdk:Element",
         component: {
@@ -208,7 +209,6 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         },
         children: [...carouselChildConfig],
       },
-
       {
         "@type": "@builder.io/sdk:Element",
         component: {
@@ -220,7 +220,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             },
           },
         },
-        children:[...carouselChildConfig],
+        children: [...carouselChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -277,7 +277,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             ],
           },
         },
-        children:[...carouselChildConfig],
+        children: [...carouselChildConfig],
       },
     ],
     defaultStyles: {
@@ -289,7 +289,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     component: CarouselItemComponent,
     name: "CarouselItemComponent",
     noWrap: true,
-    hideFromInsertMenu:true,
+    hideFromInsertMenu: true,
     canHaveChildren: true,
     defaultChildren: [
       {
@@ -323,10 +323,81 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
       },
     ],
   },
-  
-
   {
     component: Counter,
     name: "Counter",
   },
+  {
+    component: MainComponent,
+    name: "MainComponent",
+    image: "https://img.icons8.com/ios/50/single-page-mode.png",
+    noWrap: true,
+    canHaveChildren: true,
+  },
+  {
+    component: SectionComponent,
+    name: "Header",
+    image: "https://img.icons8.com/ios/50/document-header.png",
+    noWrap: true,
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "id",
+        type: "string",
+        required: true,
+        defaultValue: "Header-1",
+      },
+      {
+        name: "tag",
+        type: "string",
+        hideFromUI: true,
+        defaultValue: "header",
+      },
+    ],
+  },
+  {
+    component: SectionComponent,
+    name: "Section",
+    image: "https://img.icons8.com/ios/50/width.png",
+    noWrap: true,
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "id",
+        type: "string",
+        required: true,
+        defaultValue: "Section-1",
+      },
+      {
+        name: "tag",
+        type: "string",
+        hideFromUI: true,
+        defaultValue: "section",
+      },
+    ],
+  },
+  {
+    component: SectionComponent,
+    name: "Footer",
+    image: "https://img.icons8.com/ios/50/document-footer.png",
+    noWrap: true,
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "id",
+        type: "string",
+        required: true,
+        defaultValue: "Section-1",
+      },
+      {
+        name: "tag",
+        type: "string",
+        hideFromUI: true,
+        defaultValue: "footer",
+      },
+    ],
+  },
+
+
+ 
 ];

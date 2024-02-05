@@ -1,6 +1,5 @@
-import { component$, useContext } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import { type DocumentHead } from "@builder.io/qwik-city";
-import { LayoutContext } from "./layout";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import {
   getContent,
@@ -37,22 +36,15 @@ export const useBuilderContent = routeLoader$(async ({ url, error }) => {
 
 export default component$(() => {
   const content = useBuilderContent();
-  const layoutContext = useContext(LayoutContext);
+
   return (
     <div class="layout-inner">
-      <header ref={layoutContext.headerRef}></header>
-      <main ref={layoutContext.mainRef}>
-        <RenderContent
-          model={BUILDER_MODEL}
-          content={content.value}
-          apiKey={import.meta.env.PUBLIC_BUILDER_API_KEY}
-          customComponents={CUSTOM_COMPONENTS}
-        />
-      </main>
-
-      <footer ref={layoutContext.footerRef}>
-        <h6>Footer</h6>
-      </footer>
+      <RenderContent
+        model={BUILDER_MODEL}
+        content={content.value}
+        apiKey={import.meta.env.PUBLIC_BUILDER_API_KEY}
+        customComponents={CUSTOM_COMPONENTS}
+      />
     </div>
   );
 });

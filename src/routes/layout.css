@@ -49,8 +49,9 @@ body {
             flex-direction: column;
             grid-area: content;
             grid-column: 1 / -1;
+            grid-row: 1 / 3;
 
-            >main {
+            main {
                 height: 2000px;
 
                 &[hidden] {
