@@ -21,6 +21,7 @@ export interface ContentProps {
   lg: Placement;
   xl: Placement;
   autoRows: boolean;
+  builderBlock:any;
 }
 
 export const ContentComponent = component$<(ContentProps)>(
@@ -29,6 +30,7 @@ export const ContentComponent = component$<(ContentProps)>(
     type = "text",
     layer = "0",
     autoRows = false,
+    builderBlock = {},
     xs = {
       hidden: false,
       colStart: "col 1",
@@ -77,6 +79,7 @@ export const ContentComponent = component$<(ContentProps)>(
 
     // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(() => {
+      console.log(builderBlock);
       if (innerRef.value && layoutContext.isEditing) {
         layoutContext.screen.emulatedBreakpoint = emulatedBreakpoint;
         const observer = new ResizeObserver((entries) => {

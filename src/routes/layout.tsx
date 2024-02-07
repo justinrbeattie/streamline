@@ -21,6 +21,7 @@ import { NavBlockStart } from "~/components/layout/nav-block-start/nav-block-sta
 import { Drawer } from "~/components/layout/drawer/drawer";
 // @ts-ignore comment
 import cssHasPseudo from "css-has-pseudo/browser";
+import { BreakpointEmulator } from "~/components/common/breakpoint-emulator/breakpoint-emulator";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -116,6 +117,7 @@ export default component$(() => {
     <div
       class={`${layout.screen.classes} ${layout.isEditing ? layout.screen.emulatedBreakpoint : ""}`}
     >
+      <BreakpointEmulator></BreakpointEmulator>
       <AnnouncementBar />
       <NavBlockStart />
       <div class="layout-wrapper">
