@@ -21,7 +21,6 @@ export const Content: Story = {
   args: {
     type: "text",
     width:null,
-    isEditing: true,
     xs: {
       hidden: false,
       colStart: "left-gutter",
@@ -73,9 +72,6 @@ export const Content: Story = {
       control: { type: 'number', min:320, max:1920, step: 100 }
     },
 
-    isEditing: {
-      control: { type: 'boolean' }
-    },
 
   },
   render: (props) => (

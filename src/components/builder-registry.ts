@@ -5,9 +5,11 @@ import {
   CarouselComponent,
   CarouselItemComponent,
 } from "./design/carousel/carousel";
+import { ContentComponent } from "./design/content/content";
 import Counter from "./starters/builder-starter/counter/counter";
 import { MainComponent } from "./design/main/main";
 import { SectionComponent } from "./design/section/section";
+import { Input } from "@builder.io/sdk-qwik/types/types/input";
 
 /**
  * This array is used to integrate custom components within Builder.
@@ -19,7 +21,7 @@ import { SectionComponent } from "./design/section/section";
  * editing to only these components.
  * https://www.builder.io/c/docs/guides/components-only-mode
  */
-const carouselChildConfig: BuilderElement[] = [
+const boxTextChildConfig: BuilderElement[] = [
   {
     "@type": "@builder.io/sdk:Element",
     component: {
@@ -37,6 +39,155 @@ const carouselChildConfig: BuilderElement[] = [
     ],
   },
 ];
+
+const contentSubfields: Input[] = [
+  {
+    name: "hidden",
+    type: "boolean",
+  },
+  {
+    name: "colStart",
+    type: "string",
+    defaultValue: "col 1",
+    enum: [
+      "left-gutter",
+      "col 1",
+      "col 2",
+      "col 3",
+      "col 4",
+      "col 5",
+      "col 6",
+      "col 7",
+      "col 8",
+      "col 9",
+      "col 10",
+      "col 11",
+      "col 12",
+      "right-gutter",
+    ],
+  },
+  {
+    name: "colSpan",
+    type: "string",
+    defaultValue: "span 2",
+    enum: [
+      "span 1",
+      "span 2",
+      "span 3",
+      "span 4",
+      "span 5",
+      "span 6",
+      "span 7",
+      "span 8",
+      "span 9",
+      "span 10",
+      "span 11",
+      "span 12",
+    ],
+  },
+  {
+    name: "rowStart",
+    type: "string",
+    defaultValue: "row 1",
+    enum: [
+      "top-gutter",
+      "row 1",
+      "row 2",
+      "row 3",
+      "row 4",
+      "row 5",
+      "row 6",
+      "row 7",
+      "row 8",
+      "row 9",
+      "row 10",
+      "row 11",
+      "row 12",
+      "row 13",
+      "row 14",
+      "row 15",
+      "row 16",
+      "row 17",
+      "row 18",
+      "row 19",
+      "row 20",
+      "bottom-gutter",
+    ],
+  },
+  {
+    name: "rowSpan",
+    type: "string",
+    defaultValue: "span 4",
+    enum: [
+      "span 0",
+      "span 1",
+      "span 2",
+      "span 3",
+      "span 4",
+      "span 5",
+      "span 6",
+      "span 7",
+      "span 8",
+      "span 9",
+      "span 10",
+      "span 11",
+      "span 12",
+      "span 13",
+      "span 14",
+      "span 15",
+      "span 16",
+      "span 17",
+      "span 18",
+      "span  19",
+      "span 20",
+    ],
+  },
+];
+
+const contentOptions: any = {
+  type: "text",
+  width: null,
+  isEditing: true,
+  xs: {
+    hidden: false,
+    colStart: "left-gutter",
+    colSpan: "span 14",
+    rowStart: "row 1",
+    rowSpan: "span 6",
+  },
+  sm: {
+    hidden: false,
+    colStart: "col 1",
+    colSpan: "span 12",
+    colEnd: "col 8",
+    rowStart: "row 1",
+    rowSpan: "span 5",
+  },
+
+  md: {
+    hidden: false,
+    colStart: "col 1",
+    colSpan: "span 8",
+    rowStart: "row 1",
+    rowSpan: "span 4",
+  },
+
+  lg: {
+    hidden: false,
+    colStart: "col 1",
+    colSpan: "span 6",
+    rowStart: "row 1",
+    rowSpan: "span 3",
+  },
+
+  xl: {
+    hidden: false,
+    colStart: "col 1",
+    colSpan: "span 4",
+    rowStart: "row 1",
+    rowSpan: "span 6",
+  },
+}
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -194,7 +345,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             },
           },
         },
-        children: [...carouselChildConfig],
+        children: [...boxTextChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -207,7 +358,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             },
           },
         },
-        children: [...carouselChildConfig],
+        children: [...boxTextChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -220,7 +371,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             },
           },
         },
-        children: [...carouselChildConfig],
+        children: [...boxTextChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -233,7 +384,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             },
           },
         },
-        children: [...carouselChildConfig],
+        children: [...boxTextChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -255,7 +406,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             ],
           },
         },
-        children: [...carouselChildConfig],
+        children: [...boxTextChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -277,7 +428,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             ],
           },
         },
-        children: [...carouselChildConfig],
+        children: [...boxTextChildConfig],
       },
     ],
     defaultStyles: {
@@ -324,15 +475,102 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     ],
   },
   {
+    component: ContentComponent,
+    name: "Content",
+    noWrap: true,
+    image: "https://img.icons8.com/ios/50/media-queries.png",
+    inputs: [
+      {
+        name: "emulatedBreakpoint",
+        type: "string",
+        enum: ['','emulated-xs', 'emulated-sm', 'emulated-md', 'emulated-lg', 'emulated-xl']
+      },
+      {
+        name: "autoRows",
+        type: "boolean",
+      },
+      {
+        name: "isEditing",
+        type: "boolean",
+      },
+      {
+        name: "type",
+        type: "string",
+        enum: ["decorative", "text", "image"],
+        required: true,
+      },
+      {
+        name: "xs",
+        type: "object",
+        required: true,
+        subFields: contentSubfields,
+      },
+      {
+        name: "sm",
+        type: "object",
+        required: true,
+        subFields: contentSubfields,
+      },
+      {
+        name: "md",
+        type: "object",
+        required: true,
+        subFields: contentSubfields,
+      },
+      {
+        name: "lg",
+        type: "object",
+        required: true,
+        subFields: contentSubfields,
+      },
+      {
+        name: "xl",
+        type: "object",
+        required: true,
+        subFields: contentSubfields,
+      },
+    ],
+  },
+  {
     component: Counter,
     name: "Counter",
   },
   {
-    component: MainComponent,
-    name: "MainComponent",
-    image: "https://img.icons8.com/ios/50/single-page-mode.png",
+    component: SectionComponent,
+    name: "Footer",
+    image: "https://img.icons8.com/ios/50/document-footer.png",
     noWrap: true,
     canHaveChildren: true,
+    childRequirements: {
+      message: "You can only put Content in a Footer",
+      query: {
+        "component.name": { $in: ["Content"] },
+      },
+    },
+    defaultChildren: [
+      {
+        "@type": "@builder.io/sdk:Element",
+        component: {
+          name: "Content",
+          options: {...contentOptions},
+        },
+        children: [...boxTextChildConfig],
+      },
+    ],
+    inputs: [
+      {
+        name: "id",
+        type: "string",
+        required: true,
+        defaultValue: "Section-1",
+      },
+      {
+        name: "tag",
+        type: "string",
+        hideFromUI: true,
+        defaultValue: "footer",
+      },
+    ],
   },
   {
     component: SectionComponent,
@@ -340,6 +578,22 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     image: "https://img.icons8.com/ios/50/document-header.png",
     noWrap: true,
     canHaveChildren: true,
+    childRequirements: {
+      message: "You can only put Content in a Header",
+      query: {
+        "component.name": { $in: ["Content"] },
+      },
+    },
+    defaultChildren: [
+      {
+        "@type": "@builder.io/sdk:Element",
+        component: {
+          name: "Content",
+          options: {...contentOptions},
+        },
+        children: [...boxTextChildConfig],
+      },
+    ],
     inputs: [
       {
         name: "id",
@@ -356,11 +610,34 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     ],
   },
   {
+    component: MainComponent,
+    name: "MainComponent",
+    image: "https://img.icons8.com/ios/50/single-page-mode.png",
+    noWrap: true,
+    canHaveChildren: true,
+  },
+  {
     component: SectionComponent,
     name: "Section",
     image: "https://img.icons8.com/ios/50/width.png",
     noWrap: true,
     canHaveChildren: true,
+    childRequirements: {
+      message: "You can only put Content in a Section",
+      query: {
+        "component.name": { $in: ["Content"] },
+      },
+    },
+    defaultChildren: [
+      {
+        "@type": "@builder.io/sdk:Element",
+        component: {
+          name: "Content",
+          options: {...contentOptions},
+        },
+        children: [...boxTextChildConfig],
+      },
+    ],
     inputs: [
       {
         name: "id",
@@ -376,28 +653,4 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
       },
     ],
   },
-  {
-    component: SectionComponent,
-    name: "Footer",
-    image: "https://img.icons8.com/ios/50/document-footer.png",
-    noWrap: true,
-    canHaveChildren: true,
-    inputs: [
-      {
-        name: "id",
-        type: "string",
-        required: true,
-        defaultValue: "Section-1",
-      },
-      {
-        name: "tag",
-        type: "string",
-        hideFromUI: true,
-        defaultValue: "footer",
-      },
-    ],
-  },
-
-
- 
 ];

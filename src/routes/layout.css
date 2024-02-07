@@ -66,4 +66,25 @@ body {
 
 
     }
+
+    &:has(.emulated-xs) {
+        --page-width: 320px;
+      }
+      
+      &:has(.emulated-sm) {
+        --page-width: 481px;
+      }
+      
+      &:has(.emulated-md) {
+        --page-width: 769px;
+      }
+      
+      &:has(.emulated-lg) {
+        --page-width: 1025px;
+      }
+      
+      &:has(.emulated-xl) {
+        --page-width: 1441px;
+      }
+      
 }

@@ -1,10 +1,5 @@
 import {
-  component$,
-  createContextId,
-  useContextProvider,
-  useSignal,
-  useStore,
-  useVisibleTask$,
+  component$
 } from "@builder.io/qwik";
 import {
   QwikCityProvider,
@@ -14,13 +9,8 @@ import {
 import { RouterHead } from "./components/common/router-head/router-head";
 
 import "./global.css";
-// @ts-ignore comment
-import cssHasPseudo from "css-has-pseudo/browser";
 import * as icon from "@qwikest/icons/iconoir";
 export const Icon = icon;
-
-export const ScreenContext =
-  createContextId<ScreenContext>("app.screen-context");
 
 export default component$(() => {
   /**
@@ -29,55 +19,6 @@ export default component$(() => {
    *
    * Don't remove the `<head>` and `<body>` elements.
    */
-  const bodyRef = useSignal<Element>();
-  const screen = useStore<ScreenContext>({
-    width: 0,
-    height: 0,
-    currentBreakpoint: "xs",
-    classes: "",
-  });
-
-  useContextProvider(ScreenContext, screen);
-  // eslint-disable-next-line qwik/no-use-visible-task
-  useVisibleTask$(() => {
-    cssHasPseudo(document);
-    if (bodyRef.value) {
-      const observer = new ResizeObserver((entries) => {
-        entries.forEach((entry) => {
-          /* min-width: 320px min-width: 481px min-width: 769px min-width: 1025px min-width: 1441px */
-          screen.width = entry.contentRect.width;
-          screen.height = entry.contentRect.height;
-          /* selected width */
-          if (screen.width > 0 && screen.width <= 480) {
-            screen.currentBreakpoint = "xs";
-          } else if (screen.width > 480 && screen.width <= 768) {
-            screen.currentBreakpoint = "sm";
-          } else if (screen.width > 768 && screen.width <= 1024) {
-            screen.currentBreakpoint = "md";
-          } else if (screen.width > 1024 && screen.width <= 1440) {
-            screen.currentBreakpoint = "lg";
-          } else if (screen.width > 1440) {
-            screen.currentBreakpoint = "xl";
-          }
-
-          screen.classes = [
-            screen.width > 0 && "screen-xs",
-            screen.width > 480 && "screen-sm",
-            screen.width > 768 && "screen-md",
-            screen.width > 1024 && "screen-lg",
-            screen.width > 1440 && "screen-xl",
-            "current-screen-" + screen.currentBreakpoint,
-          ]
-            .filter(Boolean)
-            .join(" ");
-        });
-      });
-      observer.observe(bodyRef.value);
-      return () => {
-        observer.disconnect();
-      };
-    }
-  });
 
   return (
     <QwikCityProvider>
@@ -87,22 +28,10 @@ export default component$(() => {
         <RouterHead />
         <ServiceWorkerRegister />
       </head>
-      <body lang="en" ref={bodyRef}>
-
-        <div  class={screen.classes}>
+      <body lang="en">
         <RouterOutlet />
-        </div>
-  
-
         <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
       </body>
     </QwikCityProvider>
   );
 });
-
-type ScreenContext = {
-  width: number;
-  height: number;
-  currentBreakpoint: string;
-  classes: string;
-};

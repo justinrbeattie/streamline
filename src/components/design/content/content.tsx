@@ -1,29 +1,33 @@
 import {
   component$,
   Slot,
+  useContext,
   useSignal,
   useStore,
   useStyles$,
   useVisibleTask$,
 } from "@builder.io/qwik";
 import styles from "./content.css?inline";
+import { LayoutContext } from "~/routes/layout";
 
 export interface ContentProps {
+  emulatedBreakpoint:'' | 'emulated-xs' | 'emulated-sm' | 'emulated-md' | 'emulated-lg' | 'emulated-xl';
   width: number | null;
   type: "decorative" | "text" | "image";
+  layer: "-5" | "-4" | "-3" | "-2" | "-1" | "0" | "1" | "2" | "3" | "4" | "5";
   xs: Placement;
   sm: Placement;
   md: Placement;
   lg: Placement;
   xl: Placement;
-  isEditing: boolean;
   autoRows: boolean;
 }
 
-export const ContentComponent = component$<ContentProps>(
+export const ContentComponent = component$<(ContentProps)>(
   ({
+    emulatedBreakpoint = '',
     type = "text",
-    isEditing = true,
+    layer = "0",
     autoRows = false,
     xs = {
       hidden: false,
@@ -63,6 +67,7 @@ export const ContentComponent = component$<ContentProps>(
     },
   }) => {
     useStyles$(styles);
+    const layoutContext = useContext(LayoutContext);
     const innerRef = useSignal<Element>();
     const innerContent = useStore<{
       height: number;
@@ -72,7 +77,8 @@ export const ContentComponent = component$<ContentProps>(
 
     // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(() => {
-      if (innerRef.value && isEditing) {
+      if (innerRef.value && layoutContext.isEditing) {
+        layoutContext.screen.emulatedBreakpoint = emulatedBreakpoint;
         const observer = new ResizeObserver((entries) => {
           entries.forEach((entry) => {
             innerContent.height = entry.contentRect.height;
@@ -94,9 +100,7 @@ export const ContentComponent = component$<ContentProps>(
 
     return (
       <div
-        class={`section-content section-content-type-${type} ${
-          isEditing ? "is-editing" : ""
-        }`}
+        class={`section-content section-content-type-${type} ${layoutContext.isEditing ? "is-editing" : ""} layer-${layer}`}
         style={`
         --xs-cols: ${xs.colStart} / ${xs.colSpan || xs.colEnd};
         --sm-cols: ${sm.colStart} / ${sm.colSpan || sm.colEnd};
