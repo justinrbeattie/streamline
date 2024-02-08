@@ -89,7 +89,10 @@ export default component$(() => {
             layout.screen.currentBreakpoint = "sm";
           } else if (layout.screen.width > 768 && layout.screen.width <= 1024) {
             layout.screen.currentBreakpoint = "md";
-          } else if (layout.screen.width > 1024 && layout.screen.width <= 1440) {
+          } else if (
+            layout.screen.width > 1024 &&
+            layout.screen.width <= 1440
+          ) {
             layout.screen.currentBreakpoint = "lg";
           } else if (layout.screen.width > 1440) {
             layout.screen.currentBreakpoint = "xl";
@@ -117,7 +120,8 @@ export default component$(() => {
     <div
       class={`${layout.screen.classes} ${layout.isEditing ? layout.screen.emulatedBreakpoint : ""}`}
     >
-      <BreakpointEmulator></BreakpointEmulator>
+      {layout.isEditing ? <BreakpointEmulator></BreakpointEmulator> : ""}
+
       <AnnouncementBar />
       <NavBlockStart />
       <div class="layout-wrapper">
