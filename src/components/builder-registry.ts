@@ -21,6 +21,8 @@ import { Input } from "@builder.io/sdk-qwik/types/types/input";
  * editing to only these components.
  * https://www.builder.io/c/docs/guides/components-only-mode
  */
+
+
 const boxTextChildConfig: BuilderElement[] = [
   {
     "@type": "@builder.io/sdk:Element",
@@ -83,14 +85,16 @@ const contentSubfields: Input[] = [
       "span 10",
       "span 11",
       "span 12",
+      "span 13",
+      "span 14",
     ],
+
   },
   {
     name: "rowStart",
     type: "string",
     defaultValue: "row 1",
     enum: [
-      "top-gutter",
       "row 1",
       "row 2",
       "row 3",
@@ -111,7 +115,6 @@ const contentSubfields: Input[] = [
       "row 18",
       "row 19",
       "row 20",
-      "bottom-gutter",
     ],
   },
   {
@@ -138,7 +141,7 @@ const contentSubfields: Input[] = [
       "span 16",
       "span 17",
       "span 18",
-      "span  19",
+      "span 19",
       "span 20",
     ],
   },
@@ -479,20 +482,10 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     name: "Content",
     noWrap: true,
     image: "https://img.icons8.com/ios/50/media-queries.png",
+    defaults: {
+    },
+
     inputs: [
-      {
-        name: "emulatedBreakpoint",
-        type: "string",
-        enum: ['','emulated-xs', 'emulated-sm', 'emulated-md', 'emulated-lg', 'emulated-xl']
-      },
-      {
-        name: "autoRows",
-        type: "boolean",
-      },
-      {
-        name: "isEditing",
-        type: "boolean",
-      },
       {
         name: "type",
         type: "string",

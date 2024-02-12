@@ -9,6 +9,7 @@ import { LayoutContext } from "~/routes/layout";
 export interface SectionProps {
   tag: "header" | "section" | "footer";
   id: string;
+  attributes:any;
 }
 
 
@@ -20,9 +21,10 @@ export const SectionComponent = component$<SectionProps>((props) => {
 
   return (
     <TAG
+    {...props.attributes}
     ref={currentRef}
     id={props.id}
-    class="page-section"
+    class={`page-section ${layoutContext.isEditing ? "is-editing" : ""}  ${props.attributes?.className || ''}`}
   >
     <Slot></Slot>
   </TAG>

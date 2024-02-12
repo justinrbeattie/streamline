@@ -100,6 +100,9 @@
     --surface-shadow-dark: var(--gray-12-hsl);
     --shadow-strength-dark: 80%;
 
+
+    --edit-color: #1b73e8;
+
 }
 
 

@@ -1,32 +1,30 @@
 .page-section {
-  --page-grid-gap: var(--size-fluid-1);
-  --page-grid-rows: 4;
-  --page-grid-row-gutter-height: calc(
-    var(--page-grid-gap) * (var(--page-grid-rows) + 3)
-  );
-  --page-grid-row-height: max(
-    4rem,
-    calc((var(--viewport-height) - var(--page-grid-row-gutter-height)) / 10)
-  );
-  --page-grid-gutter-x: clamp(1rem, 5vw, 10rem);
-  --page-grid-gutter-y: var(--page-grid-gap);
-  --page-grid-template-columns: [left-gutter] var(--page-grid-gutter-x) [col]
-    1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr
-    [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] var(--page-grid-gutter-x)
+  --page-grid-column-gap: var(--size-fluid-1);
+  --page-grid-rows: 5;
+  --page-grid-row-height: 9vh;
+  --page-grid-row-gap-height: 1vh;
+  --page-grid-gutter: clamp(1rem, 5vw, 10rem);
+  --page-grid-template-columns: [left-gutter] var(--page-grid-gutter) [col] 1fr
+    [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col]
+    1fr [col] 1fr [col] 1fr [col] 1fr [col] var(--page-grid-gutter)
     [right-gutter];
-  --page-grid--template-rows: [top-gutter] var(--page-grid-gutter-y)
-    repeat(var(--page-grid-rows), [row] var(--page-grid-row-height))
-    [bottom-gutter] var(--page-grid-gutter-y);
+  --page-grid-template-rows: repeat(
+    var(--page-grid-rows),
+    [row] var(--page-grid-row-height)
+  );
   display: grid;
   position: relative;
   width: var(--page-width);
   grid-template-columns: var(--page-grid-template-columns);
-  grid-template-rows: var(--page-grid--template-rows);
+  grid-template-rows: var(--page-grid-template-rows);
   grid-auto-rows: var(--page-grid-row-height);
-  gap: var(--page-grid-gap);
+  column-gap: var(--page-grid-column-gap);
   background: white;
+  margin-block-end: var(--page-grid-row-gap-height);
+
+  &.is-editing {
+    box-shadow: 0px 0px 0px 2px var(--edit-color);
+  }
 }
 
-.breakpoint .page-section {
-  width: 100%;
-}
+

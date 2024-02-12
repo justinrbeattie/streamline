@@ -10,7 +10,9 @@ const meta: Meta<ContentProps> = {
 
 const sectionProps: SectionProps = {
   tag: "section",
-  id: "section-101"
+  id: "section-101",
+  attributes:{}
+
 };
 
 type Story = StoryObj<ContentProps>;
@@ -32,7 +34,6 @@ export const Content: Story = {
       hidden: false,
       colStart: "col 1",
       colSpan: "span 12",
-      colEnd: "col 8",
       rowStart: "row 1",
       rowSpan: "span 5",
     },

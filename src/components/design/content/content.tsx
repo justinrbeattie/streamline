@@ -5,13 +5,12 @@ import {
   useSignal,
   useStore,
   useStyles$,
-  useVisibleTask$,
+  useVisibleTask$
 } from "@builder.io/qwik";
 import styles from "./content.css?inline";
 import { LayoutContext } from "~/routes/layout";
 
 export interface ContentProps {
-  emulatedBreakpoint:'' | 'emulated-xs' | 'emulated-sm' | 'emulated-md' | 'emulated-lg' | 'emulated-xl';
   width: number | null;
   type: "decorative" | "text" | "image";
   layer: "-5" | "-4" | "-3" | "-2" | "-1" | "0" | "1" | "2" | "3" | "4" | "5";
@@ -20,17 +19,15 @@ export interface ContentProps {
   md: Placement;
   lg: Placement;
   xl: Placement;
-  autoRows: boolean;
-  builderBlock:any;
+  attributes: any;
+  state: any;
 }
 
 export const ContentComponent = component$<(ContentProps)>(
   ({
-    emulatedBreakpoint = '',
     type = "text",
     layer = "0",
-    autoRows = false,
-    builderBlock = {},
+    attributes = undefined,
     xs = {
       hidden: false,
       colStart: "col 1",
@@ -71,30 +68,24 @@ export const ContentComponent = component$<(ContentProps)>(
     useStyles$(styles);
     const layoutContext = useContext(LayoutContext);
     const innerRef = useSignal<Element>();
-    const innerContent = useStore<{
-      height: number;
-      width: number;
-      rows: number;
-    }>({ height: 0, width: 0, rows: 0 });
+    const store = useStore<AutoRowsStore>({
+      viewportHeight: 0,
+      height:0,
+      autoRows:"span 1",
+    });
 
     // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(() => {
-      console.log(builderBlock);
-      if (innerRef.value && layoutContext.isEditing) {
-        layoutContext.screen.emulatedBreakpoint = emulatedBreakpoint;
+      if (innerRef.value  && type === 'text') {
         const observer = new ResizeObserver((entries) => {
           entries.forEach((entry) => {
-            innerContent.height = entry.contentRect.height;
-            innerContent.rows = Math.round(innerContent.height / 64);
-
-            if (autoRows) {
-              console.log(innerContent.rows);
-            }
+            store.viewportHeight = window.innerHeight;
+            store.height = entry.contentRect.height;
+            store.autoRows = 'span ' + Math.max(1, Math.round(store.height / (store.viewportHeight * .09)));
           });
         });
 
         observer.observe(innerRef.value);
-
         return () => {
           observer.disconnect();
         };
@@ -103,18 +94,19 @@ export const ContentComponent = component$<(ContentProps)>(
 
     return (
       <div
-        class={`section-content section-content-type-${type} ${layoutContext.isEditing ? "is-editing" : ""} layer-${layer}`}
+      {...attributes}
+        class={`section-content section-content-type-${type} ${layoutContext.isEditing ? "is-editing" : ""} layer-${layer} ${attributes?.className || ''}`}
         style={`
-        --xs-cols: ${xs.colStart} / ${xs.colSpan || xs.colEnd};
-        --sm-cols: ${sm.colStart} / ${sm.colSpan || sm.colEnd};
-        --md-cols: ${md.colStart} / ${md.colSpan || md.colEnd};
-        --lg-cols: ${lg.colStart} / ${lg.colSpan || lg.colEnd};
-        --xl-cols: ${xl.colStart} / ${xl.colSpan || xl.colEnd};
-        --xs-rows: ${xs.rowStart} / ${xs.rowSpan || xs.rowEnd};
-        --sm-rows: ${sm.rowStart} / ${sm.rowSpan || sm.rowEnd};
-        --md-rows: ${md.rowStart} / ${md.rowSpan || md.rowEnd};
-        --lg-rows: ${lg.rowStart} / ${lg.rowSpan || lg.rowEnd};
-        --xl-rows: ${xl.rowStart} / ${xl.rowSpan || xl.rowEnd};
+        --xs-cols: ${xs.colStart} / ${xs.colSpan};
+        --sm-cols: ${sm.colStart} / ${sm.colSpan};
+        --md-cols: ${md.colStart} / ${md.colSpan};
+        --lg-cols: ${lg.colStart} / ${lg.colSpan};
+        --xl-cols: ${xl.colStart} / ${xl.colSpan};
+        --xs-rows: ${xs.rowStart} / ${type=== 'text'? store.autoRows : xs.rowSpan};
+        --sm-rows: ${sm.rowStart} / ${type=== 'text'? store.autoRows : sm.rowSpan};
+        --md-rows: ${md.rowStart} / ${type=== 'text'? store.autoRows : md.rowSpan};
+        --lg-rows: ${lg.rowStart} / ${type=== 'text'? store.autoRows : lg.rowSpan};
+        --xl-rows: ${xl.rowStart} / ${type=== 'text'? store.autoRows : xl.rowSpan};
 
         --xs-hidden: ${xs.hidden ? "none" : "block"};
         --sm-hidden: ${sm.hidden ? "none" : "block"};
@@ -126,7 +118,6 @@ export const ContentComponent = component$<(ContentProps)>(
         <div
           ref={innerRef}
           class="section-content-inner"
-          data-rows={innerContent.rows}
         >
           <Slot></Slot>
         </div>
@@ -138,11 +129,15 @@ export const ContentComponent = component$<(ContentProps)>(
 interface Placement {
   hidden: boolean;
   colStart: Column;
-  colEnd?: Column;
   colSpan?: Span;
   rowStart: Row;
-  rowEnd?: Row;
   rowSpan?: Span;
+}
+
+interface AutoRowsStore {
+  viewportHeight: number;
+  height: number;
+  autoRows:string | undefined;
 }
 
 type Column =
@@ -161,7 +156,6 @@ type Column =
   | "col 12"
   | "right-gutter";
 type Row =
-  | "top-gutter"
   | "row 1"
   | "row 2"
   | "row 3"
@@ -181,8 +175,7 @@ type Row =
   | "row 17"
   | "row 18"
   | "row 19"
-  | "row 20"
-  | "bottom-gutter";
+  | "row 20";
 type Span =
   | "span 0"
   | "span 1"
