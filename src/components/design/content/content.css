@@ -50,7 +50,8 @@
   display: var(--xl-hidden);
 }
 
-/* auto adjust colums > */
-/* add guidelines for section */
-/* edit mode sections grey out rest of screen  */
-
+/* 
+bind the in view breakpoint to visible field 
+Hide the type field aND have 3 seperate components 
+do we beed the box inside
+*/

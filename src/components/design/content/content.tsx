@@ -5,7 +5,7 @@ import {
   useSignal,
   useStore,
   useStyles$,
-  useVisibleTask$
+  useVisibleTask$,
 } from "@builder.io/qwik";
 import styles from "./content.css?inline";
 import { LayoutContext } from "~/routes/layout";
@@ -23,7 +23,7 @@ export interface ContentProps {
   state: any;
 }
 
-export const ContentComponent = component$<(ContentProps)>(
+export const ContentComponent = component$<ContentProps>(
   ({
     type = "text",
     layer = "0",
@@ -70,43 +70,50 @@ export const ContentComponent = component$<(ContentProps)>(
     const innerRef = useSignal<Element>();
     const store = useStore<AutoRowsStore>({
       viewportHeight: 0,
-      height:0,
-      autoRows:"span 1",
+      height: 0,
+      autoRows: "span 1",
     });
 
-    // eslint-disable-next-line qwik/no-use-visible-task
-    useVisibleTask$(() => {
-      if (innerRef.value  && type === 'text') {
-        const observer = new ResizeObserver((entries) => {
-          entries.forEach((entry) => {
-            store.viewportHeight = window.innerHeight;
-            store.height = entry.contentRect.height;
-            store.autoRows = 'span ' + Math.max(1, Math.round(store.height / (store.viewportHeight * .09)));
+    if (type === "text") {
+      // eslint-disable-next-line
+      useVisibleTask$(() => {
+        if (innerRef.value) {
+          const observer = new ResizeObserver((entries) => {
+            entries.forEach((entry) => {
+              store.viewportHeight = window.innerHeight;
+              store.height = entry.contentRect.height;
+              store.autoRows =
+                "span " +
+                Math.max(
+                  1,
+                  Math.round(store.height / (store.viewportHeight * 0.09))
+                );
+            });
           });
-        });
 
-        observer.observe(innerRef.value);
-        return () => {
-          observer.disconnect();
-        };
-      }
-    });
+          observer.observe(innerRef.value);
+          return () => {
+            observer.disconnect();
+          };
+        }
+      });
+    }
 
     return (
       <div
-      {...attributes}
-        class={`section-content section-content-type-${type} ${layoutContext.isEditing ? "is-editing" : ""} layer-${layer} ${attributes?.className || ''}`}
+        {...attributes}
+        class={`section-content section-content-type-${type} ${layoutContext.isEditing ? "is-editing" : ""} layer-${layer} ${attributes?.className || ""}`}
         style={`
         --xs-cols: ${xs.colStart} / ${xs.colSpan};
         --sm-cols: ${sm.colStart} / ${sm.colSpan};
         --md-cols: ${md.colStart} / ${md.colSpan};
         --lg-cols: ${lg.colStart} / ${lg.colSpan};
         --xl-cols: ${xl.colStart} / ${xl.colSpan};
-        --xs-rows: ${xs.rowStart} / ${type=== 'text'? store.autoRows : xs.rowSpan};
-        --sm-rows: ${sm.rowStart} / ${type=== 'text'? store.autoRows : sm.rowSpan};
-        --md-rows: ${md.rowStart} / ${type=== 'text'? store.autoRows : md.rowSpan};
-        --lg-rows: ${lg.rowStart} / ${type=== 'text'? store.autoRows : lg.rowSpan};
-        --xl-rows: ${xl.rowStart} / ${type=== 'text'? store.autoRows : xl.rowSpan};
+        --xs-rows: ${xs.rowStart} / ${type === "text" ? store.autoRows : xs.rowSpan};
+        --sm-rows: ${sm.rowStart} / ${type === "text" ? store.autoRows : sm.rowSpan};
+        --md-rows: ${md.rowStart} / ${type === "text" ? store.autoRows : md.rowSpan};
+        --lg-rows: ${lg.rowStart} / ${type === "text" ? store.autoRows : lg.rowSpan};
+        --xl-rows: ${xl.rowStart} / ${type === "text" ? store.autoRows : xl.rowSpan};
 
         --xs-hidden: ${xs.hidden ? "none" : "block"};
         --sm-hidden: ${sm.hidden ? "none" : "block"};
@@ -115,10 +122,7 @@ export const ContentComponent = component$<(ContentProps)>(
         --xl-hidden: ${xl.hidden ? "none" : "block"};
       `}
       >
-        <div
-          ref={innerRef}
-          class="section-content-inner"
-        >
+        <div ref={innerRef} class="section-content-inner">
           <Slot></Slot>
         </div>
       </div>
@@ -137,7 +141,7 @@ interface Placement {
 interface AutoRowsStore {
   viewportHeight: number;
   height: number;
-  autoRows:string | undefined;
+  autoRows: string | undefined;
 }
 
 type Column =

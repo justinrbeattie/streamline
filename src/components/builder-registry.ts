@@ -23,7 +23,7 @@ import { Input } from "@builder.io/sdk-qwik/types/types/input";
  */
 
 
-const boxTextChildConfig: BuilderElement[] = [
+const defaultChildConfig: BuilderElement[] = [
   {
     "@type": "@builder.io/sdk:Element",
     component: {
@@ -42,7 +42,7 @@ const boxTextChildConfig: BuilderElement[] = [
   },
 ];
 
-const contentSubfields: Input[] = [
+const contentPlacement: Input[] = [
   {
     name: "hidden",
     type: "boolean",
@@ -88,7 +88,6 @@ const contentSubfields: Input[] = [
       "span 13",
       "span 14",
     ],
-
   },
   {
     name: "rowStart",
@@ -190,7 +189,7 @@ const contentOptions: any = {
     rowStart: "row 1",
     rowSpan: "span 6",
   },
-}
+};
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -348,7 +347,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             },
           },
         },
-        children: [...boxTextChildConfig],
+        children: [...defaultChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -361,7 +360,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             },
           },
         },
-        children: [...boxTextChildConfig],
+        children: [...defaultChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -374,7 +373,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             },
           },
         },
-        children: [...boxTextChildConfig],
+        children: [...defaultChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -387,7 +386,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             },
           },
         },
-        children: [...boxTextChildConfig],
+        children: [...defaultChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -409,7 +408,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             ],
           },
         },
-        children: [...boxTextChildConfig],
+        children: [...defaultChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -431,7 +430,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             ],
           },
         },
-        children: [...boxTextChildConfig],
+        children: [...defaultChildConfig],
       },
     ],
     defaultStyles: {
@@ -482,8 +481,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     name: "Content",
     noWrap: true,
     image: "https://img.icons8.com/ios/50/media-queries.png",
-    defaults: {
-    },
+    defaults: {},
 
     inputs: [
       {
@@ -496,31 +494,31 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         name: "xs",
         type: "object",
         required: true,
-        subFields: contentSubfields,
+        subFields: contentPlacement,
       },
       {
         name: "sm",
         type: "object",
         required: true,
-        subFields: contentSubfields,
+        subFields: contentPlacement,
       },
       {
         name: "md",
         type: "object",
         required: true,
-        subFields: contentSubfields,
+        subFields: contentPlacement,
       },
       {
         name: "lg",
         type: "object",
         required: true,
-        subFields: contentSubfields,
+        subFields: contentPlacement,
       },
       {
         name: "xl",
         type: "object",
         required: true,
-        subFields: contentSubfields,
+        subFields: contentPlacement,
       },
     ],
   },
@@ -545,9 +543,9 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         "@type": "@builder.io/sdk:Element",
         component: {
           name: "Content",
-          options: {...contentOptions},
+          options: { ...contentOptions },
         },
-        children: [...boxTextChildConfig],
+        children: [...defaultChildConfig],
       },
     ],
     inputs: [
@@ -582,9 +580,9 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         "@type": "@builder.io/sdk:Element",
         component: {
           name: "Content",
-          options: {...contentOptions},
+          options: { ...contentOptions },
         },
-        children: [...boxTextChildConfig],
+        children: [...defaultChildConfig],
       },
     ],
     inputs: [
@@ -626,9 +624,9 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         "@type": "@builder.io/sdk:Element",
         component: {
           name: "Content",
-          options: {...contentOptions},
+          options: { ...contentOptions },
         },
-        children: [...boxTextChildConfig],
+        children: [...defaultChildConfig],
       },
     ],
     inputs: [

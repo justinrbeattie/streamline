@@ -2,7 +2,7 @@
   --page-grid-column-gap: var(--size-fluid-1);
   --page-grid-rows: 5;
   --page-grid-row-height: 9vh;
-  --page-grid-row-gap-height: 1vh;
+  --page-grid-row-gap: 1vh;
   --page-grid-gutter: clamp(1rem, 5vw, 10rem);
   --page-grid-template-columns: [left-gutter] var(--page-grid-gutter) [col] 1fr
     [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col]
@@ -19,11 +19,19 @@
   grid-template-rows: var(--page-grid-template-rows);
   grid-auto-rows: var(--page-grid-row-height);
   column-gap: var(--page-grid-column-gap);
+  row-gap: var(--page-grid-row-gap);
   background: white;
-  margin-block-end: var(--page-grid-row-gap-height);
+  padding-block-end: var(--page-grid-row-gap);
 
-  &.is-editing {
-    box-shadow: 0px 0px 0px 2px var(--edit-color);
+  .grid-guide {
+    border:1px dashed var(--surface-3);
+    font-size: var(--font-size-00);
+    display:flex;
+    color:var(--surface-3);
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    font-weight: var(--font-weight-6);
   }
 }
 
