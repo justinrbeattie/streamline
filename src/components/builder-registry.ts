@@ -119,7 +119,8 @@ const contentPlacement: Input[] = [
   {
     name: "rowSpan",
     type: "string",
-    defaultValue: "span 4",
+    defaultValue: "span 1",
+    hideFromUI:true,
     enum: [
       "span 0",
       "span 1",
@@ -148,8 +149,6 @@ const contentPlacement: Input[] = [
 
 const contentOptions: any = {
   type: "text",
-  width: null,
-  isEditing: true,
   xs: {
     hidden: false,
     colStart: "left-gutter",
@@ -478,7 +477,61 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   },
   {
     component: ContentComponent,
-    name: "Content",
+    name: "Text Content",
+    noWrap: true,
+    image: "https://img.icons8.com/ios/50/media-queries.png",
+    defaults: {},
+
+   
+    inputs: [
+      {
+        name: "type",
+        type: "string",
+        enum: ["visual", "text"],
+        defaultValue:"visual",
+        required: true,
+        hideFromUI:true,
+      },
+      {
+        name: "xs",
+        type: "object",
+        required: true,
+        subFields: contentPlacement,
+        defaultValue:contentOptions.xs
+      },
+      {
+        name: "sm",
+        type: "object",
+        required: true,
+        subFields: contentPlacement,
+        defaultValue:contentOptions.sm
+      },
+      {
+        name: "md",
+        type: "object",
+        required: true,
+        subFields: contentPlacement,
+        defaultValue:contentOptions.md
+      },
+      {
+        name: "lg",
+        type: "object",
+        required: true,
+        subFields: contentPlacement,
+        defaultValue:contentOptions.lg
+      },
+      {
+        name: "xl",
+        type: "object",
+        required: true,
+        subFields: contentPlacement,
+        defaultValue:contentOptions.xl
+      },
+    ],
+  },
+  {
+    component: ContentComponent,
+    name: "Visual Content",
     noWrap: true,
     image: "https://img.icons8.com/ios/50/media-queries.png",
     defaults: {},
@@ -487,41 +540,51 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
       {
         name: "type",
         type: "string",
-        enum: ["decorative", "text", "image"],
+        enum: ["visual", "text"],
+        defaultValue:"visual",
         required: true,
+        hideFromUI:true,
       },
       {
         name: "xs",
         type: "object",
         required: true,
         subFields: contentPlacement,
+        defaultValue:contentOptions.xs
       },
       {
         name: "sm",
         type: "object",
         required: true,
         subFields: contentPlacement,
+        defaultValue:contentOptions.sm
       },
       {
         name: "md",
         type: "object",
         required: true,
         subFields: contentPlacement,
+        defaultValue:contentOptions.md
       },
       {
         name: "lg",
         type: "object",
         required: true,
         subFields: contentPlacement,
+        defaultValue:contentOptions.lg
       },
       {
         name: "xl",
         type: "object",
         required: true,
         subFields: contentPlacement,
+        defaultValue:contentOptions.xl
       },
     ],
   },
+
+
+
   {
     component: Counter,
     name: "Counter",
@@ -533,16 +596,16 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     noWrap: true,
     canHaveChildren: true,
     childRequirements: {
-      message: "You can only put Content in a Footer",
+      message: "You can only put Text or Image Content in a Footer",
       query: {
-        "component.name": { $in: ["Content"] },
+        "component.name": { $in: ["Text Content", "Image Content"] },
       },
     },
     defaultChildren: [
       {
         "@type": "@builder.io/sdk:Element",
         component: {
-          name: "Content",
+          name: "Text Content",
           options: { ...contentOptions },
         },
         children: [...defaultChildConfig],
@@ -570,16 +633,16 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     noWrap: true,
     canHaveChildren: true,
     childRequirements: {
-      message: "You can only put Content in a Header",
+      message: "You can only put Text or Image Content in a Header",
       query: {
-        "component.name": { $in: ["Content"] },
+        "component.name": { $in: ["Text Content", "Image Content"] },
       },
     },
     defaultChildren: [
       {
         "@type": "@builder.io/sdk:Element",
         component: {
-          name: "Content",
+          name: "Text Content",
           options: { ...contentOptions },
         },
         children: [...defaultChildConfig],
@@ -614,16 +677,16 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     noWrap: true,
     canHaveChildren: true,
     childRequirements: {
-      message: "You can only put Content in a Section",
+      message: "You can only put Text or Image Content in a Section",
       query: {
-        "component.name": { $in: ["Content"] },
+        "component.name": { $in: ["Text Content", "Image Content"] },
       },
     },
     defaultChildren: [
       {
         "@type": "@builder.io/sdk:Element",
         component: {
-          name: "Content",
+          name: "Text Content",
           options: { ...contentOptions },
         },
         children: [...defaultChildConfig],

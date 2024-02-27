@@ -22,7 +22,6 @@ export default meta;
 export const Content: Story = {
   args: {
     type: "text",
-    width:null,
     xs: {
       hidden: false,
       colStart: "left-gutter",
@@ -65,12 +64,8 @@ export const Content: Story = {
   argTypes: {
 
     type: {
-      options: ["decorative" , "text" , "image"],
+      options: ["visual" , "text"],
       control: { type: 'select' },
-    },
-
-    width: {
-      control: { type: 'number', min:320, max:1920, step: 100 }
     },
 
 

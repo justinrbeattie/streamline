@@ -12,7 +12,7 @@ import { LayoutContext } from "~/routes/layout";
 
 export interface ContentProps {
   width: number | null;
-  type: "decorative" | "text" | "image";
+  type: "visual" | "text";
   layer: "-5" | "-4" | "-3" | "-2" | "-1" | "0" | "1" | "2" | "3" | "4" | "5";
   xs: Placement;
   sm: Placement;
@@ -32,14 +32,14 @@ export const ContentComponent = component$<ContentProps>(
       hidden: false,
       colStart: "col 1",
       colEnd: "col 8",
-      rowStart: "row 1",
+      rowStart: "row 2",
       rowEnd: "row 8",
     },
     sm = {
       hidden: false,
       colStart: "col 1",
       colEnd: "col 8",
-      rowStart: "row 1",
+      rowStart: "row 2",
       rowEnd: "row 8",
     },
 
@@ -47,21 +47,21 @@ export const ContentComponent = component$<ContentProps>(
       hidden: false,
       colStart: "col 1",
       colEnd: "col 8",
-      rowStart: "row 1",
+      rowStart: "row 2",
       rowEnd: "row 8",
     },
     lg = {
       hidden: false,
       colStart: "col 1",
       colEnd: "col 8",
-      rowStart: "row 1",
+      rowStart: "row 2",
       rowEnd: "row 8",
     },
     xl = {
       hidden: false,
       colStart: "col 1",
       colEnd: "col 8",
-      rowStart: "row 1",
+      rowStart: "row 2",
       rowEnd: "row 8",
     },
   }) => {
