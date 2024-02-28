@@ -1,4 +1,4 @@
-import type { BuilderElement } from "@builder.io/sdk-qwik/types/types/element";
+
 import type { RegisteredComponent } from "@builder.io/sdk-qwik";
 import { ButtonComponent } from "./design/button/button";
 import {
@@ -9,7 +9,8 @@ import { ContentComponent } from "./design/content/content";
 import Counter from "./starters/builder-starter/counter/counter";
 import { MainComponent } from "./design/main/main";
 import { SectionComponent } from "./design/section/section";
-import { Input } from "@builder.io/sdk-qwik/types/types/input";
+import { BuilderElement } from "@builder.io/sdk-qwik/types/src/types/element";
+import { Input } from "@builder.io/sdk-qwik/types/src/types/input";
 
 /**
  * This array is used to integrate custom components within Builder.
