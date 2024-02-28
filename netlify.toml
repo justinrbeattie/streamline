@@ -1,4 +1,4 @@
 [build]
 publish = "dist"
 command = "npm run build"
-NODE_VERSION = "21.0.0"
+
