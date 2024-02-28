@@ -151,24 +151,23 @@ const contentOptions: any = {
   type: "text",
   xs: {
     hidden: false,
-    colStart: "left-gutter",
-    colSpan: "span 14",
+    colStart: "col 1",
+    colSpan: "span 12",
     rowStart: "row 1",
-    rowSpan: "span 6",
+    rowSpan: "span 4",
   },
   sm: {
     hidden: false,
     colStart: "col 1",
     colSpan: "span 12",
-    colEnd: "col 8",
     rowStart: "row 1",
-    rowSpan: "span 5",
+    rowSpan: "span 4",
   },
 
   md: {
     hidden: false,
     colStart: "col 1",
-    colSpan: "span 8",
+    colSpan: "span 11",
     rowStart: "row 1",
     rowSpan: "span 4",
   },
@@ -176,7 +175,7 @@ const contentOptions: any = {
   lg: {
     hidden: false,
     colStart: "col 1",
-    colSpan: "span 6",
+    colSpan: "span 8",
     rowStart: "row 1",
     rowSpan: "span 3",
   },
@@ -184,7 +183,7 @@ const contentOptions: any = {
   xl: {
     hidden: false,
     colStart: "col 1",
-    colSpan: "span 4",
+    colSpan: "span 6",
     rowStart: "row 1",
     rowSpan: "span 6",
   },
@@ -480,9 +479,6 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     name: "Text Content",
     noWrap: true,
     image: "https://img.icons8.com/ios/50/media-queries.png",
-    defaults: {},
-
-   
     inputs: [
       {
         name: "type",
@@ -497,7 +493,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         type: "object",
         required: true,
         subFields: contentPlacement,
-        defaultValue:contentOptions.xs
+        defaultValue:contentOptions.xs,        
       },
       {
         name: "sm",
@@ -582,9 +578,6 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
       },
     ],
   },
-
-
-
   {
     component: Counter,
     name: "Counter",

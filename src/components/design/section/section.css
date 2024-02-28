@@ -24,15 +24,18 @@
   padding-block-end: var(--page-grid-row-gap);
 
   .grid-guide {
-    border:1px dashed var(--surface-3);
+    opacity: 0;
+    border: 1px dashed var(--surface-3);
     font-size: var(--font-size-00);
-    display:flex;
-    color:var(--surface-3);
+    display: flex;
+    color: var(--surface-3);
     justify-content: center;
     align-items: center;
-    text-align:center;
+    text-align: center;
     font-weight: var(--font-weight-6);
   }
+
+  &:hover .grid-guide {
+    opacity: 1;
+  }
 }
-
-
