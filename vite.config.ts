@@ -14,7 +14,12 @@ export default defineConfig((): UserConfig => {
       qwikVite(),
       tsconfigPaths(),
       partytownVite({ dest: join(__dirname, "dist", "~partytown") }),
-    ],
+    ]
+  };
+});
+
+
+/* 
     server: {
       headers: {
         "Cache-Control": "public, max-age=0",
@@ -25,5 +30,5 @@ export default defineConfig((): UserConfig => {
         "Cache-Control": "public, max-age=600",
       },
     },
-  };
-});
+
+*/
