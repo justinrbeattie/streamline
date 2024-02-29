@@ -1,3 +1,5 @@
+import type {
+  Signal} from "@builder.io/qwik";
 import {
   component$,
   useSignal,
@@ -7,8 +9,7 @@ import {
   Slot,
   createContextId,
   useContextProvider,
-  useContext,
-  Signal,
+  useContext
 } from "@builder.io/qwik";
 import styles from "./carousel.css?inline";
 import { IconComponent } from "../icon/icon";
