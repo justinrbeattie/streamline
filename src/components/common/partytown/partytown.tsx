@@ -1,7 +1,6 @@
-import type {
-  PartytownConfig} from "@builder.io/partytown/integration";
 import {
-  partytownSnippet
+  partytownSnippet,
+  PartytownConfig,
 } from "@builder.io/partytown/integration";
 
 /**

@@ -2,9 +2,10 @@ import { component$, useContext } from "@builder.io/qwik";
 import { type DocumentHead } from "@builder.io/qwik-city";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import {
-  Content,
+  getContent,
+  RenderContent,
   getBuilderSearchParams,
-  fetchOneEntry,
+
 } from "@builder.io/sdk-qwik";
 import { CUSTOM_COMPONENTS } from "~/components/builder-registry";
 import { LayoutContext } from "./layout";
@@ -17,7 +18,7 @@ export const BUILDER_MODEL = "page";
 export const useBuilderContent = routeLoader$(async ({ url, error }) => {
   const isPreviewing = url.searchParams.has("builder.preview");
 
-  const builderContent = await fetchOneEntry({
+  const builderContent = await getContent({
     model: BUILDER_MODEL,
     apiKey: import.meta.env.PUBLIC_BUILDER_API_KEY,
     options: getBuilderSearchParams(url.searchParams),
@@ -43,7 +44,7 @@ export default component$(() => {
 
   return (
     <div class="layout-inner">
-      <Content
+      <RenderContent
         model={BUILDER_MODEL}
         content={content.value}
         apiKey={import.meta.env.PUBLIC_BUILDER_API_KEY}
