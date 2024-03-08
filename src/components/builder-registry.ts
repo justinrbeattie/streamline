@@ -9,8 +9,9 @@ import { ContentComponent } from "./design/content/content";
 import Counter from "./starters/builder-starter/counter/counter";
 import { MainComponent } from "./design/main/main";
 import { SectionComponent } from "./design/section/section";
-import type { BuilderElement } from "@builder.io/sdk-qwik/types/types/element";
-import type { Input } from "@builder.io/sdk-qwik/types/types/input";
+import { BuilderElement } from "@builder.io/sdk-qwik/types/src/types/element";
+import { Input } from "@builder.io/sdk-qwik/types/src/types/input";
+
 
 
 /**
