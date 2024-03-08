@@ -15,7 +15,7 @@ export default component$(() => {
     count: 0,
     number: 20,
   });
-
+// eslint-disable-next-line
   useVisibleTask$(({ cleanup }) => {
     const timeout = setTimeout(() => (state.count = 1), 500);
     cleanup(() => clearTimeout(timeout));

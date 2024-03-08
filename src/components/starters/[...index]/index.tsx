@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+/* import { component$ } from "@builder.io/qwik";
 import type { DocumentHead} from "@builder.io/qwik-city";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import {
@@ -61,3 +61,4 @@ export const head: DocumentHead = ({ resolveValue }) => {
     title: builderContent?.data?.title,
   };
 };
+ */
