@@ -1,24 +1,24 @@
-
-import { component$, useStylesScoped$ } from "@builder.io/qwik";
+import { Slot, component$, useStyles$ } from "@builder.io/qwik";
 import styles from "./icon.css?inline";
 
-
 export interface IconProps {
-  icon: string,
-  size?:  "small" | "medium" | "large";
-  variant?: "default" | "primary" | "secondary" | "warning" | "success" | "danger";
+  size?: "small" | "medium" | "large";
+  variant?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "warning"
+    | "success"
+    | "danger";
 }
-export const IconComponent = component$<IconProps>(({ icon = "las la-feather", size = "small", variant = "default" }) => {
-  useStylesScoped$(styles);
+export const IconComponent = component$<IconProps>(
+  ({ size = "small", variant = "default" }) => {
+    useStyles$(styles);
 
-  return (
-
-    <i
-      class={`icon ${icon} size-${size} variant-${variant}`}
-    >
-
-    </i> 
-  );
-});
-
-
+    return (
+      <span class={`icon material-symbols-rounded size-${size} variant-${variant}`}>
+        <Slot />
+      </span>
+    );
+  }
+);

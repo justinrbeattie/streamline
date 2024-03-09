@@ -87,10 +87,9 @@ export const CarouselComponent = component$<CarouselProps>(
             }}
           >
             <IconComponent
-              icon="las la-angle-left"
               size="small"
               variant="default"
-            ></IconComponent>
+            >arrow_back_ios</IconComponent>
           </button>
         ) : (
           ""
@@ -109,10 +108,9 @@ export const CarouselComponent = component$<CarouselProps>(
             }}
           >
             <IconComponent
-              icon="las la-angle-right"
               size="small"
               variant="default"
-            ></IconComponent>
+            >arrow_forward_ios</IconComponent>
           </button>
         ) : (
           ""
