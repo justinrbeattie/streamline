@@ -61,7 +61,6 @@
     "vite-tsconfig-paths": "^4.3.1"
   },
   "dependencies": {
-    "@qwikest/icons": "^0.0.13",
     "css-has-pseudo": "^6.0.2",
     "open-props": "^1.6.21"
   }

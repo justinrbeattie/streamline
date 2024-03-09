@@ -44,7 +44,7 @@ export const NavBlockStart = component$(() => {
         ariaExpanded={layoutContext.asideInlineStartOpened}
         ariaPressed={layoutContext.asideInlineStartOpened}
       >
-        <IconComponent icon="InMenu"></IconComponent>
+        <IconComponent icon="las la-bars"></IconComponent>
       </ButtonComponent>
       <nav></nav>
       <ButtonComponent
@@ -60,7 +60,7 @@ export const NavBlockStart = component$(() => {
         ariaExpanded={layoutContext.asideInlineEndOpened}
         ariaPressed={layoutContext.asideInlineEndOpened}
       >
-        <IconComponent icon="InSettings"></IconComponent>
+        <IconComponent icon="las la-cog"></IconComponent>
       </ButtonComponent>
     </div>
   );

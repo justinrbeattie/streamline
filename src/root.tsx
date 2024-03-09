@@ -9,8 +9,6 @@ import {
 import { RouterHead } from "./components/common/router-head/router-head";
 
 import "./global.css";
-import * as icon from "@qwikest/icons/iconoir";
-export const Icon = icon;
 
 export default component$(() => {
   /**

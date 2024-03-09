@@ -87,7 +87,7 @@ export const CarouselComponent = component$<CarouselProps>(
             }}
           >
             <IconComponent
-              icon="InNavArrowLeft"
+              icon="las la-angle-left"
               size="small"
               variant="default"
             ></IconComponent>
@@ -109,7 +109,7 @@ export const CarouselComponent = component$<CarouselProps>(
             }}
           >
             <IconComponent
-              icon="InNavArrowRight"
+              icon="las la-angle-right"
               size="small"
               variant="default"
             ></IconComponent>
