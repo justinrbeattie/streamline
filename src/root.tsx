@@ -28,7 +28,7 @@ export default component$(() => {
       </head>
       <body lang="en">
         <RouterOutlet />
-        <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
+        <script defer src="./scripts/scroll-timeline.js"></script>
       </body>
     </QwikCityProvider>
   );
