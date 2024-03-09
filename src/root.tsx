@@ -29,8 +29,6 @@ export default component$(() => {
       <body lang="en">
         <RouterOutlet />
         <script defer src="./scripts/scroll-timeline.js"></script>
-        <script defer src="./scripts/browser-global.js"></script>
-        <script defer >cssHasPseudo(document)</script>
       </body>
     </QwikCityProvider>
   );

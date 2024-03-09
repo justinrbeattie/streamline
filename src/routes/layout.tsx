@@ -19,8 +19,8 @@ import { AsideInlineStart } from "~/components/layout/aside-inline-start/aside-i
 import { NavBlockEnd } from "~/components/layout/nav-block-end/nav-block-end";
 import { NavBlockStart } from "~/components/layout/nav-block-start/nav-block-start";
 import { Drawer } from "~/components/layout/drawer/drawer";
-// @ts-ignore comment
-/*  import cssHasPseudo from "css-has-pseudo/browser";  */
+// @ts-ignore comment  
+import cssHasPseudo from "css-has-pseudo/browser"; 
 import { BreakpointEmulator } from "~/components/common/breakpoint-emulator/breakpoint-emulator";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
@@ -75,7 +75,9 @@ export default component$(() => {
   useContextProvider(LayoutContext, layout);
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
-/*     cssHasPseudo(document); */
+    if(!CSS.supports('selector(:has(*))')) {
+      cssHasPseudo(document);
+    }
     if (layoutRef.value && layoutRef.value.parentElement) {
       const observer = new ResizeObserver((entries) => {
         entries.forEach((entry) => {
