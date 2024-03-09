@@ -16,7 +16,7 @@ export const IconComponent = component$<IconProps>(
     useStyles$(styles);
 
     return (
-      <span class={`icon material-symbols-rounded size-${size} variant-${variant}`}>
+      <span class={`icon size-${size} variant-${variant}`}>
         <Slot />
       </span>
     );

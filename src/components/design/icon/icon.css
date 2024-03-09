@@ -1,56 +1,59 @@
-
-
 .icon {
-    
-    &.size-small {
-        font-size:24px;
-        line-height: 24px;
-        min-width: 24px;
-        height: 24px
-    }
-    
-    &.size-medium {
-        font-size:44px;
-        line-height: 44px;
-        min-width: 44px;
-        height: 44px;
-    }
-    
-    &.size-large {
-        font-size: 56px;
-        line-height: 56px;
-        min-width: 56px;
-        height: 56px;
-    }
-    
-    &.variant-default {
-        color: inherit;
-    }
-    
-    &.variant-primary {
-        color: var(--primary);
-    }
-    
-    &.variant-secondary {
-        color: var(--secondary);
-    }
-    
-    &.variant-success {
-        color: var(--success);
-    }
-    
-    &.variant-warning {
-        color: var(--warning);
-    }
-    
-    &.variant-danger {
-        color: var(--danger);
-    }
-    
+  &.size-small {
+    font-size: 24px;
+    line-height: 24px;
+    min-width: 24px;
+    height: 24px;
+  }
 
+  &.size-medium {
+    font-size: 44px;
+    line-height: 44px;
+    min-width: 44px;
+    height: 44px;
+  }
+
+  &.size-large {
+    font-size: 56px;
+    line-height: 56px;
+    min-width: 56px;
+    height: 56px;
+  }
+
+  &.variant-default {
+    color: inherit;
+  }
+
+  &.variant-primary {
+    color: var(--primary);
+  }
+
+  &.variant-secondary {
+    color: var(--secondary);
+  }
+
+  &.variant-success {
+    color: var(--success);
+  }
+
+  &.variant-warning {
+    color: var(--warning);
+  }
+
+  &.variant-danger {
+    color: var(--danger);
+  }
+
+  svg {
+    color: inherit !important;
+    > path {
+      stroke: currentColor !important;
+    }
+  }
 }
 
 [aria-pressed="true"] .icon {
-
+  > svg path {
+    stroke-width: 2 !important;
   }
-
+}
