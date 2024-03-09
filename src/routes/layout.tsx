@@ -20,7 +20,7 @@ import { NavBlockEnd } from "~/components/layout/nav-block-end/nav-block-end";
 import { NavBlockStart } from "~/components/layout/nav-block-start/nav-block-start";
 import { Drawer } from "~/components/layout/drawer/drawer";
 // @ts-ignore comment
-/* import cssHasPseudo from "css-has-pseudo/browser"; */
+/*  import cssHasPseudo from "css-has-pseudo/browser";  */
 import { BreakpointEmulator } from "~/components/common/breakpoint-emulator/breakpoint-emulator";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
