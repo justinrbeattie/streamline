@@ -19,8 +19,6 @@ import { AsideInlineStart } from "~/components/layout/aside-inline-start/aside-i
 import { NavBlockEnd } from "~/components/layout/nav-block-end/nav-block-end";
 import { NavBlockStart } from "~/components/layout/nav-block-start/nav-block-start";
 import { Drawer } from "~/components/layout/drawer/drawer";
-// @ts-ignore comment  
-import cssHasPseudo from "css-has-pseudo/browser"; 
 import { BreakpointEmulator } from "~/components/common/breakpoint-emulator/breakpoint-emulator";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
@@ -75,8 +73,14 @@ export default component$(() => {
   useContextProvider(LayoutContext, layout);
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
-    if(!CSS.supports('selector(:has(*))')) {
-      cssHasPseudo(document);
+    if (!CSS.supports('selector(:has(*))')) {
+      // @ts-ignore comment  
+      import('css-has-pseudo/browser').then((module) => {
+        const cssHasPseudo = module.default;
+        cssHasPseudo(document);
+      }).catch((error) => {
+        console.error('Failed to load css-has-pseudo polyfill:', error);
+      });
     }
     if (layoutRef.value && layoutRef.value.parentElement) {
       const observer = new ResizeObserver((entries) => {
