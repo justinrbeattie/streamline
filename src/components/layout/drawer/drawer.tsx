@@ -2,9 +2,9 @@ import {
   component$,
   useContext,
   useSignal,
-  useStore,
   useStyles$,
   useVisibleTask$,
+  $
 } from "@builder.io/qwik";
 import styles from "./drawer.css?inline";
 import { LayoutContext } from "~/routes/layout";
@@ -15,9 +15,6 @@ export const Drawer = component$(() => {
   const drawerHeaderRef = useSignal<Element>();
   const drawerContentRef = useSignal<Element>();
   const layoutContext = useContext(LayoutContext);
-  const state = useStore({
-    touched: false,
-  });
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
     if (
@@ -80,6 +77,29 @@ export const Drawer = component$(() => {
     }
   });
 
+  const onTouchStart = $(() => {
+    layoutContext.drawerTouching = true;
+    // Clear any existing timeout to reset the timer
+    if (layoutContext.drawerTimeoutRef !== null) {
+      clearTimeout(layoutContext.drawerTimeoutRef.current);
+    }
+    // Set a new timeout
+    layoutContext.drawerTimeoutRef= setTimeout(() => {
+      if (layoutContext.drawerCollapsed) {
+        layoutContext.drawerTouching = false;
+      }
+    }, 2000) as unknown as number; // setTimeout returns a number, but useRef typing expects a different type
+  });
+
+  const onTouchEnd = $(() => {
+    layoutContext.drawerTouching = false;
+    // Clear the timeout if the touch ends before 2 seconds
+    if (layoutContext.drawerTimeoutRef !== null) {
+      clearTimeout(layoutContext.drawerTimeoutRef);
+    }
+  });
+
+
   return (
     //@ts-ignore
     <div
@@ -97,12 +117,12 @@ export const Drawer = component$(() => {
         <div
           ref={drawerHeaderRef}
           id="drawer-header"
-          onMouseEnter$={() => (state.touched = true)}
-          onMouseLeave$={() => (state.touched = false)}
-          onTouchStart$={() => (state.touched = true)}
-          onTouchEnd$={() => (state.touched = false)}
-          onTouchCancel$={() => (state.touched = false)}
-          class={`drawer-header ${state.touched ? "touched" : ""}`}
+          onMouseEnter$={onTouchStart}
+          onMouseLeave$={onTouchEnd}
+          onTouchStart$={onTouchStart}
+          onTouchEnd$={onTouchEnd}
+          onTouchCancel$={onTouchEnd}
+          class={`drawer-header ${layoutContext.drawerTouching ? "touched" : ""}`}
         ></div>
         <div
           ref={drawerContentRef}

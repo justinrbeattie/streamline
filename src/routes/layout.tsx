@@ -60,6 +60,8 @@ export default component$(() => {
     },
     asideInlineStartOpened: false,
     asideInlineEndOpened: false,
+    drawerTimeoutRef:null,
+    drawerTouching:false,
     drawerClosable: false,
     drawerClosed: false,
     drawerOpen: false,
@@ -181,6 +183,8 @@ export type LayoutContext = {
   };
   asideInlineStartOpened: boolean;
   asideInlineEndOpened: boolean;
+  drawerTimeoutRef:any;
+  drawerTouching:boolean;
   drawerClosable: boolean;
   drawerClosed: boolean;
   drawerOpen: boolean;
