@@ -1,7 +1,7 @@
 
 
 
-import { component$, useContext, useSignal, useStyles$, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, useContext, useSignal, useStore, useStyles$, useVisibleTask$ } from "@builder.io/qwik";
 import styles from "./drawer.css?inline";
 import { LayoutContext } from "~/routes/layout";
 
@@ -13,6 +13,9 @@ export const Drawer = component$(() => {
     const drawerHeaderRef = useSignal<Element>();
     const drawerContentRef = useSignal<Element>();
     const layoutContext = useContext(LayoutContext);
+    const state = useStore({
+        touched: false,
+      });
 // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(() => {
         if (drawerContainerRef.value && drawerHeaderRef.value && drawerContentRef.value) {
@@ -60,8 +63,13 @@ export const Drawer = component$(() => {
     return (
         //@ts-ignore
         <div id="drawer-wrapper" class="drawer-wrapper" closable={layoutContext.drawerClosable} transitioning={layoutContext.drawerTransitioning} closed={layoutContext.drawerClosed} open={layoutContext.drawerOpen} expanded={layoutContext.drawerExpanded} collapsed={layoutContext.drawerCollapsed} >
-            <div class="drawer-container" ref={drawerContainerRef}>
-                <div ref={drawerHeaderRef} class="drawer-header" id="drawer-header">
+            <div class="drawer-container" ref={drawerContainerRef}
+            >
+                <div ref={drawerHeaderRef}  id="drawer-header"
+                                  onTouchStart$={() => (state.touched = true)}
+                                  onTouchEnd$={() => (state.touched = false)}
+                                  class={`drawer-header ${state.touched ? 'touched' : ''}`}
+                >
 
                 </div>
                 <div ref={drawerContentRef} class="drawer-content" id="drawer-content">

@@ -142,7 +142,8 @@ body {
 
 .drawer-wrapper[transitioning] .drawer-container,
 .drawer-wrapper[expanded] .drawer-container,
-.drawer-wrapper:has(.drawer-header:hover) .drawer-container  {
+.drawer-wrapper:has(.drawer-header:hover) .drawer-container,
+.drawer-wrapper:has(.drawer-header.touched) .drawer-container  {
     clip-path: inset(var(--drawer-offset) 0px 0px 0px);
 }
 
