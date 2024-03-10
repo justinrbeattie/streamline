@@ -1,7 +1,5 @@
 
 body {
-    background-color:rgba(255,255,255,1);
-    transition: background-color ease-in-out .25s ;
 
     &:has([open]:where([transitioning], [expanded])) {
         overflow: hidden;
@@ -109,6 +107,7 @@ body {
             scroll-snap-align: end;
             border-top-right-radius: var(--radius-3);
             border-top-left-radius: var(--radius-3);
+            border:1px solid var(--surface-1);
             position: relative;
             transition: all .25s var(--ease-in-out-2);
 
