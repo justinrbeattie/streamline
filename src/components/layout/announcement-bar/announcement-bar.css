@@ -1,9 +1,11 @@
 .announcement-bar {
     display:flex;
-    background:lightblue;
+    background-color:var(--surface-1);
+    color:inherit;
     justify-content: center;
     align-items: center;
     z-index:var(--layer-5);
     width:100%;
     height:var(--announcement-bar-height);
+    transition: all 0.25s ease-in-out;
 }

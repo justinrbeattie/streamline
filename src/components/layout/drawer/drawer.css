@@ -1,5 +1,18 @@
 
 body {
+    background-color:var(--surface-0);
+    transition: background-color ease-in-out .25s ;
+
+    &:has([open]:where([transitioning], [expanded])) {
+        overflow: hidden;
+        background-color: rgba(0,0,0,1);
+
+        .announcement-bar {
+            background-color: var(--surface-0);
+            color:transparent;
+        }
+    }
+
 
 
     &:has([open]:where([transitioning], [expanded])) {
@@ -7,10 +20,10 @@ body {
         background-color: rgba(0,0,0,1);
     }
 
-    .nav-block-start,
-    .announcement-bar {
+    .nav-block-start {
         opacity:calc(1 - (var(--drawer-progress) * 2));
-    }
+    } 
+
  
     .layout {
         transform: translateZ(calc(-1rem * var(--drawer-progress)));
@@ -52,7 +65,7 @@ body {
         border-top-left-radius: var(--radius-2);
         border-top-right-radius:  var(--radius-2);
         pointer-events: none;
-        transform:translateY(1%)  scale(calc(1.04 - (0.05 * var(--drawer-progress))));
+        transform:translateY(1%)  scale(calc(1.04 - (0.06 * var(--drawer-progress))));
     }
 
     &[closable] {
