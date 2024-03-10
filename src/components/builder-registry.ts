@@ -6,7 +6,6 @@ import {
   CarouselItemComponent,
 } from "./design/carousel/carousel";
 import { ContentComponent } from "./design/content/content";
-import Counter from "./starters/builder-starter/counter/counter";
 import { MainComponent } from "./design/main/main";
 import { SectionComponent } from "./design/section/section";
 import type { BuilderElement } from "@builder.io/sdk-qwik/types/src/types/element";
@@ -580,10 +579,6 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         defaultValue:contentOptions.xl
       },
     ],
-  },
-  {
-    component: Counter,
-    name: "Counter",
   },
   {
     component: SectionComponent,
