@@ -27,7 +27,7 @@ export const Drawer = component$(() => {
                     layoutContext.drawerClosed = layoutContext.drawerHeaderIntersectionRatio <= 0.1 && layoutContext.drawerContentIntersectionRatio <= 0.1;
                     layoutContext.drawerCollapsed = layoutContext.drawerHeaderIntersectionRatio === 1 && layoutContext.drawerContentIntersectionRatio <= 0.1;
                     layoutContext.drawerOpen = layoutContext.drawerHeaderIntersectionRatio === 1;
-                    layoutContext.drawerTransitioning = layoutContext.drawerHeaderIntersectionRatio === 1 && layoutContext.drawerContentIntersectionRatio >= .5 && layoutContext.drawerContentIntersectionRatio < 1;
+                    layoutContext.drawerTransitioning = layoutContext.drawerHeaderIntersectionRatio === 1 && layoutContext.drawerContentIntersectionRatio > 0.1 && layoutContext.drawerContentIntersectionRatio < 1;
                     layoutContext.drawerExpanded = layoutContext.drawerHeaderIntersectionRatio === 1 && layoutContext.drawerContentIntersectionRatio === 1;
 
                     if (layoutContext.drawerOpen && layoutContext.drawerExpanded) {

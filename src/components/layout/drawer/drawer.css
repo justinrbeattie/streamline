@@ -81,13 +81,10 @@ body {
         height: calc(100dvh - var(--nav-block-end-height));
         max-width: 80dvw;
         overflow: scroll;
-        clip-path: inset(var(--drawer-scroll-height) 0px 0px 0px);
         scroll-snap-type: y mandatory;
-        animation: clip-effect linear both;
-        animation-timeline: scroll(block self);
-        animation-range: 0dvh var(--drawer-scroll-height);
         pointer-events: all;
         z-index:var(--layer-3);
+        transition: all .5s var(--ease-in-out-2);
 
         &:before {
             content: '';
@@ -132,9 +129,20 @@ body {
     }
 }
 
-@keyframes clip-effect {
-    to {
-        clip-path: inset(var(--drawer-offset) 0px 0px 0px);
-    }
+
+
+
+.drawer-wrapper > .drawer-container {
+    background:red;
+}
+
+.drawer-wrapper[collapsed] .drawer-container {
+    clip-path: inset(var(--drawer-scroll-height) 0px 0px 0px);
+}
+
+.drawer-wrapper[transitioning] .drawer-container,
+.drawer-wrapper[expanded] .drawer-container,
+.drawer-wrapper:has(.drawer-header:hover) .drawer-container  {
+    clip-path: inset(var(--drawer-offset) 0px 0px 0px);
 }
 

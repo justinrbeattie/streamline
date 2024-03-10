@@ -101,6 +101,7 @@ export default component$(() => {
     }
 
 
+
     if (layoutRef.value && layoutRef.value.parentElement) {
       const observer = new ResizeObserver((entries) => {
         entries.forEach((entry) => {
