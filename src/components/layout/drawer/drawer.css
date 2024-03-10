@@ -83,7 +83,7 @@ body {
         pointer-events: all;
         z-index:var(--layer-3);
         clip-path: inset(var(--drawer-scroll-height) 0px 0px 0px);
-        transition: all .5s var(--ease-in-out-2);
+        transition: clip-path .5s var(--ease-in-out-2);
 
         &:before {
             content: '';
@@ -137,7 +137,3 @@ body {
     transition: all 0s var(--ease-in-out-2);
 }
 
-
-.scrolling:not(.scroll-direction-up) .drawer-container {
-       transform:translateY(calc(var(--nav-block-end-height) + var(--drawer-header-height)));
-  }

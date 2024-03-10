@@ -1,6 +1,6 @@
 .nav-block-start {
   z-index: var(--layer-4);
-  position: sticky;
+  position:sticky;
   inset-block-start: 0px;
   display: flex;
   justify-content: space-between;
@@ -10,8 +10,7 @@
   width: 100%;
   height: var(--nav-block-start-height);
   margin-bottom:calc(var(--nav-block-start-height) * -1);
-  clip-path: inset(0px 0px -100px 0px);
-  transition: all .5s var(--ease-in-out-2);
+    transition: all .5s var(--ease-in-out-2);
 
 
 
@@ -61,8 +60,4 @@
   animation: navBlockStartScrollBackgroundAnimation linear both;
   animation-timeline: scroll(block root);
   animation-range: 80vh calc(80vh + var(--nav-block-start-height));
-}
-
-.scrolling:not(.scroll-direction-up) .nav-block-start {
-  clip-path: inset(0px 0px 100px 0px);
 }

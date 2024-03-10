@@ -23,7 +23,7 @@ html {
   --page-height: 100dvh;
   --announcement-bar-height: clamp(2rem, 6vh, 2rem);
   --nav-block-start-height: clamp(2.5rem, 8vh, 4rem);
-  --nav-block-end-height: clamp(2.5rem, 8vh, 4rem);
+  --nav-block-end-height:0px;
   --aside-start-width: clamp(2.5rem, 8vh, 4rem);
   --aside-end-width: clamp(2.5rem, 8vh, 4rem);
   --viewport-height: calc(var(--page-height) - (var(--announcement-bar-height) + var(--nav-block-start-height) + var(--nav-block-end-height)));

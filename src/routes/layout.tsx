@@ -18,7 +18,6 @@ import styles from "./layout.css?inline";
 import { AnnouncementBar } from "~/components/layout/announcement-bar/announcement-bar";
 import { AsideInlineEnd } from "~/components/layout/aside-inline-end/aside-inline-end";
 import { AsideInlineStart } from "~/components/layout/aside-inline-start/aside-inline-start";
-import { NavBlockEnd } from "~/components/layout/nav-block-end/nav-block-end";
 import { NavBlockStart } from "~/components/layout/nav-block-start/nav-block-start";
 import { Drawer } from "~/components/layout/drawer/drawer";
 import { BreakpointEmulator } from "~/components/common/breakpoint-emulator/breakpoint-emulator";
@@ -189,7 +188,7 @@ export default component$(() => {
         </div>
       </div>
       <Drawer></Drawer>
-      <NavBlockEnd />
+{/*       <NavBlockEnd /> */}
     </div>
   );
 });
