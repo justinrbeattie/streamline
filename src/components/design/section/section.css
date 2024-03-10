@@ -20,7 +20,6 @@
   grid-auto-rows: var(--page-grid-row-height);
   column-gap: var(--page-grid-column-gap);
   row-gap: var(--page-grid-row-gap);
-  background: white;
   padding-block-end: var(--page-grid-row-gap);
 
   .grid-guide {

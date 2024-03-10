@@ -10,7 +10,8 @@
   width: 100%;
   height: var(--nav-block-start-height);
   margin-bottom:calc(var(--nav-block-start-height) * -1);
-  transition: all .125s var(--ease-in-out-2);
+  clip-path: inset(0px 0px -100px 0px);
+  transition: all .5s var(--ease-in-out-2);
 
 
 
@@ -62,6 +63,6 @@
   animation-range: 80vh calc(80vh + var(--nav-block-start-height));
 }
 
-.scroll-direction-down .nav-block-start {
-  transform:translateY(calc(var(--nav-block-start-height) * -1));
+.scrolling:not(.scroll-direction-up) .nav-block-start {
+  clip-path: inset(0px 0px 100px 0px);
 }

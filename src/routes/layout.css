@@ -1,7 +1,7 @@
 body {
     display: grid;
     width: var(--page-width);
-    background-color:rgba(0,255,255,1);
+    background-color:rgba(0,255,255,255);
    
 
     .layout-wrapper {
@@ -20,7 +20,7 @@ body {
             "aside-start content aside-end"
             "nav-block-end nav-block-end nav-block-end";
         position: relative;
-        background-color: var(--surface-0);
+        background-color: var(--surface-1);
         overflow-y: visible;
         overflow-x: clip;
         transform: translateZ(0px);
