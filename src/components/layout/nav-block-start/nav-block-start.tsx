@@ -30,7 +30,6 @@ export const NavBlockStart = component$(() => {
 
   return (
     <div class="nav-block-start">
-        <div class="placeholder"></div>
       <ButtonComponent
         onClick={asideInlineStartButtonToggle}
         id="aside-inline-start-button"

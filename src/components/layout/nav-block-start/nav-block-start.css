@@ -1,64 +1,47 @@
 .nav-block-start {
   z-index: var(--layer-4);
-  position:sticky;
+  position: sticky;
   inset-block-start: 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: var(--surface-0);
-  opacity:1;
+  opacity: 1;
   width: 100%;
+  max-width: 100dvw;
+  background: rgba(255, 255, 255, 0);
   height: var(--nav-block-start-height);
-  margin-bottom:calc(var(--nav-block-start-height) * -1);
-    transition: all .5s var(--ease-in-out-2);
-
-
+  margin-inline: auto;
+  margin-bottom: calc(var(--nav-block-start-height) * -1);
+  border-radius: 0;
+  box-shadow: var(--shadow-1);
+  transform: translateY(0rem);
+  transition: all 0.5s var(--ease-in-out-2);
 
   a {
     color: inherit;
   }
 
-  .placeholder {
-    content: '';
-    position: absolute;
-    inset: 0px;
-    background: var(--surface-0);
-    border-bottom:1px solid var(--surface-2);
-    box-shadow:var(--shadow-3);
-    z-index: -1;
-    pointer-events: none;
-    transform: translateY(-200%);
-    transition: all .125s var(--ease-in-out-2);
-
-  }
-
-
-  button[aria-expanded="true"]  {
-    color:var(--text-1);
-   }
-}
-
-
-@keyframes navBlockStartScrollBackgroundAnimation {
-  20%,100% {
-    transform: translateY(0%)
+  button[aria-expanded="true"] {
+    color: var(--text-1);
   }
 }
 
 @keyframes navBlockStartScrollTextAnimation {
-  20%,100% {
+  20%,
+  100% {
     color: var(--text-0);
+    border-radius: var(--radius-3);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: var(--shadow-3);
+    max-width: calc(100dvw - var(--size-fluid-3));
+    transform: translateY(calc(var(--size-fluid-3) / 2));
   }
 }
 
 .nav-block-start {
   animation: navBlockStartScrollTextAnimation linear both;
   animation-timeline: scroll(block root);
-  animation-range: 80vh calc(80vh + var(--nav-block-start-height));
-}
-
-.placeholder  {
-  animation: navBlockStartScrollBackgroundAnimation linear both;
-  animation-timeline: scroll(block root);
-  animation-range: 80vh calc(80vh + var(--nav-block-start-height));
+  animation-range: var(--nav-block-start-height)
+    calc(var(--nav-block-start-height) * 2);
 }
