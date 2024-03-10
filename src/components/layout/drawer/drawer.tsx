@@ -85,6 +85,7 @@ export const Drawer = component$(() => {
     <div
       id="drawer-wrapper"
       class="drawer-wrapper"
+          //@ts-ignore
       closable={layoutContext.drawerClosable}
       transitioning={layoutContext.drawerTransitioning}
       closed={layoutContext.drawerClosed}
