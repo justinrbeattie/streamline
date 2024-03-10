@@ -1,7 +1,9 @@
 body {
     display: grid;
     width: var(--page-width);
-    background-color:rgba(0,255,255,255);
+    background-color:rgba(255,255,255,1);
+    transition: all .5s var(--ease-in-out-2);
+    
    
 
     .layout-wrapper {
