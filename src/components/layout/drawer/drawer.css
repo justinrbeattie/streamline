@@ -4,6 +4,7 @@ body {
 
     &:has([open]:where([transitioning], [expanded])) {
         overflow: hidden;
+        background:black;
     }
 
     .nav-block-start,
