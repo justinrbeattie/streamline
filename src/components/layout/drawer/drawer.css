@@ -11,13 +11,6 @@ body {
         }
     }
 
-
-
-    &:has([open]:where([transitioning], [expanded])) {
-        overflow: hidden;
-        background-color: rgba(0,0,0,1);
-    }
-
     .nav-block-start {
         opacity:calc(1 - (var(--drawer-progress) * 2));
     } 
