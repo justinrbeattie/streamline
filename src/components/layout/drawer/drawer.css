@@ -1,9 +1,9 @@
 
 body {
-
+    background-color:var(--surface-0);
     &:has([open]:where([transitioning], [expanded])) {
         overflow: hidden;
-        background-color: rgba(0,0,0,1);
+        background-color:var(--surface-8);
 
         .announcement-bar {
             background-color: var(--surface-0);
