@@ -21,6 +21,9 @@ import { NavBlockStart } from "~/components/layout/nav-block-start/nav-block-sta
 import { Drawer } from "~/components/layout/drawer/drawer";
 import { BreakpointEmulator } from "~/components/common/breakpoint-emulator/breakpoint-emulator";
 
+declare const ScrollTimeline: any;
+
+
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
   // https://qwik.builder.io/docs/caching/
@@ -82,6 +85,22 @@ export default component$(() => {
         console.error('Failed to load css-has-pseudo polyfill:', error);
       });
     }
+
+    if (typeof ScrollTimeline === 'undefined') {
+      const script = document.createElement('script');
+      script.src = './scripts/scroll-timeline.js';
+      script.defer = true;
+      script.onload = () => {
+        // The polyfill is now loaded and can be used.
+        console.log('ScrollTimeline polyfill has been loaded successfully.');
+      };
+      script.onerror = (error) => {
+        console.error('Failed to load the ScrollTimeline polyfill:', error);
+      };
+      document.head.appendChild(script);
+    }
+
+
     if (layoutRef.value && layoutRef.value.parentElement) {
       const observer = new ResizeObserver((entries) => {
         entries.forEach((entry) => {

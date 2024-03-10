@@ -28,7 +28,6 @@ export default component$(() => {
       </head>
       <body lang="en">
         <RouterOutlet />
-        <script defer src="./scripts/scroll-timeline.js"></script>
       </body>
     </QwikCityProvider>
   );
