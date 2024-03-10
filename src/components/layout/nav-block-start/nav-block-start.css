@@ -17,6 +17,10 @@
   box-shadow: var(--shadow-1);
   transform: translateY(0rem);
   transition: all 0.5s var(--ease-in-out-2);
+  animation: navBlockStartScrollTextAnimation linear both;
+  animation-timeline: scroll(block root);
+  animation-range: var(--nav-block-start-height)
+    calc(var(--nav-block-start-height) * 2);
 
   a {
     color: inherit;
@@ -37,11 +41,4 @@
     max-width: calc(100dvw - var(--size-fluid-3));
     transform: translateY(calc(var(--size-fluid-3) / 2));
   }
-}
-
-.nav-block-start {
-  animation: navBlockStartScrollTextAnimation linear both;
-  animation-timeline: scroll(block root);
-  animation-range: var(--nav-block-start-height)
-    calc(var(--nav-block-start-height) * 2);
 }

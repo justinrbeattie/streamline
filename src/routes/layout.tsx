@@ -4,12 +4,10 @@ import {
   createContextId,
   Slot,
   useContextProvider,
-  useOnWindow,
   useSignal,
   useStore,
   useStyles$,
   useVisibleTask$,
-  $
 } from "@builder.io/qwik";
 import { routeLoader$, useLocation } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
@@ -98,10 +96,6 @@ export default component$(() => {
       const script = document.createElement('script');
       script.src = './scripts/scroll-timeline.js';
       script.defer = true;
-      script.onload = () => {
-        // The polyfill is now loaded and can be used.
-        console.log('ScrollTimeline polyfill has been loaded successfully.');
-      };
       script.onerror = (error) => {
         console.error('Failed to load the ScrollTimeline polyfill:', error);
       };
@@ -150,7 +144,7 @@ export default component$(() => {
     }
   });
 
-  useOnWindow(
+/*   useOnWindow(
     'scroll',
     $(() => {
       const currentScrollY = window.scrollY;
@@ -169,11 +163,11 @@ export default component$(() => {
         // Perform any action after scrolling has stopped
       }, 500); // 150 ms of no scroll events to consider it as stopped
     })
-  );
+  ); */
 
   return (
     <div
-      class={`${layout.scrollingStopped? '' : 'scrolling'}  scroll-direction-${layout.scrollDirection} ${layout.screen.classes} ${layout.isEditing ? layout.screen.emulatedBreakpoint : ""}`}
+      class={`${layout.screen.classes} ${layout.isEditing ? layout.screen.emulatedBreakpoint : ""}`}
       style={`--drawer-progress:${layout.drawerContentIntersectionRatio};`}
     >
       {layout.isEditing ? <BreakpointEmulator></BreakpointEmulator> : ""}
