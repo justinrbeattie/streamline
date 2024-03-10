@@ -4,7 +4,7 @@ import {
   useSignal,
   useStyles$,
   useVisibleTask$,
-  $
+  $,
 } from "@builder.io/qwik";
 import styles from "./drawer.css?inline";
 import { LayoutContext } from "~/routes/layout";
@@ -27,10 +27,18 @@ export const Drawer = component$(() => {
           entries.forEach((entry) => {
             if (entry.target.id === "drawer-header") {
               layoutContext.drawerHeaderIntersectionRatio =
-                entry.intersectionRatio;
+                Math.round((entry.intersectionRatio + Number.EPSILON) * 100) /
+                100;
             } else if (entry.target.id === "drawer-content") {
+              const contentIntersectionRatio =
+                Math.round((entry.intersectionRatio + Number.EPSILON) * 100) /
+                100;
               layoutContext.drawerContentIntersectionRatio =
-                entry.intersectionRatio;
+                contentIntersectionRatio <= 0.05
+                  ? 0
+                  : contentIntersectionRatio >= 0.95
+                    ? 1
+                    : contentIntersectionRatio;
             }
 
             layoutContext.drawerClosed =
@@ -64,7 +72,7 @@ export const Drawer = component$(() => {
         },
         {
           root: drawerContainerRef.value,
-          threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+          threshold: Array.from({ length: 101 }, (_, index) => Math.round(index * 0.01 * 100) / 100),
         }
       );
 
@@ -84,7 +92,7 @@ export const Drawer = component$(() => {
       clearTimeout(layoutContext.drawerTimeoutRef.current);
     }
     // Set a new timeout
-    layoutContext.drawerTimeoutRef= setTimeout(() => {
+    layoutContext.drawerTimeoutRef = setTimeout(() => {
       if (layoutContext.drawerCollapsed) {
         layoutContext.drawerTouching = false;
       }
@@ -99,13 +107,12 @@ export const Drawer = component$(() => {
     }
   });
 
-
   return (
     //@ts-ignore
     <div
       id="drawer-wrapper"
       class="drawer-wrapper"
-          //@ts-ignore
+      //@ts-ignore
       closable={layoutContext.drawerClosable}
       transitioning={layoutContext.drawerTransitioning}
       closed={layoutContext.drawerClosed}

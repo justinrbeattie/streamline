@@ -1,7 +1,7 @@
 body {
     display: grid;
     width: var(--page-width);
-    background-color: black;
+    background-color: var(--surface-0);
 
     .layout-wrapper {
         perspective: 1000px;
@@ -19,11 +19,10 @@ body {
             "aside-start content aside-end"
             "nav-block-end nav-block-end nav-block-end";
         position: relative;
-        background-color: var(--surface-2);
+        background-color: var(--surface-0);
         overflow-y: visible;
         overflow-x: clip;
         transform: translateZ(0px);
-        transition: all .5s ease-in-out;
 
 
         >.aside-inline-start {

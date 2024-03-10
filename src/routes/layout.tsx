@@ -147,6 +147,7 @@ export default component$(() => {
   return (
     <div
       class={`${layout.screen.classes} ${layout.isEditing ? layout.screen.emulatedBreakpoint : ""}`}
+      style={`--drawer-progress:${layout.drawerContentIntersectionRatio};`}
     >
       {layout.isEditing ? <BreakpointEmulator></BreakpointEmulator> : ""}
 
