@@ -100,7 +100,7 @@ body {
             scroll-snap-align: end;
             border-top-right-radius: var(--radius-3);
             border-top-left-radius: var(--radius-3);
-            border:1px solid var(--surface-1);
+            border:1px solid var(--surface-2);
             position: relative;
             transition: all .25s var(--ease-in-out-2);
 
