@@ -84,6 +84,7 @@ body {
         scroll-snap-type: y mandatory;
         pointer-events: all;
         z-index:var(--layer-3);
+        clip-path: inset(var(--drawer-scroll-height) 0px 0px 0px);
         transition: all .5s var(--ease-in-out-2);
 
         &:before {
@@ -136,14 +137,12 @@ body {
     background:red;
 }
 
-.drawer-wrapper[collapsed] .drawer-container {
-    clip-path: inset(var(--drawer-scroll-height) 0px 0px 0px);
-}
 
 .drawer-wrapper[transitioning] .drawer-container,
 .drawer-wrapper[expanded] .drawer-container,
 .drawer-wrapper:has(.drawer-header:hover) .drawer-container,
 .drawer-wrapper:has(.drawer-header.touched) .drawer-container  {
     clip-path: inset(var(--drawer-offset) 0px 0px 0px);
+    transition: all 0s var(--ease-in-out-2);
 }
 

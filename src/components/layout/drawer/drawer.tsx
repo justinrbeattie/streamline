@@ -68,6 +68,7 @@ export const Drawer = component$(() => {
                 <div ref={drawerHeaderRef}  id="drawer-header"
                                   onTouchStart$={() => (state.touched = true)}
                                   onTouchEnd$={() => (state.touched = false)}
+                                  onTouchCancel$={() => (state.touched = false)}
                                   class={`drawer-header ${state.touched ? 'touched' : ''}`}
                 >
 
