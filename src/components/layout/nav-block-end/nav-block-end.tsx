@@ -1,9 +1,9 @@
 
 
-import { component$, useStylesScoped$ } from "@builder.io/qwik";
+import { component$, useStyles$ } from "@builder.io/qwik";
 import styles from "./nav-block-end.css?inline"
 export const NavBlockEnd = component$(() => {
-useStylesScoped$(styles);
+useStyles$(styles);
 
     return (
         <nav class="nav-block-end">

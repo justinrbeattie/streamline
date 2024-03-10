@@ -1,6 +1,7 @@
 body {
     display: grid;
     width: var(--page-width);
+    background-color:rgba(0,255,255,1);
    
 
     .layout-wrapper {

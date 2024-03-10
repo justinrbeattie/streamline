@@ -4,10 +4,12 @@ import {
   createContextId,
   Slot,
   useContextProvider,
+  useOnWindow,
   useSignal,
   useStore,
   useStyles$,
   useVisibleTask$,
+  $
 } from "@builder.io/qwik";
 import { routeLoader$, useLocation } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
@@ -74,6 +76,8 @@ export default component$(() => {
     headerRef: useSignal(undefined),
     mainRef: useSignal(undefined),
     footerRef: useSignal(undefined),
+    lastScrollY: 0,
+    scrollDirection: 'up',
   });
   useContextProvider(LayoutContext, layout);
   // eslint-disable-next-line qwik/no-use-visible-task
@@ -144,9 +148,18 @@ export default component$(() => {
     }
   });
 
+  useOnWindow(
+    'scroll',
+    $(() => {
+      const currentScrollY = window.scrollY;
+      layout.scrollDirection = currentScrollY > layout.lastScrollY ? 'down' : 'up';
+      layout.lastScrollY = currentScrollY;
+    })
+  );
+
   return (
     <div
-      class={`${layout.screen.classes} ${layout.isEditing ? layout.screen.emulatedBreakpoint : ""}`}
+      class={`scroll-direction-${layout.scrollDirection} ${layout.screen.classes} ${layout.isEditing ? layout.screen.emulatedBreakpoint : ""}`}
       style={`--drawer-progress:${layout.drawerContentIntersectionRatio};`}
     >
       {layout.isEditing ? <BreakpointEmulator></BreakpointEmulator> : ""}
@@ -198,4 +211,6 @@ export type LayoutContext = {
   headerRef: Signal<Element | undefined>;
   mainRef: Signal<Element | undefined>;
   footerRef: Signal<Element | undefined>;
+  lastScrollY: number,
+  scrollDirection: 'down' | 'up',
 };

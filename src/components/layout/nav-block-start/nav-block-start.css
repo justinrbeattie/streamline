@@ -38,16 +38,30 @@
 }
 
 
-@keyframes navBlockStartScrollAnimation {
+@keyframes navBlockStartScrollBackgroundAnimation {
   20%,100% {
-    color: var(--text-0);
     transform: translateY(0%)
   }
 }
 
-.nav-block-start,
-.placeholder  {
-  animation: navBlockStartScrollAnimation linear both;
+@keyframes navBlockStartScrollTextAnimation {
+  20%,100% {
+    color: var(--text-0);
+  }
+}
+
+.nav-block-start {
+  animation: navBlockStartScrollTextAnimation linear both;
   animation-timeline: scroll(block root);
   animation-range: 80vh calc(80vh + var(--nav-block-start-height));
+}
+
+.placeholder  {
+  animation: navBlockStartScrollBackgroundAnimation linear both;
+  animation-timeline: scroll(block root);
+  animation-range: 80vh calc(80vh + var(--nav-block-start-height));
+}
+
+.scroll-direction-down .nav-block-start {
+  transform:translateY(calc(var(--nav-block-start-height) * -1));
 }
