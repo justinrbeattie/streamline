@@ -5,16 +5,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-inline: 0;
   color: var(--surface-0);
   opacity: 1;
   width: 100%;
   max-width: 100dvw;
-  background: rgba(255, 255, 255, 0);
+  background: transparent;
   height: var(--nav-block-start-height);
   margin-inline: auto;
   margin-bottom: calc(var(--nav-block-start-height) * -1);
   border-radius: 0;
-  box-shadow: var(--shadow-1);
   transform: translateY(0rem);
   transition: all 0.5s var(--ease-in-out-2);
   animation: navBlockStartScrollTextAnimation linear both;
@@ -34,9 +34,10 @@
 @keyframes navBlockStartScrollTextAnimation {
   20%,
   100% {
+    padding-inline: var(--size-fluid-1);
     color: var(--text-0);
     border-radius: var(--radius-3);
-    background: rgba(255, 255, 255, 1);
+    background: var(--surface-0);
     box-shadow: var(--shadow-3);
     max-width: calc(100dvw - var(--size-fluid-3));
     transform: translateY(calc(var(--size-fluid-3) / 2));

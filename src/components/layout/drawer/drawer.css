@@ -1,12 +1,11 @@
 
 body {
-    background-color:var(--surface-0);
+    background-color:var(--surface-1);
     &:has([open]:where([transitioning], [expanded])) {
         overflow: hidden;
         background-color:black;
 
         .announcement-bar {
-            background-color: var(--surface-0);
             color:transparent;
         }
     }
@@ -107,9 +106,9 @@ body {
             &:before {
                 content:"";
                 width:4rem;
-                height:4px;
+                height:.6rem;
                 position: absolute;
-                inset-block-start: 4px;
+                inset-block-start: .6rem;
                 inset-inline-start: calc(50% - 2rem);
                 border-radius:4px;
                 background:var(--surface-2);
