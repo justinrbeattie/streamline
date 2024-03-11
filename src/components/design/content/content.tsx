@@ -12,7 +12,7 @@ import { LayoutContext } from "~/routes/layout";
 
 export interface ContentProps {
   width: number | null;
-  type: "visual" | "text" | "texta";
+  type: "visual" | "text";
   layer: "-5" | "-4" | "-3" | "-2" | "-1" | "0" | "1" | "2" | "3" | "4" | "5";
   xs: Placement;
   sm: Placement;
@@ -74,7 +74,7 @@ export const ContentComponent = component$<ContentProps>(
       autoRows: "span 1",
     });
 
-    if (type === "texta") {
+    if (type === "text") {
       // eslint-disable-next-line
       useVisibleTask$(() => {
         if (innerRef.value) {
