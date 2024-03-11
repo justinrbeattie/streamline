@@ -73,11 +73,6 @@ export default component$(() => {
     headerRef: useSignal(undefined),
     mainRef: useSignal(undefined),
     footerRef: useSignal(undefined),
-    lastScrollY: 0,
-    scrollDirection: 'up',
-    scrollingStopped:true,
-    scrollTimeoutRef:null,
-
   });
   useContextProvider(LayoutContext, layout);
   // eslint-disable-next-line qwik/no-use-visible-task
@@ -144,27 +139,6 @@ export default component$(() => {
     }
   });
 
-/*   useOnWindow(
-    'scroll',
-    $(() => {
-      const currentScrollY = window.scrollY;
-      layout.scrollDirection = currentScrollY > layout.lastScrollY ? 'down' : 'up';
-      layout.lastScrollY = currentScrollY;
-      layout.scrollingStopped = false;
-
-      // Clear the previous timeout
-      if (layout.scrollTimeoutRef !== null) {
-        clearTimeout(layout.scrollTimeoutRef);
-      }
-  
-      // Set a new timeout
-      layout.scrollTimeoutRef = setTimeout(() => {
-        layout.scrollingStopped = true;
-        // Perform any action after scrolling has stopped
-      }, 500); // 150 ms of no scroll events to consider it as stopped
-    })
-  ); */
-
   return (
     <div
       class={`${layout.screen.classes} ${layout.isEditing ? layout.screen.emulatedBreakpoint : ""}`}
@@ -219,8 +193,4 @@ export type LayoutContext = {
   headerRef: Signal<Element | undefined>;
   mainRef: Signal<Element | undefined>;
   footerRef: Signal<Element | undefined>;
-  lastScrollY: number,
-  scrollDirection: 'down' | 'up',
-  scrollingStopped:boolean;
-  scrollTimeoutRef:any;
 };
