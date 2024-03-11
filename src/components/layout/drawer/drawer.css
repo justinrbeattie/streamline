@@ -1,6 +1,6 @@
 
 body {
-    background-color:var(--surface-1);
+    background-color:#efefef;
     &:has([open]:where([transitioning], [expanded])) {
         overflow: hidden;
         background-color:black;

@@ -10,7 +10,7 @@
   opacity: 1;
   width: 100%;
   max-width: 100dvw;
-  background: transparent;
+  background:rgba(255,255,255,0);
   height: var(--nav-block-start-height);
   margin-inline: auto;
   margin-bottom: calc(var(--nav-block-start-height) * -1);
