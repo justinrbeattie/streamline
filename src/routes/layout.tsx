@@ -20,8 +20,8 @@ import { NavBlockStart } from "~/components/layout/nav-block-start/nav-block-sta
 import { Drawer } from "~/components/layout/drawer/drawer";
 import { BreakpointEmulator } from "~/components/common/breakpoint-emulator/breakpoint-emulator";
 
-declare const ScrollTimeline: any;
-
+/* declare const ScrollTimeline: any;
+ */
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -77,7 +77,7 @@ export default component$(() => {
   useContextProvider(LayoutContext, layout);
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
-    if (!CSS.supports('selector(:has(*))')) {
+/*     if (!CSS.supports('selector(:has(*))')) {
       // @ts-ignore comment  
       import('css-has-pseudo/browser').then((module) => {
         const cssHasPseudo = module.default;
@@ -96,7 +96,7 @@ export default component$(() => {
       };
       document.head.appendChild(script);
     }
-
+ */
 
 
     if (layoutRef.value && layoutRef.value.parentElement) {
