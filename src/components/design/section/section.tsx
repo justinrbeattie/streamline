@@ -33,7 +33,7 @@ export const SectionComponent = component$<SectionProps>((props) => {
   if(layoutContext.isEditing) {
   // eslint-disable-next-line
   useVisibleTask$(() => {
-/*     if (layoutContext.isEditing && currentRef?.value) {
+    if (layoutContext.isEditing && currentRef?.value) {
       const observer = new ResizeObserver((entries) => {
         entries.forEach((entry) => {
           const innerHeight = entry.contentRect.height;
@@ -46,7 +46,7 @@ export const SectionComponent = component$<SectionProps>((props) => {
       return () => {
         observer.disconnect();
       };
-    } */
+    }
   });
   }
 
