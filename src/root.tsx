@@ -21,6 +21,7 @@ export default component$(() => {
       <head>
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="preload" href="./fonts/Inter-roman-compressed.var.woff2" as="font" type="font/woff2"/>
         <RouterHead />
         <ServiceWorkerRegister />
       </head>
