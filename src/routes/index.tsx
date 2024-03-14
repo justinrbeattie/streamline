@@ -7,6 +7,7 @@ import {
   fetchOneEntry
 
 } from "@builder.io/sdk-qwik";
+import { CUSTOM_COMPONENTS } from "~/components/builder-registry";
 import { LayoutContext } from "./layout";
 
 export const BUILDER_MODEL = "page";
@@ -47,6 +48,7 @@ export default component$(() => {
         model={BUILDER_MODEL}
         content={content.value}
         apiKey={import.meta.env.PUBLIC_BUILDER_API_KEY}
+        customComponents={CUSTOM_COMPONENTS}
         context={layoutContext}
       />
     </div>
