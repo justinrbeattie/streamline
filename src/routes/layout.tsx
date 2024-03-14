@@ -17,7 +17,7 @@ import { AnnouncementBar } from "~/components/layout/announcement-bar/announceme
 import { AsideInlineEnd } from "~/components/layout/aside-inline-end/aside-inline-end";
 import { AsideInlineStart } from "~/components/layout/aside-inline-start/aside-inline-start";
 import { NavBlockStart } from "~/components/layout/nav-block-start/nav-block-start";
-/* import { Drawer } from "~/components/layout/drawer/drawer"; */
+import { Drawer } from "~/components/layout/drawer/drawer";
 import { BreakpointEmulator } from "~/components/common/breakpoint-emulator/breakpoint-emulator";
 
 declare const ScrollTimeline: any;
@@ -155,7 +155,7 @@ export default component$(() => {
           <AsideInlineEnd />
         </div>
       </div>
-      {/* <Drawer></Drawer> */}
+       <Drawer></Drawer>
     </div>
   );
 });
