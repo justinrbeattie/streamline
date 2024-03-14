@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useContext } from "@builder.io/qwik";
 import { type DocumentHead } from "@builder.io/qwik-city";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import {
@@ -7,8 +7,8 @@ import {
   fetchOneEntry
 
 } from "@builder.io/sdk-qwik";
-/* import { CUSTOM_COMPONENTS } from "~/components/builder-registry";
-import { LayoutContext } from "./layout"; */
+import { CUSTOM_COMPONENTS } from "~/components/builder-registry";
+import { LayoutContext } from "./layout";
 
 export const BUILDER_MODEL = "page";
 
@@ -38,7 +38,7 @@ export const useBuilderContent = routeLoader$(async ({ url, error }) => {
 
 export default component$(() => {
   const content = useBuilderContent();
-/*   const layoutContext = useContext(LayoutContext); */
+  const layoutContext = useContext(LayoutContext);
 
 
 
@@ -48,7 +48,8 @@ export default component$(() => {
         model={BUILDER_MODEL}
         content={content.value}
         apiKey={import.meta.env.PUBLIC_BUILDER_API_KEY}
-
+        customComponents={CUSTOM_COMPONENTS}
+        context={layoutContext}
       />
     </div>
   );
@@ -63,3 +64,4 @@ export const head: DocumentHead = {
     },
   ],
 };
+
