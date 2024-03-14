@@ -349,3 +349,9 @@ See our full integration guides [here](https://www.builder.io/c/docs/developers)
 Also, when you push your integration to production, go back and update your preview URL to your production URL so now anyone on your team can visuall create content in your Qwik app!
 
 Also, to integrate structured data, see [this guide](https://www.builder.io/c/docs/integrate-cms-data)
+
+## Static Site Generator (Node.js)
+
+```shell
+npm run build.server
+```
