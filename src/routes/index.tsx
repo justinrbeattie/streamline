@@ -1,21 +1,21 @@
 import { component$ } from "@builder.io/qwik";
 import { type DocumentHead } from "@builder.io/qwik-city";
-
-/* import {
+import { routeLoader$ } from "@builder.io/qwik-city";
+import {
   Content,
   getBuilderSearchParams,
   fetchOneEntry
 
 } from "@builder.io/sdk-qwik";
-import { CUSTOM_COMPONENTS } from "~/components/builder-registry"; */
-/* import { LayoutContext } from "./layout";
- */
+/* import { CUSTOM_COMPONENTS } from "~/components/builder-registry";
+import { LayoutContext } from "./layout"; */
+
 export const BUILDER_MODEL = "page";
 
 // Use Qwik City's `useBuilderContent` to get your content from Builder.
 // `routeLoader$()` takes an async function to fetch content
 // from Builder with `getContent()`.
-/* export const useBuilderContent = routeLoader$(async ({ url, error }) => {
+export const useBuilderContent = routeLoader$(async ({ url, error }) => {
   const isPreviewing = url.searchParams.has("builder.preview");
 
   const builderContent = await fetchOneEntry({
@@ -34,23 +34,22 @@ export const BUILDER_MODEL = "page";
   }
   // return content fetched from Builder, which is JSON
   return builderContent;
-}); */
+});
 
 export default component$(() => {
-/*   const content = useBuilderContent();
-  const layoutContext = useContext(LayoutContext); */
+  const content = useBuilderContent();
+/*   const layoutContext = useContext(LayoutContext); */
 
 
 
   return (
     <div class="layout-inner">
-{/*       <Content
+      <Content
         model={BUILDER_MODEL}
         content={content.value}
         apiKey={import.meta.env.PUBLIC_BUILDER_API_KEY}
-        customComponents={CUSTOM_COMPONENTS}
-        context={layoutContext}
-      /> */}
+
+      />
     </div>
   );
 });
