@@ -1,8 +1,8 @@
-
+/* 
 @import "open-props/style";
 @import "./theme.css";
 @import "open-props/normalize";
-@import "open-props/buttons";
+@import "open-props/buttons"; */
 
 @font-face {
   font-family: 'Inter';
