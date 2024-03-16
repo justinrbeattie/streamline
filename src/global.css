@@ -1,4 +1,5 @@
-
+/* the props */
+@import "open-props/postcss/style";
 @import "./theme.css";
 /* optional imports that use the props */
 @import "open-props/postcss/normalize";

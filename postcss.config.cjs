@@ -1,5 +1,3 @@
-const OpenProps = require('open-props');
-
 
 module.exports = {
   plugins: {
@@ -12,6 +10,5 @@ module.exports = {
     },
     "css-has-pseudo": {},
     "@csstools/postcss-oklab-function":{},
-    'postcss-jit-props': { ...OpenProps },
   },
 }
