@@ -96,7 +96,44 @@ export default component$(() => {
       };
       document.head.appendChild(script);
     }
-  
+    if (layoutRef.value && layoutRef.value.parentElement) {
+      const observer = new ResizeObserver((entries) => {
+        entries.forEach((entry) => {
+          /* min-width: 320px min-width: 481px min-width: 769px min-width: 1025px min-width: 1441px */
+          layout.screen.width = entry.contentRect.width;
+          layout.screen.height = entry.contentRect.height;
+          /* selected width */
+          if (layout.screen.width > 0 && layout.screen.width <= 480) {
+            layout.screen.currentBreakpoint = "xs";
+          } else if (layout.screen.width > 480 && layout.screen.width <= 768) {
+            layout.screen.currentBreakpoint = "sm";
+          } else if (layout.screen.width > 768 && layout.screen.width <= 1024) {
+            layout.screen.currentBreakpoint = "md";
+          } else if (
+            layout.screen.width > 1024 &&
+            layout.screen.width <= 1440
+          ) {
+            layout.screen.currentBreakpoint = "lg";
+          } else if (layout.screen.width > 1440) {
+            layout.screen.currentBreakpoint = "xl";
+          }
+          layout.screen.classes = [
+            layout.screen.width > 0 && "screen-xs",
+            layout.screen.width > 480 && "screen-sm",
+            layout.screen.width > 768 && "screen-md",
+            layout.screen.width > 1024 && "screen-lg",
+            layout.screen.width > 1440 && "screen-xl",
+            "current-screen-" + layout.screen.currentBreakpoint,
+          ]
+            .filter(Boolean)
+            .join(" ");
+        });
+      });
+      observer.observe(layoutRef.value.parentElement);
+      return () => {
+        observer.disconnect();
+      };
+    }
   });
 
   return (
