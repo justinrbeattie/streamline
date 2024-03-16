@@ -2,7 +2,7 @@ import type { Signal } from "@builder.io/qwik";
 import {
   component$,
   createContextId,
-  Slot,
+/*   Slot, */
   useContextProvider,
   useSignal,
   useStore,
@@ -13,12 +13,12 @@ import { routeLoader$, useLocation } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
 import styles from "./layout.css?inline";
-import { AnnouncementBar } from "~/components/layout/announcement-bar/announcement-bar";
+/* import { AnnouncementBar } from "~/components/layout/announcement-bar/announcement-bar";
 import { AsideInlineEnd } from "~/components/layout/aside-inline-end/aside-inline-end";
 import { AsideInlineStart } from "~/components/layout/aside-inline-start/aside-inline-start";
 import { NavBlockStart } from "~/components/layout/nav-block-start/nav-block-start";
 import { Drawer } from "~/components/layout/drawer/drawer";
-import { BreakpointEmulator } from "~/components/common/breakpoint-emulator/breakpoint-emulator";
+import { BreakpointEmulator } from "~/components/common/breakpoint-emulator/breakpoint-emulator"; */
 
 declare const ScrollTimeline: any;
 
@@ -96,9 +96,6 @@ export default component$(() => {
       };
       document.head.appendChild(script);
     }
-
-
-
     if (layoutRef.value && layoutRef.value.parentElement) {
       const observer = new ResizeObserver((entries) => {
         entries.forEach((entry) => {
@@ -140,7 +137,8 @@ export default component$(() => {
   });
 
   return (
-    <div
+    <></>
+/*     <div
       class={`${layout.screen.classes} ${layout.isEditing ? layout.screen.emulatedBreakpoint : ""}`}
       style={`--drawer-progress:${layout.drawerContentIntersectionRatio};`}
     >
@@ -156,7 +154,7 @@ export default component$(() => {
         </div>
       </div>
        <Drawer></Drawer>
-    </div>
+    </div> */
   );
 });
 
