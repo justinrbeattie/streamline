@@ -1,6 +1,11 @@
+
 @import "./theme.css";
-@import "open-props/normalize";
-@import "open-props/buttons";
+/* optional imports that use the props */
+@import "open-props/postcss/normalize";
+@import "open-props/postcss/buttons";
+
+
+
 
 @font-face {
   font-family: 'Inter';
