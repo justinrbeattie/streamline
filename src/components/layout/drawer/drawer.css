@@ -95,7 +95,7 @@ body {
         >.drawer-header {
             width: 100%;
             min-height: var(--drawer-header-height);
-            background: var(--surface-0);
+            background: var(--surface-1);
             scroll-snap-align: end;
             border-top-right-radius: var(--radius-3);
             border-top-left-radius: var(--radius-3);
@@ -120,7 +120,7 @@ body {
             min-height: var(--drawer-content-height);
             scroll-snap-align: start;
             position:relative;
-            background: var(--surface-1);
+            background: var(--surface-2);
 
 
         }

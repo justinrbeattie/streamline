@@ -6,11 +6,11 @@
   justify-content: space-between;
   align-items: center;
   padding-inline: 0;
-  color: var(--surface-0);
+  color: var(--surface-1);
   opacity: 1;
   width: 100%;
   max-width: 100dvw;
-  background:rgba(255,255,255,0);
+  background: oklch(var(--surface-1-lightness) var(--hue-blue-3) / var(--opacity-0));
   height: var(--nav-block-start-height);
   margin-inline: auto;
   margin-bottom: calc(var(--nav-block-start-height) * -1);
@@ -37,7 +37,7 @@
     padding-inline: var(--size-fluid-1);
     color: var(--text-0);
     border-radius: var(--radius-3);
-    background: var(--surface-0);
+    background: oklch(var(--surface-1-lightness) var(--hue-blue-0) / var(--opacity-100));
     box-shadow: var(--shadow-3);
     max-width: calc(100dvw - var(--size-fluid-3));
     transform: translateY(calc(var(--size-fluid-3) / 2));

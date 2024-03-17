@@ -35,7 +35,7 @@ export const Carousel: Story = {
             ariaRoleDescription: "Description for Item 1",
           },
         }}
-      ><div style="background:var(--surface-0);">Slide 1</div></CarouselItemComponent>
+      ><div style="background:var(--surface-1);">Slide 1</div></CarouselItemComponent>
             <CarouselItemComponent
         {...{
           carouselItem: {
@@ -43,7 +43,7 @@ export const Carousel: Story = {
             ariaRoleDescription: "Description for Item 2",
           },
         }}
-      ><div style="background:var(--surface-0);">Slide 2</div></CarouselItemComponent>
+      ><div style="background:var(--surface-1);">Slide 2</div></CarouselItemComponent>
             <CarouselItemComponent
         {...{
           carouselItem: {
@@ -51,7 +51,7 @@ export const Carousel: Story = {
             ariaRoleDescription: "Description for Item 3",
           },
         }}
-      ><div style="background:var(--surface-0);">Slide 3</div></CarouselItemComponent>
+      ><div style="background:var(--surface-1);">Slide 3</div></CarouselItemComponent>
             <CarouselItemComponent
         {...{
           carouselItem: {
@@ -59,7 +59,7 @@ export const Carousel: Story = {
             ariaRoleDescription: "Description for Item 4",
           },
         }}
-      ><div style="background:var(--surface-0);">Slide 4</div></CarouselItemComponent>
+      ><div style="background:var(--surface-1);">Slide 4</div></CarouselItemComponent>
             <CarouselItemComponent
         {...{
           carouselItem: {
@@ -67,7 +67,7 @@ export const Carousel: Story = {
             ariaRoleDescription: "Description for Item 5",
           },
         }}
-      ><div style="background:var(--surface-0);">Slide 5</div></CarouselItemComponent>
+      ><div style="background:var(--surface-1);">Slide 5</div></CarouselItemComponent>
             <CarouselItemComponent
         {...{
           carouselItem: {
@@ -75,7 +75,7 @@ export const Carousel: Story = {
             ariaRoleDescription: "Description for Item 6",
           },
         }}
-      ><div style="background:var(--surface-0);">Slide 6</div></CarouselItemComponent>
+      ><div style="background:var(--surface-1);">Slide 6</div></CarouselItemComponent>
     </CarouselComponent>
   ),
 };

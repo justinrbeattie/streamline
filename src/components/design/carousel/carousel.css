@@ -45,7 +45,7 @@
     align-self: center;
     justify-self: center;
     z-index: var(--layer-4);
-    background-color: var(--surface-1);
+    background-color: var(--surface-2);
     transition: all 0.25s ease-in-out;
 
     &[disabled] {

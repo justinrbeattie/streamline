@@ -45,7 +45,7 @@
       transition: all ease-in-out .5s;
 
       &.selected {
-        background:var(--surface-0);
+        background:var(--surface-2);
       }
 
     }

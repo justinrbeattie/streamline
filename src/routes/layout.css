@@ -9,7 +9,7 @@ body {
     .layout-wrapper {
         perspective: 1000px;
         perspective-origin: 50% 50%;
-        background-color: var(--surface-1);
+        background-color: var(--surface-2);
     }
 
     .layout {
@@ -22,7 +22,7 @@ body {
             "aside-start content aside-end"
             "nav-block-end nav-block-end nav-block-end";
         position: relative;
-        background-color: var(--surface-1);
+        background-color: var(--surface-2);
         overflow-y: visible;
         overflow-x: clip;
         transform: translateZ(0px);

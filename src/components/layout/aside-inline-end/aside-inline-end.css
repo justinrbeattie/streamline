@@ -1,7 +1,7 @@
 
 .aside-inline-end {
     padding-block-start: calc(var(--announcement-bar-height) + var(--nav-block-start-height) );
-    background:var(--surface-1);
+    background:var(--surface-3);
     min-width: 0px;
     max-width: 0px;
     width:20dvw;
