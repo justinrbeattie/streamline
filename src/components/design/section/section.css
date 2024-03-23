@@ -26,6 +26,10 @@
   row-gap: var(--page-grid-row-gap);
   padding-block-end: var(--page-grid-row-gap);
 
+  > img {
+    display: none;
+  }
+
  .grid-column-guide {
     display: grid;
     grid-column: left-gutter / span 14;

@@ -40,22 +40,22 @@ export const SectionComponent = component$<SectionProps>((props) => {
       <Slot></Slot>
 
       {
-          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "Off" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "Off" ? <img onLoad$={() => { onLoad$(); }} width="20" height="20" src={image} /> : ""
         }
         {
-          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "xs" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "xs" ? <img onLoad$={() => { onLoad$(); }} width="20" height="20" src={image} /> : ""
         }
         {
-          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "sm" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "sm" ? <img onLoad$={() => { onLoad$(); }} width="20" height="20" src={image} /> : ""
         }
         {
-          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "md" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "md" ? <img onLoad$={() => { onLoad$(); }} width="20" height="20" src={image} /> : ""
         }
         {
-          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "lg" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "lg" ? <img onLoad$={() => { onLoad$(); }} width="20" height="20" src={image} /> : ""
         }
         {
-          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "xl" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "xl" ? <img onLoad$={() => { onLoad$(); }} width="20" height="20" src={image} /> : ""
         }
 
       {isEditing ? (

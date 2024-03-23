@@ -135,22 +135,22 @@ export const ContentComponent = component$<ContentProps>(
       `}
       >
         {
-          /* prettier-ignore */ isEditing && emulatedBreakpoint === "Off" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+          /* prettier-ignore */ isEditing && emulatedBreakpoint === "Off" ? <img onLoad$={() => { onLoad$(); }} width="20" height="20" src={image} /> : ""
         }
         {
-          /* prettier-ignore */ isEditing && emulatedBreakpoint === "xs" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+          /* prettier-ignore */ isEditing && emulatedBreakpoint === "xs" ? <img onLoad$={() => { onLoad$(); }} width="20" height="20" src={image} /> : ""
         }
         {
-          /* prettier-ignore */ isEditing && emulatedBreakpoint === "sm" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+          /* prettier-ignore */ isEditing && emulatedBreakpoint === "sm" ? <img onLoad$={() => { onLoad$(); }} width="20" height="20" src={image} /> : ""
         }
         {
-          /* prettier-ignore */ isEditing && emulatedBreakpoint === "md" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+          /* prettier-ignore */ isEditing && emulatedBreakpoint === "md" ? <img onLoad$={() => { onLoad$(); }} width="20" height="20" src={image} /> : ""
         }
         {
-          /* prettier-ignore */ isEditing && emulatedBreakpoint === "lg" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+          /* prettier-ignore */ isEditing && emulatedBreakpoint === "lg" ? <img onLoad$={() => { onLoad$(); }} width="20" height="20" src={image} /> : ""
         }
         {
-          /* prettier-ignore */ isEditing && emulatedBreakpoint === "xl" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+          /* prettier-ignore */ isEditing && emulatedBreakpoint === "xl" ? <img onLoad$={() => { onLoad$(); }} width="20" height="20" src={image} /> : ""
         }
 
         <div ref={innerRef} class="section-content-inner">
