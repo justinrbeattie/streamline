@@ -6,27 +6,30 @@ import {
   useStore,
   useStyles$,
   useVisibleTask$,
+  $,
 } from "@builder.io/qwik";
 import styles from "./content.css?inline";
+import type { EmulatedBreakpoint } from "~/routes/layout";
 import { LayoutContext } from "~/routes/layout";
+import { isBrowser } from "@builder.io/qwik/build";
 
 export interface ContentProps {
-  width: number | null;
-  type: "visual" | "text";
-  layer: "-5" | "-4" | "-3" | "-2" | "-1" | "0" | "1" | "2" | "3" | "4" | "5";
+  autoHeight: boolean;
+  emulatedBreakpoint: EmulatedBreakpoint;
+  layer: number;
   xs: Placement;
   sm: Placement;
   md: Placement;
   lg: Placement;
   xl: Placement;
   attributes: any;
-  state: any;
 }
 
 export const ContentComponent = component$<ContentProps>(
   ({
-    type = "text",
+    autoHeight = true,
     layer = "0",
+    emulatedBreakpoint = "Off",
     attributes = undefined,
     xs = {
       hidden: false,
@@ -71,10 +74,20 @@ export const ContentComponent = component$<ContentProps>(
     const store = useStore<AutoRowsStore>({
       viewportHeight: 0,
       height: 0,
-      autoRows: "span 1",
+      autoRows: 0,
     });
 
-    if (type === "text") {
+    const image =
+      "data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAADQAgCdASoUABQAPm00lkekIyIhKAgAgA2JaQAAPaOgAP77nMAAAA==";
+    const isEditing = layoutContext.isEditing;
+    const onLoad$ = $(() => {
+      if (isBrowser) {
+        layoutContext.screen.emulatedBreakpoint = emulatedBreakpoint;
+      }
+    });
+
+
+    if (autoHeight) {
       // eslint-disable-next-line
       useVisibleTask$(() => {
         if (innerRef.value) {
@@ -82,12 +95,10 @@ export const ContentComponent = component$<ContentProps>(
             entries.forEach((entry) => {
               store.viewportHeight = window.innerHeight;
               store.height = entry.contentRect.height;
-              store.autoRows =
-                "span " +
-                Math.max(
-                  1,
-                  Math.round(store.height / (store.viewportHeight * 0.09))
-                );
+              store.autoRows = Math.max(
+                1,
+                Math.round(store.height / (store.viewportHeight * 0.09))
+              );
             });
           });
 
@@ -102,26 +113,46 @@ export const ContentComponent = component$<ContentProps>(
     return (
       <div
         {...attributes}
-        class={`section-content section-content-type-${type} ${layoutContext.isEditing ? "is-editing" : ""} layer-${layer} ${attributes?.className || ""}`}
+        class={`section-content  ${autoHeight? 'auto-height' : 'manual-height'} ${layoutContext.isEditing ? "is-editing" : ""} layer-${layer} ${attributes?.className || ""}`}
         style={`
-        --xs-cols: ${xs.colStart} / ${xs.colSpan};
-        --sm-cols: ${sm.colStart} / ${sm.colSpan};
-        --md-cols: ${md.colStart} / ${md.colSpan};
-        --lg-cols: ${lg.colStart} / ${lg.colSpan};
-        --xl-cols: ${xl.colStart} / ${xl.colSpan};
-        --xs-rows: ${xs.rowStart} / ${type === "text" ? store.autoRows : xs.rowSpan};
-        --sm-rows: ${sm.rowStart} / ${type === "text" ? store.autoRows : sm.rowSpan};
-        --md-rows: ${md.rowStart} / ${type === "text" ? store.autoRows : md.rowSpan};
-        --lg-rows: ${lg.rowStart} / ${type === "text" ? store.autoRows : lg.rowSpan};
-        --xl-rows: ${xl.rowStart} / ${type === "text" ? store.autoRows : xl.rowSpan};
+        --xs-cols: ${(xs.colStart as number) > 0 ? "col " + xs.colStart : "left-gutter"} / span ${xs.colSpan};
+        --sm-cols: ${(sm.colStart as number) > 0 ? "col " + sm.colStart : "left-gutter"} / span ${sm.colSpan};
+        --md-cols: ${(md.colStart as number) > 0 ? "col " + md.colStart : "left-gutter"} / span ${md.colSpan};
+        --lg-cols: ${(lg.colStart as number) > 0 ? "col " + lg.colStart : "left-gutter"} / span ${lg.colSpan};
+        --xl-cols: ${(xl.colStart as number) > 0 ? "col " + xl.colStart : "left-gutter"} / span ${xl.colSpan};
+        --xs-rows: row ${xs.rowStart} / span ${autoHeight ? store.autoRows : xs.rowSpan};
+        --sm-rows: row ${sm.rowStart} / span ${autoHeight ? store.autoRows : sm.rowSpan};
+        --md-rows: row ${md.rowStart} / span ${autoHeight ? store.autoRows : md.rowSpan};
+        --lg-rows: row ${lg.rowStart} / span ${autoHeight ? store.autoRows : lg.rowSpan};
+        --xl-rows: row ${xl.rowStart} / span ${autoHeight ? store.autoRows : xl.rowSpan};
 
         --xs-hidden: ${xs.hidden ? "none" : "block"};
         --sm-hidden: ${sm.hidden ? "none" : "block"};
         --md-hidden: ${md.hidden ? "none" : "block"};
         --lg-hidden: ${lg.hidden ? "none" : "block"};
         --xl-hidden: ${xl.hidden ? "none" : "block"};
+        z-index: ${layer};
       `}
       >
+        {
+          /* prettier-ignore */ isEditing && emulatedBreakpoint === "Off" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+        }
+        {
+          /* prettier-ignore */ isEditing && emulatedBreakpoint === "xs" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+        }
+        {
+          /* prettier-ignore */ isEditing && emulatedBreakpoint === "sm" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+        }
+        {
+          /* prettier-ignore */ isEditing && emulatedBreakpoint === "md" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+        }
+        {
+          /* prettier-ignore */ isEditing && emulatedBreakpoint === "lg" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+        }
+        {
+          /* prettier-ignore */ isEditing && emulatedBreakpoint === "xl" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+        }
+
         <div ref={innerRef} class="section-content-inner">
           <Slot></Slot>
         </div>
@@ -132,73 +163,14 @@ export const ContentComponent = component$<ContentProps>(
 
 interface Placement {
   hidden: boolean;
-  colStart: Column;
-  colSpan?: Span;
-  rowStart: Row;
-  rowSpan?: Span;
+  colStart: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13;
+  colSpan?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14;
+  rowStart: number;
+  rowSpan?: number;
 }
 
 interface AutoRowsStore {
   viewportHeight: number;
   height: number;
-  autoRows: string | undefined;
+  autoRows: number;
 }
-
-type Column =
-  | "left-gutter"
-  | "col 1"
-  | "col 2"
-  | "col 3"
-  | "col 4"
-  | "col 5"
-  | "col 6"
-  | "col 7"
-  | "col 8"
-  | "col 9"
-  | "col 10"
-  | "col 11"
-  | "col 12"
-  | "right-gutter";
-type Row =
-  | "row 1"
-  | "row 2"
-  | "row 3"
-  | "row 4"
-  | "row 5"
-  | "row 6"
-  | "row 7"
-  | "row 8"
-  | "row 9"
-  | "row 10"
-  | "row 11"
-  | "row 12"
-  | "row 13"
-  | "row 14"
-  | "row 15"
-  | "row 16"
-  | "row 17"
-  | "row 18"
-  | "row 19"
-  | "row 20";
-type Span =
-  | "span 0"
-  | "span 1"
-  | "span 2"
-  | "span 3"
-  | "span 4"
-  | "span 5"
-  | "span 6"
-  | "span 7"
-  | "span 8"
-  | "span 9"
-  | "span 10"
-  | "span 11"
-  | "span 12"
-  | "span 13"
-  | "span 14"
-  | "span 15"
-  | "span 16"
-  | "span 17"
-  | "span 18"
-  | "span  19"
-  | "span 20";

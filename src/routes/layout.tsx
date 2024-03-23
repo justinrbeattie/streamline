@@ -18,10 +18,8 @@ import { AsideInlineEnd } from "~/components/layout/aside-inline-end/aside-inlin
 import { AsideInlineStart } from "~/components/layout/aside-inline-start/aside-inline-start";
 import { NavBlockStart } from "~/components/layout/nav-block-start/nav-block-start";
 /* import { Drawer } from "~/components/layout/drawer/drawer"; */
-import { BreakpointEmulator } from "~/components/common/breakpoint-emulator/breakpoint-emulator";
 
 declare const ScrollTimeline: any;
-
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -51,7 +49,7 @@ export default component$(() => {
     theme: "light",
     isEditing: location.url.href.includes("&__builder_editing__=true"),
     screen: {
-      emulatedBreakpoint: "",
+      emulatedBreakpoint: "Off",
       width: 0,
       height: 0,
       currentBreakpoint: "xs",
@@ -59,8 +57,8 @@ export default component$(() => {
     },
     asideInlineStartOpened: false,
     asideInlineEndOpened: false,
-    drawerTimeoutRef:null,
-    drawerTouching:false,
+    drawerTimeoutRef: null,
+    drawerTouching: false,
     drawerClosable: false,
     drawerClosed: false,
     drawerOpen: false,
@@ -77,22 +75,24 @@ export default component$(() => {
   useContextProvider(LayoutContext, layout);
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
-    if (!CSS.supports('selector(:has(*))')) {
-      // @ts-ignore comment  
-      import('css-has-pseudo/browser').then((module) => {
-        const cssHasPseudo = module.default;
-        cssHasPseudo(document);
-      }).catch((error) => {
-        console.error('Failed to load css-has-pseudo polyfill:', error);
-      });
+    if (!CSS.supports("selector(:has(*))")) {
+      // @ts-ignore comment
+      import("css-has-pseudo/browser")
+        .then((module) => {
+          const cssHasPseudo = module.default;
+          cssHasPseudo(document);
+        })
+        .catch((error) => {
+          console.error("Failed to load css-has-pseudo polyfill:", error);
+        });
     }
 
-    if (typeof ScrollTimeline === 'undefined') {
-      const script = document.createElement('script');
-      script.src = './scripts/scroll-timeline.js';
+    if (typeof ScrollTimeline === "undefined") {
+      const script = document.createElement("script");
+      script.src = "./scripts/scroll-timeline.js";
       script.defer = true;
       script.onerror = (error) => {
-        console.error('Failed to load the ScrollTimeline polyfill:', error);
+        console.error("Failed to load the ScrollTimeline polyfill:", error);
       };
       document.head.appendChild(script);
     }
@@ -138,11 +138,9 @@ export default component$(() => {
 
   return (
     <div
-      class={`${layout.screen.classes} ${layout.isEditing ? layout.screen.emulatedBreakpoint : ""}`}
+      class={`${layout.screen.classes} ${layout.isEditing ? ('emulated-' +layout.screen.emulatedBreakpoint) : ""}`}
       style={`--drawer-progress:${layout.drawerContentIntersectionRatio};`}
     >
-      {layout.isEditing ? <BreakpointEmulator></BreakpointEmulator> : ""}
-
       <AnnouncementBar />
       <NavBlockStart />
       <div class="layout-wrapper">
@@ -152,7 +150,7 @@ export default component$(() => {
           <AsideInlineEnd />
         </div>
       </div>
-    {/*    <Drawer></Drawer> */}
+      {/*    <Drawer></Drawer> */}
     </div>
   );
 });
@@ -161,13 +159,7 @@ export type LayoutContext = {
   theme: "light" | "dark";
   isEditing: boolean;
   screen: {
-    emulatedBreakpoint:
-      | ""
-      | "emulated-xs"
-      | "emulated-sm"
-      | "emulated-md"
-      | "emulated-lg"
-      | "emulated-xl";
+    emulatedBreakpoint:EmulatedBreakpoint;
     width: number;
     height: number;
     currentBreakpoint: string;
@@ -175,8 +167,8 @@ export type LayoutContext = {
   };
   asideInlineStartOpened: boolean;
   asideInlineEndOpened: boolean;
-  drawerTimeoutRef:any;
-  drawerTouching:boolean;
+  drawerTimeoutRef: any;
+  drawerTouching: boolean;
   drawerClosable: boolean;
   drawerClosed: boolean;
   drawerOpen: boolean;
@@ -190,3 +182,5 @@ export type LayoutContext = {
   mainRef: Signal<Element | undefined>;
   footerRef: Signal<Element | undefined>;
 };
+
+export type EmulatedBreakpoint = "Off" | "xs" | "sm" | "md" | "lg" | "xl";

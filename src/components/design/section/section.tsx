@@ -1,16 +1,12 @@
-import {
-  component$,
-  Slot,
-  useContext,
-  useStore,
-  useStyles$,
-  useVisibleTask$,
-} from "@builder.io/qwik";
+import { component$, Slot, useContext, useStyles$, $ } from "@builder.io/qwik";
 import styles from "./section.css?inline";
+import type { EmulatedBreakpoint} from "~/routes/layout";
 import { LayoutContext } from "~/routes/layout";
+import { isBrowser } from "@builder.io/qwik/build";
 export interface SectionProps {
   tag: "header" | "section" | "footer";
   id: string;
+  emulatedBreakpoint: EmulatedBreakpoint;
   attributes: any;
 }
 
@@ -25,30 +21,14 @@ export const SectionComponent = component$<SectionProps>((props) => {
         ? layoutContext.footerRef
         : undefined;
 
-  const store = useStore({
-    numberOfColumns: 14,
-    numberOfRows: 5,
-  });
-
-  if(layoutContext.isEditing) {
-  // eslint-disable-next-line
-  useVisibleTask$(() => {
-    if (layoutContext.isEditing && currentRef?.value) {
-      const observer = new ResizeObserver((entries) => {
-        entries.forEach((entry) => {
-          const innerHeight = entry.contentRect.height;
-          const rowHeight = window.innerHeight * 0.1;
-          store.numberOfRows = Math.round(innerHeight / rowHeight);
-        });
+        const image =
+        "data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAADQAgCdASoUABQAPm00lkekIyIhKAgAgA2JaQAAPaOgAP77nMAAAA==";
+      const isEditing = layoutContext.isEditing;
+      const onLoad$ = $(() => {
+        if (isBrowser) {
+          layoutContext.screen.emulatedBreakpoint = props.emulatedBreakpoint;
+        }
       });
-
-      observer.observe(currentRef.value);
-      return () => {
-        observer.disconnect();
-      };
-    }
-  });
-  }
 
   return (
     <TAG
@@ -57,26 +37,47 @@ export const SectionComponent = component$<SectionProps>((props) => {
       id={props.id}
       class={`page-section ${layoutContext.isEditing ? "is-editing" : ""}  ${props.attributes?.className || ""}`}
     >
-      {layoutContext.isEditing
-        ? Array.from({ length: store.numberOfRows }, (_, index) => index).map(
-            (rowIndex) =>
-              Array.from(
-                { length: store.numberOfColumns },
-                (_, index) => index
-              ).map((colIndex) => (
-                <div
-                  class="grid-guide"
-                  style={`grid-column:${colIndex + 1} / span 1; grid-row:${rowIndex + 1} / span 1;`}
-                  key={(rowIndex + 1) * (colIndex + 1)}
-                >
-
-                  { 'col ' + (colIndex + 1) + ' / row ' + (rowIndex + 1)}
-                </div>
-              ))
-          )
-        : ""}
-
       <Slot></Slot>
+
+      {
+          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "Off" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+        }
+        {
+          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "xs" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+        }
+        {
+          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "sm" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+        }
+        {
+          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "md" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+        }
+        {
+          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "lg" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+        }
+        {
+          /* prettier-ignore */ isEditing && props.emulatedBreakpoint === "xl" ? <img onLoad$={() => { onLoad$(); }} width="0" height="0" src={image} /> : ""
+        }
+
+      {isEditing ? (
+        <div class="grid-column-guide">
+          <div class="column"></div>
+          <div class="column"></div>
+          <div class="column"></div>
+          <div class="column"></div>
+          <div class="column"></div>
+          <div class="column"></div>
+          <div class="column"></div>
+          <div class="column"></div>
+          <div class="column"></div>
+          <div class="column"></div>
+          <div class="column"></div>
+          <div class="column"></div>
+          <div class="column"></div>
+          <div class="column"></div>
+        </div>
+      ) : (
+        ""
+      )}
     </TAG>
   );
 });

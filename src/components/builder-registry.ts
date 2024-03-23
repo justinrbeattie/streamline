@@ -1,4 +1,3 @@
-
 import type { RegisteredComponent } from "@builder.io/sdk-qwik";
 import { ButtonComponent } from "./design/button/button";
 import {
@@ -11,8 +10,6 @@ import { SectionComponent } from "./design/section/section";
 import type { BuilderElement } from "@builder.io/sdk-qwik/types/src/types/element";
 import type { Input } from "@builder.io/sdk-qwik/types/src/types/input";
 
-
-
 /**
  * This array is used to integrate custom components within Builder.
  * https://www.builder.io/c/docs/custom-components-intro
@@ -24,8 +21,7 @@ import type { Input } from "@builder.io/sdk-qwik/types/src/types/input";
  * https://www.builder.io/c/docs/guides/components-only-mode
  */
 
-
-const defaultChildConfig: BuilderElement[] = [
+const defaultCarouselChildConfig: BuilderElement[] = [
   {
     "@type": "@builder.io/sdk:Element",
     component: {
@@ -44,6 +40,7 @@ const defaultChildConfig: BuilderElement[] = [
   },
 ];
 
+
 const contentPlacement: Input[] = [
   {
     name: "hidden",
@@ -51,143 +48,79 @@ const contentPlacement: Input[] = [
   },
   {
     name: "colStart",
-    type: "string",
-    defaultValue: "col 1",
-    enum: [
-      "left-gutter",
-      "col 1",
-      "col 2",
-      "col 3",
-      "col 4",
-      "col 5",
-      "col 6",
-      "col 7",
-      "col 8",
-      "col 9",
-      "col 10",
-      "col 11",
-      "col 12",
-      "right-gutter",
-    ],
+    friendlyName: "Column Start",
+    type: "number",
+    onChange:
+      "options.get('colStart') + options.get('colSpan') > 14 ? options.set('colSpan', (14 - options.get('colStart'))): '';",
+    helperText:
+      "Column starting point from left. Column 0 and 14 is the Gutter.",
+    min: 0,
+    max: 13,
   },
   {
     name: "colSpan",
-    type: "string",
-    defaultValue: "span 2",
-    enum: [
-      "span 1",
-      "span 2",
-      "span 3",
-      "span 4",
-      "span 5",
-      "span 6",
-      "span 7",
-      "span 8",
-      "span 9",
-      "span 10",
-      "span 11",
-      "span 12",
-      "span 13",
-      "span 14",
-    ],
+    friendlyName: "Column Span",
+    type: "number",
+    onChange:
+      "options.get('colStart') + options.get('colSpan') > 14 ? options.set('colStart', (14 - options.get('colSpan'))): '';",
+    helperText: "Number of Columns this component spans.",
+    min: 1,
+    max: 14,
   },
   {
     name: "rowStart",
-    type: "string",
-    defaultValue: "row 1",
-    enum: [
-      "row 1",
-      "row 2",
-      "row 3",
-      "row 4",
-      "row 5",
-      "row 6",
-      "row 7",
-      "row 8",
-      "row 9",
-      "row 10",
-      "row 11",
-      "row 12",
-      "row 13",
-      "row 14",
-      "row 15",
-      "row 16",
-      "row 17",
-      "row 18",
-      "row 19",
-      "row 20",
-    ],
+    type: "number",
+    defaultValue: 1,
   },
   {
     name: "rowSpan",
-    type: "string",
-    defaultValue: "span 1",
-    hideFromUI:true,
-    enum: [
-      "span 0",
-      "span 1",
-      "span 2",
-      "span 3",
-      "span 4",
-      "span 5",
-      "span 6",
-      "span 7",
-      "span 8",
-      "span 9",
-      "span 10",
-      "span 11",
-      "span 12",
-      "span 13",
-      "span 14",
-      "span 15",
-      "span 16",
-      "span 17",
-      "span 18",
-      "span 19",
-      "span 20",
-    ],
+    type: "number",
+    defaultValue: 1,
+    showIf:'parent.get("autoHeight") === false',
+
   },
 ];
 
 const contentOptions: any = {
-  type: "text",
+  emulatedBreakpoint: 'Off',
+  autoHeight: true,
   xs: {
     hidden: false,
-    colStart: "col 1",
-    colSpan: "span 12",
-    rowStart: "row 1",
-    rowSpan: "span 4",
+    colStart: 0,
+    colSpan: 14,
+    rowStart: 1,
+    rowSpan: 4,
   },
   sm: {
     hidden: false,
-    colStart: "col 1",
-    colSpan: "span 12",
-    rowStart: "row 1",
-    rowSpan: "span 4",
+    colStart: 1,
+    colSpan: 12,
+    rowStart: 1,
+    rowSpan: 4,
   },
 
   md: {
     hidden: false,
-    colStart: "col 1",
-    colSpan: "span 11",
-    rowStart: "row 1",
-    rowSpan: "span 4",
+    colStart: 1,
+    colSpan: 10,
+    rowStart: 1,
+    rowSpan: 4,
   },
 
   lg: {
     hidden: false,
-    colStart: "col 1",
-    colSpan: "span 8",
-    rowStart: "row 1",
-    rowSpan: "span 3",
+    colStart: 1,
+    colSpan: 8,
+    rowStart: 1,
+    rowSpan: 3,
   },
 
   xl: {
     hidden: false,
-    colStart: "col 1",
-    colSpan: "span 6",
-    rowStart: "row 1",
-    rowSpan: "span 6",
+    colStart: 1,
+    colSpan:  6,
+    rowStart: 1,
+    rowSpan: 6,
   },
 };
 
@@ -347,7 +280,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             },
           },
         },
-        children: [...defaultChildConfig],
+        children: [...defaultCarouselChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -360,7 +293,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             },
           },
         },
-        children: [...defaultChildConfig],
+        children: [...defaultCarouselChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -373,7 +306,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             },
           },
         },
-        children: [...defaultChildConfig],
+        children: [...defaultCarouselChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -386,7 +319,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             },
           },
         },
-        children: [...defaultChildConfig],
+        children: [...defaultCarouselChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -408,7 +341,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             ],
           },
         },
-        children: [...defaultChildConfig],
+        children: [...defaultCarouselChildConfig],
       },
       {
         "@type": "@builder.io/sdk:Element",
@@ -430,7 +363,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
             ],
           },
         },
-        children: [...defaultChildConfig],
+        children: [...defaultCarouselChildConfig],
       },
     ],
     defaultStyles: {
@@ -478,105 +411,76 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   },
   {
     component: ContentComponent,
-    name: "Text Content",
+    name: "Content",
+    canHaveChildren: true,
     noWrap: true,
     image: "https://img.icons8.com/ios/50/media-queries.png",
     inputs: [
       {
-        name: "type",
+        name: "emulatedBreakpoint",
+        friendlyName: "Breakpoints",
+        helperText: "Test your content at different screen sizes.",
         type: "string",
-        enum: ["visual", "text"],
-        defaultValue:"visual",
-        required: true,
-        hideFromUI:true,
+        defaultValue: "Off",
+        enum: ["Off", "xs", "sm", "md", "lg", "xl"],
+      },
+      {
+        name: "autoHeight",
+        type:'boolean',
+        defaultValue: false,
+      },
+      {
+        name: "layer",
+        helperText: "Move content to front or back",
+        type: "number",
+        defaultValue: 0,
+        min: -5,
+        max:5,
       },
       {
         name: "xs",
         type: "object",
         required: true,
         subFields: contentPlacement,
-        defaultValue:contentOptions.xs,        
+        defaultValue: contentOptions.xs,
+        showIf:
+          'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "xs"',
       },
       {
         name: "sm",
         type: "object",
         required: true,
         subFields: contentPlacement,
-        defaultValue:contentOptions.sm
+        defaultValue: contentOptions.sm,
+        showIf:
+        'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "sm"',
       },
       {
         name: "md",
         type: "object",
         required: true,
         subFields: contentPlacement,
-        defaultValue:contentOptions.md
+        defaultValue: contentOptions.md,
+        showIf:
+        'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "md"',
       },
       {
         name: "lg",
         type: "object",
         required: true,
         subFields: contentPlacement,
-        defaultValue:contentOptions.lg
+        defaultValue: contentOptions.lg,
+        showIf:
+        'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "lg"',
       },
       {
         name: "xl",
         type: "object",
         required: true,
         subFields: contentPlacement,
-        defaultValue:contentOptions.xl
-      },
-    ],
-  },
-  {
-    component: ContentComponent,
-    name: "Visual Content",
-    noWrap: true,
-    image: "https://img.icons8.com/ios/50/media-queries.png",
-    defaults: {},
-
-    inputs: [
-      {
-        name: "type",
-        type: "string",
-        enum: ["visual", "text"],
-        defaultValue:"visual",
-        required: true,
-        hideFromUI:true,
-      },
-      {
-        name: "xs",
-        type: "object",
-        required: true,
-        subFields: contentPlacement,
-        defaultValue:contentOptions.xs
-      },
-      {
-        name: "sm",
-        type: "object",
-        required: true,
-        subFields: contentPlacement,
-        defaultValue:contentOptions.sm
-      },
-      {
-        name: "md",
-        type: "object",
-        required: true,
-        subFields: contentPlacement,
-        defaultValue:contentOptions.md
-      },
-      {
-        name: "lg",
-        type: "object",
-        required: true,
-        subFields: contentPlacement,
-        defaultValue:contentOptions.lg
-      },
-      {
-        name: "xl",
-        type: "object",
-        required: true,
-        subFields: contentPlacement,
-        defaultValue:contentOptions.xl
+        defaultValue: contentOptions.xl,
+        showIf:
+        'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "xl"',
       },
     ],
   },
@@ -589,20 +493,27 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     childRequirements: {
       message: "You can only put Text or Image Content in a Footer",
       query: {
-        "component.name": { $in: ["Text Content", "Image Content"] },
+        "component.name": { $in: ["Content"] },
       },
     },
     defaultChildren: [
       {
         "@type": "@builder.io/sdk:Element",
         component: {
-          name: "Text Content",
+          name: "Content",
           options: { ...contentOptions },
         },
-        children: [...defaultChildConfig],
       },
     ],
     inputs: [
+      {
+        name: "emulatedBreakpoint",
+        friendlyName: "Breakpoints",
+        helperText: "Test your content at different screen sizes.",
+        type: "string",
+        defaultValue: "Off",
+        enum: ["Off", "xs", "sm", "md", "lg", "xl"],
+      },
       {
         name: "id",
         type: "string",
@@ -626,20 +537,27 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     childRequirements: {
       message: "You can only put Text or Image Content in a Header",
       query: {
-        "component.name": { $in: ["Text Content", "Image Content"] },
+        "component.name": { $in: ["Content"] },
       },
     },
     defaultChildren: [
       {
         "@type": "@builder.io/sdk:Element",
         component: {
-          name: "Text Content",
+          name: "Content",
           options: { ...contentOptions },
         },
-        children: [...defaultChildConfig],
       },
     ],
     inputs: [
+      {
+        name: "emulatedBreakpoint",
+        friendlyName: "Breakpoints",
+        helperText: "Test your content at different screen sizes.",
+        type: "string",
+        defaultValue: "Off",
+        enum: ["Off", "xs", "sm", "md", "lg", "xl"],
+      },
       {
         name: "id",
         type: "string",
@@ -670,20 +588,27 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     childRequirements: {
       message: "You can only put Text or Image Content in a Section",
       query: {
-        "component.name": { $in: ["Text Content", "Image Content"] },
+        "component.name": { $in: ["Content"] },
       },
     },
     defaultChildren: [
       {
         "@type": "@builder.io/sdk:Element",
         component: {
-          name: "Text Content",
+          name: "Content",
           options: { ...contentOptions },
         },
-        children: [...defaultChildConfig],
       },
     ],
     inputs: [
+      {
+        name: "emulatedBreakpoint",
+        friendlyName: "Breakpoints",
+        helperText: "Test your content at different screen sizes.",
+        type: "string",
+        defaultValue: "Off",
+        enum: ["Off", "xs", "sm", "md", "lg", "xl"],
+      },
       {
         name: "id",
         type: "string",

@@ -4,6 +4,10 @@
   grid-row: var(--xs-rows);
   position:relative;
 
+  img {
+    display: none;
+  }
+
   .section-content-inner {
     position: relative;
     width: 100%;
@@ -55,10 +59,3 @@
   grid-row: var(--xl-rows);
   display: var(--xl-hidden);
 }
-
-/* 
---add breakpoint control 
---bind the in view breakpoint to visible field 
-do we beed the box inside no
-
-*/

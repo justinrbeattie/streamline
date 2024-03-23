@@ -2,13 +2,13 @@ import type { Meta, StoryObj } from "storybook-framework-qwik";
 import { ContentComponent, type ContentProps } from "./content";
 import { SectionComponent } from "../section/section";
 import type { SectionProps } from "../section/section";
-import { StoryBookBreakpoint } from "~/components/common/breakpoint/breakpoint";
 
 const meta: Meta<ContentProps> = {
   component: ContentComponent,
 };
 
 const sectionProps: SectionProps = {
+  emulatedBreakpoint:'Off',
   tag: "section",
   id: "section-101",
   attributes:{}
@@ -21,57 +21,52 @@ export default meta;
 
 export const Content: Story = {
   args: {
-    type: "text",
+    autoHeight: true,
     xs: {
       hidden: false,
-      colStart: "left-gutter",
-      colSpan: "span 14",
-      rowStart: "row 1",
-      rowSpan: "span 6",
+      colStart: 0,
+      colSpan: 14,
+      rowStart: 1,
+      rowSpan: 2,
     },
     sm: {
       hidden: false,
-      colStart: "col 1",
-      colSpan: "span 12",
-      rowStart: "row 1",
-      rowSpan: "span 5",
+      colStart: 0,
+      colSpan: 14,
+      rowStart: 1,
+      rowSpan: 2,
     },
 
     md: {
       hidden: false,
-      colStart: "col 1",
-      colSpan: "span 8",
-      rowStart: "row 1",
-      rowSpan: "span 4",
+      colStart: 0,
+      colSpan: 14,
+      rowStart: 1,
+      rowSpan: 2,
     },
 
     lg: {
       hidden: false,
-      colStart: "col 1",
-      colSpan: "span 6",
-      rowStart: "row 1",
-      rowSpan: "span 3",
+      colStart: 0,
+      colSpan: 14,
+      rowStart: 1,
+      rowSpan: 2,
     },
 
     xl: {
       hidden: false,
-      colStart: "col 1",
-      colSpan: "span 4",
-      rowStart: "row 1",
-      rowSpan: "span 6",
+      colStart: 0,
+      colSpan: 14,
+      rowStart: 1,
+      rowSpan: 2,
     },
   },
   argTypes: {
 
-    type: {
-      options: ["visual" , "text"],
-      control: { type: 'select' },
-    },
 
 
   },
   render: (props) => (
-    <StoryBookBreakpoint>
     <SectionComponent {...sectionProps}>
       <ContentComponent {...props}>
     <p>
@@ -82,6 +77,5 @@ export const Content: Story = {
 
       </ContentComponent>
     </SectionComponent>
-    </StoryBookBreakpoint>
   ),
 };
