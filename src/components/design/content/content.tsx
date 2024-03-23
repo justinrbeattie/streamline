@@ -126,11 +126,11 @@ export const ContentComponent = component$<ContentProps>(
         --lg-rows: row ${lg.rowStart} / span ${autoHeight ? store.autoRows : lg.rowSpan};
         --xl-rows: row ${xl.rowStart} / span ${autoHeight ? store.autoRows : xl.rowSpan};
 
-        --xs-hidden: ${xs.hidden ? "none" : "block"};
-        --sm-hidden: ${sm.hidden ? "none" : "block"};
-        --md-hidden: ${md.hidden ? "none" : "block"};
-        --lg-hidden: ${lg.hidden ? "none" : "block"};
-        --xl-hidden: ${xl.hidden ? "none" : "block"};
+        --xs-hidden: ${xs.hidden ? "none" : "flex"};
+        --sm-hidden: ${sm.hidden ? "none" : "flex"};
+        --md-hidden: ${md.hidden ? "none" : "flex"};
+        --lg-hidden: ${lg.hidden ? "none" : "flex"};
+        --xl-hidden: ${xl.hidden ? "none" : "flex"};
         z-index: ${layer};
       `}
       >

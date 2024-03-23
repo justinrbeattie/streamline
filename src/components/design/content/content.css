@@ -3,6 +3,10 @@
   grid-column: var(--xs-cols);
   grid-row: var(--xs-rows);
   position:relative;
+ align-items: center;
+ clip-path: inset(0px 0px);
+
+
 
   > img {
     display: none;
@@ -17,9 +21,10 @@
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: normal;
-    align-items: normal;
+    align-items: flex-start;
     align-content: stretch;
     row-gap:var(--size-3);
+
   
    
     &:empty {
