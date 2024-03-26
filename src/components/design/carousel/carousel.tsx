@@ -71,7 +71,7 @@ export const CarouselComponent = component$<CarouselProps>(
     return (
       <div
         {...props.attributes}
-        class={`carousel-wrapper  ${props.attributes?.className || ''}`}
+        class={`carousel-wrapper  ${props.attributes?.class || ''}`}
         scrolled-to-start={store.scrolledToStart || null}
         scrolled-to-end={store.scrolledToEnd || null}
         style={`--carousel-item-min-width:${store.carouselItemMinWidth}; --carousel-item-min-height:${store.carouselItemMinHeight}; ${props.attributes?.styles || ''}`}
@@ -186,7 +186,7 @@ export const CarouselItemComponent = component$<{
     <li
       {...props.attributes}
       ref={li}
-      class={props.attributes?.className}
+      class={props.attributes?.class}
       style={props.attributes?.styles}
       aria-roledescription={props.carouselItem.ariaRoleDescription}
       aria-label={props.carouselItem.ariaLabel}

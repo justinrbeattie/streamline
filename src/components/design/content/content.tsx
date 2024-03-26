@@ -112,8 +112,8 @@ export const ContentComponent = component$<ContentProps>(
 
     return (
       <div
-        {...attributes}
-        class={`section-content  ${autoHeight? 'auto-height' : 'manual-height'} ${layoutContext.isEditing ? "is-editing" : ""} layer-${layer} ${attributes?.className || ""}`}
+        builder-id={attributes['builder-id']}
+        class={`section-content  ${autoHeight? 'auto-height' : 'manual-height'} ${layoutContext.isEditing ? "is-editing" : ""} layer-${layer} ${attributes?.class || ""}`}
         style={`
         --xs-cols: ${(xs.colStart as number) > 0 ? "col " + xs.colStart : "left-gutter"} / span ${xs.colSpan};
         --sm-cols: ${(sm.colStart as number) > 0 ? "col " + sm.colStart : "left-gutter"} / span ${sm.colSpan};
