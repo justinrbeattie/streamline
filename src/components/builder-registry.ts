@@ -76,13 +76,13 @@ const contentPlacement: Input[] = [
     name: "rowSpan",
     type: "number",
     defaultValue: 1,
-    showIf:'parent.get("autoHeight") === false',
-
+    showIf: 'parent.get("autoHeight") === false',
+    
   },
 ];
 
 const contentOptions: any = {
-  emulatedBreakpoint: 'Off',
+  emulatedBreakpoint: "Off",
   autoHeight: true,
   xs: {
     hidden: false,
@@ -118,7 +118,7 @@ const contentOptions: any = {
   xl: {
     hidden: false,
     colStart: 1,
-    colSpan:  6,
+    colSpan: 6,
     rowStart: 1,
     rowSpan: 6,
   },
@@ -426,7 +426,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
       },
       {
         name: "autoHeight",
-        type:'boolean',
+        type: "boolean",
         defaultValue: false,
       },
       {
@@ -435,7 +435,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         type: "number",
         defaultValue: 0,
         min: -5,
-        max:5,
+        max: 5,
       },
       {
         name: "xs",
@@ -453,7 +453,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         subFields: contentPlacement,
         defaultValue: contentOptions.sm,
         showIf:
-        'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "sm"',
+          'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "sm"',
       },
       {
         name: "md",
@@ -462,7 +462,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         subFields: contentPlacement,
         defaultValue: contentOptions.md,
         showIf:
-        'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "md"',
+          'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "md"',
       },
       {
         name: "lg",
@@ -471,7 +471,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         subFields: contentPlacement,
         defaultValue: contentOptions.lg,
         showIf:
-        'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "lg"',
+          'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "lg"',
       },
       {
         name: "xl",
@@ -480,7 +480,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         subFields: contentPlacement,
         defaultValue: contentOptions.xl,
         showIf:
-        'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "xl"',
+          'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "xl"',
       },
     ],
   },
@@ -586,7 +586,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     noWrap: true,
     canHaveChildren: true,
     childRequirements: {
-      message: "You can only put Text or Image Content in a Section",
+      message: "You can only put Content in a Section",
       query: {
         "component.name": { $in: ["Content"] },
       },
