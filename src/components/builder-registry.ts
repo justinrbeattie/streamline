@@ -9,6 +9,7 @@ import { MainComponent } from "./design/main/main";
 import { SectionComponent } from "./design/section/section";
 import type { BuilderElement } from "@builder.io/sdk-qwik/types/src/types/element";
 import type { Input } from "@builder.io/sdk-qwik/types/src/types/input";
+import { HomeHeroComponent } from "./bespoke/home-hero/home-hero";
 
 /**
  * This array is used to integrate custom components within Builder.
@@ -623,4 +624,11 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
       },
     ],
   },
+  {
+    component: HomeHeroComponent,
+    name: "HomeHero",
+    image: "https://img.icons8.com/ios/50/width.png",
+    noWrap: true,
+    canHaveChildren: true,
+  }
 ];

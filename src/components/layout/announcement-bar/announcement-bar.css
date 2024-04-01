@@ -7,5 +7,6 @@
     z-index:var(--layer-5);
     width:100%;
     height:var(--announcement-bar-height);
+    position: relative;
     transition: all 0.25s ease-in-out;
 }
