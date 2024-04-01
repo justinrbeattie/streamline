@@ -1,8 +1,8 @@
-import { Slot, component$, useStylesScoped$ } from "@builder.io/qwik";
+import { Slot, component$, useStyles$ } from "@builder.io/qwik";
 import styles from "./home-hero.css?inline";
 
 export const HomeHeroComponent = component$<any>((props) => {
-  useStylesScoped$(styles);
+  useStyles$(styles);
 
   return (
     <header {...props.attributes}>
@@ -15,11 +15,6 @@ export const HomeHeroComponent = component$<any>((props) => {
             <span class="diversity">Diversity.</span>
           </h1>
           <Slot></Slot>
-          <div class="grid-item grid-item-1"></div>
-          <div class="grid-item grid-item-2"></div>
-          <div class="grid-item grid-item-3"></div>
-          <div class="grid-item grid-item-4"></div>
-          <div class="grid-item grid-item-5"></div>
         </div>
       </div>
     </header>
