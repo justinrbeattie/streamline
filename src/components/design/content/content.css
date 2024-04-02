@@ -24,6 +24,12 @@
     align-items: flex-start;
     align-content: stretch;
     row-gap:var(--size-3);
+    padding:var(--size-3);
+
+
+    &.background {
+      height:100%;
+    }
 
   
    

@@ -15,6 +15,11 @@ export const HomeHeroComponent = component$<any>((props) => {
             <span class="diversity">Diversity.</span>
           </h1>
           <Slot></Slot>
+          <span class="decoration decoration-1"></span>
+          <span class="decoration decoration-2"></span>
+          <span class="decoration decoration-3"></span>
+          <span class="decoration decoration-4"></span>
+          <span class="decoration decoration-5"></span>
         </div>
       </div>
     </header>

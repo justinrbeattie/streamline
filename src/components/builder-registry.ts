@@ -431,6 +431,11 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         defaultValue: false,
       },
       {
+        name: "background",
+        type: "boolean",
+        defaultValue: false,
+      },
+      {
         name: "layer",
         helperText: "Move content to front or back",
         type: "number",

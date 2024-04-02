@@ -23,6 +23,7 @@ export interface ContentProps {
   lg: Placement;
   xl: Placement;
   attributes: any;
+  background:boolean;
 }
 
 export const ContentComponent = component$<ContentProps>(
@@ -31,6 +32,7 @@ export const ContentComponent = component$<ContentProps>(
     layer = "0",
     emulatedBreakpoint = "Off",
     attributes = undefined,
+    background = false,
     xs = {
       hidden: false,
       colStart: "col 1",
@@ -153,7 +155,7 @@ export const ContentComponent = component$<ContentProps>(
           /* prettier-ignore */ isEditing && emulatedBreakpoint === "xl" ? <img onLoad$={() => { onLoad$(); }} width="20" height="20" src={image} /> : ""
         }
 
-        <div ref={innerRef} class="section-content-inner">
+        <div ref={innerRef} class={`section-content-inner ${(background? 'background' : '')}`} >
           <Slot></Slot>
         </div>
       </div>

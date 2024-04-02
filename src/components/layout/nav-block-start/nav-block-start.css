@@ -19,8 +19,7 @@
   transition: all 0.5s var(--ease-in-out-2);
   animation: navBlockStartScrollTextAnimation linear both;
   animation-timeline: scroll(block root);
-  animation-range: var(--nav-block-start-height)
-    calc(var(--nav-block-start-height) * 2);
+  animation-range: 400dvh calc(var(--nav-block-start-height) + 400dvh);
 
   a {
     color: inherit;
