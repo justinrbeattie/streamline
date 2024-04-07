@@ -628,12 +628,5 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         defaultValue: "section",
       },
     ],
-  },
-  {
-    component: HomeHeroComponent,
-    name: "HomeHero",
-    image: "https://img.icons8.com/ios/50/width.png",
-    noWrap: true,
-    canHaveChildren: true,
   }
 ];
