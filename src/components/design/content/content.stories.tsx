@@ -8,9 +8,9 @@ const meta: Meta<ContentProps> = {
 };
 
 const sectionProps: SectionProps = {
-  emulatedBreakpoint:'Off',
   tag: "section",
-  id: "section-101",
+  $name:'',
+  id:"section-101",
   attributes:{}
 
 };
@@ -21,45 +21,7 @@ export default meta;
 
 export const Content: Story = {
   args: {
-    autoHeight: true,
-    xs: {
-      hidden: false,
-      colStart: 0,
-      colSpan: 14,
-      rowStart: 1,
-      rowSpan: 2,
-    },
-    sm: {
-      hidden: false,
-      colStart: 0,
-      colSpan: 14,
-      rowStart: 1,
-      rowSpan: 2,
-    },
 
-    md: {
-      hidden: false,
-      colStart: 0,
-      colSpan: 14,
-      rowStart: 1,
-      rowSpan: 2,
-    },
-
-    lg: {
-      hidden: false,
-      colStart: 0,
-      colSpan: 14,
-      rowStart: 1,
-      rowSpan: 2,
-    },
-
-    xl: {
-      hidden: false,
-      colStart: 0,
-      colSpan: 14,
-      rowStart: 1,
-      rowSpan: 2,
-    },
   },
   argTypes: {
 

@@ -19,9 +19,13 @@ body {
         transform: translateZ(calc(-1rem * var(--drawer-progress)));
     }
 
-    .screen-md .drawer-container {
-        max-width:80dvw;
-    }
+    @media (max-width: 640px) {
+        .drawer-container {
+            max-width:80dvw;
+        }
+      }
+
+
 
     } 
 

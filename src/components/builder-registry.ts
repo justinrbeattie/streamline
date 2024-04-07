@@ -8,8 +8,6 @@ import { ContentComponent } from "./design/content/content";
 import { MainComponent } from "./design/main/main";
 import { SectionComponent } from "./design/section/section";
 import type { BuilderElement } from "@builder.io/sdk-qwik/types/src/types/element";
-import type { Input } from "@builder.io/sdk-qwik/types/src/types/input";
-
 /**
  * This array is used to integrate custom components within Builder.
  * https://www.builder.io/c/docs/custom-components-intro
@@ -40,88 +38,15 @@ const defaultCarouselChildConfig: BuilderElement[] = [
   },
 ];
 
-
-const contentPlacement: Input[] = [
-  {
-    name: "hidden",
-    type: "boolean",
-  },
-  {
-    name: "colStart",
-    friendlyName: "Column Start",
-    type: "number",
-    onChange:
-      "options.get('colStart') + options.get('colSpan') > 14 ? options.set('colSpan', (14 - options.get('colStart'))): '';",
-    helperText:
-      "Column starting point from left. Column 0 and 14 is the Gutter.",
-    min: 0,
-    max: 13,
-  },
-  {
-    name: "colSpan",
-    friendlyName: "Column Span",
-    type: "number",
-    onChange:
-      "options.get('colStart') + options.get('colSpan') > 14 ? options.set('colStart', (14 - options.get('colSpan'))): '';",
-    helperText: "Number of Columns this component spans.",
-    min: 1,
-    max: 14,
-  },
-  {
-    name: "rowStart",
-    type: "number",
-    defaultValue: 1,
-  },
-  {
-    name: "rowSpan",
-    type: "number",
-    defaultValue: 1,
-    showIf: 'parent.get("autoHeight") === false',
-    
-  },
-];
-
-const contentOptions: any = {
-  emulatedBreakpoint: "Off",
-  autoHeight: true,
-  xs: {
-    hidden: false,
-    colStart: 0,
-    colSpan: 14,
-    rowStart: 1,
-    rowSpan: 4,
-  },
-  sm: {
-    hidden: false,
-    colStart: 1,
-    colSpan: 12,
-    rowStart: 1,
-    rowSpan: 4,
-  },
-
-  md: {
-    hidden: false,
-    colStart: 1,
-    colSpan: 10,
-    rowStart: 1,
-    rowSpan: 4,
-  },
-
-  lg: {
-    hidden: false,
-    colStart: 1,
-    colSpan: 8,
-    rowStart: 1,
-    rowSpan: 3,
-  },
-
-  xl: {
-    hidden: false,
-    colStart: 1,
-    colSpan: 6,
-    rowStart: 1,
-    rowSpan: 6,
-  },
+const contentResponsiveStyles: any = {
+    large: {
+      display: "flex",
+      "--cols": "col 1 / span 6",
+      "--rows": "content",
+      "--layer": "var(--layer-1)",
+    },
+    medium: { display: "flex", "--cols": "col 1 / span 7" },
+    small: { display: "flex", "--cols": "col 1 / span 12" },
 };
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
@@ -415,167 +340,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     canHaveChildren: true,
     noWrap: true,
     image: "https://img.icons8.com/ios/50/media-queries.png",
-    inputs: [
-      {
-        name: "emulatedBreakpoint",
-        friendlyName: "Breakpoints",
-        helperText: "Test your content at different screen sizes.",
-        type: "string",
-        defaultValue: "Off",
-        enum: ["Off", "xs", "sm", "md", "lg", "xl"],
-      },
-      {
-        name: "autoHeight",
-        type: "boolean",
-        defaultValue: false,
-      },
-      {
-        name: "background",
-        type: "boolean",
-        defaultValue: false,
-      },
-      {
-        name: "layer",
-        helperText: "Move content to front or back",
-        type: "number",
-        defaultValue: 0,
-        min: -5,
-        max: 5,
-      },
-      {
-        name: "xs",
-        type: "object",
-        required: true,
-        subFields: contentPlacement,
-        defaultValue: contentOptions.xs,
-        showIf:
-          'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "xs"',
-      },
-      {
-        name: "sm",
-        type: "object",
-        required: true,
-        subFields: contentPlacement,
-        defaultValue: contentOptions.sm,
-        showIf:
-          'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "sm"',
-      },
-      {
-        name: "md",
-        type: "object",
-        required: true,
-        subFields: contentPlacement,
-        defaultValue: contentOptions.md,
-        showIf:
-          'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "md"',
-      },
-      {
-        name: "lg",
-        type: "object",
-        required: true,
-        subFields: contentPlacement,
-        defaultValue: contentOptions.lg,
-        showIf:
-          'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "lg"',
-      },
-      {
-        name: "xl",
-        type: "object",
-        required: true,
-        subFields: contentPlacement,
-        defaultValue: contentOptions.xl,
-        showIf:
-          'options.get("emulatedBreakpoint") === "Off" || options.get("emulatedBreakpoint") == "xl"',
-      },
-    ],
-  },
-  {
-    component: SectionComponent,
-    name: "Footer",
-    image: "https://img.icons8.com/ios/50/document-footer.png",
-    noWrap: true,
-    canHaveChildren: true,
-    childRequirements: {
-      message: "You can only put Text or Image Content in a Footer",
-      query: {
-        "component.name": { $in: ["Content"] },
-      },
-    },
-    defaultChildren: [
-      {
-        "@type": "@builder.io/sdk:Element",
-        component: {
-          name: "Content",
-          options: { ...contentOptions },
-        },
-      },
-    ],
-    inputs: [
-      {
-        name: "emulatedBreakpoint",
-        friendlyName: "Breakpoints",
-        helperText: "Test your content at different screen sizes.",
-        type: "string",
-        defaultValue: "Off",
-        enum: ["Off", "xs", "sm", "md", "lg", "xl"],
-      },
-      {
-        name: "id",
-        type: "string",
-        required: true,
-        defaultValue: "Section-1",
-      },
-      {
-        name: "tag",
-        type: "string",
-        hideFromUI: true,
-        defaultValue: "footer",
-      },
-    ],
-  },
-  {
-    component: SectionComponent,
-    name: "Header",
-    image: "https://img.icons8.com/ios/50/document-header.png",
-    noWrap: true,
-    canHaveChildren: true,
-    childRequirements: {
-      message: "You can only put Text or Image Content in a Header",
-      query: {
-        "component.name": { $in: ["Content"] },
-      },
-    },
-    defaultChildren: [
-      {
-        "@type": "@builder.io/sdk:Element",
-        component: {
-          name: "Content",
-          options: { ...contentOptions },
-        },
-      },
-    ],
-    inputs: [
-      {
-        name: "emulatedBreakpoint",
-        friendlyName: "Breakpoints",
-        helperText: "Test your content at different screen sizes.",
-        type: "string",
-        defaultValue: "Off",
-        enum: ["Off", "xs", "sm", "md", "lg", "xl"],
-      },
-      {
-        name: "id",
-        type: "string",
-        required: true,
-        defaultValue: "Header-1",
-      },
-      {
-        name: "tag",
-        type: "string",
-        hideFromUI: true,
-        defaultValue: "header",
-      },
-    ],
+    defaults: {responsiveStyles:{...contentResponsiveStyles}},
   },
   {
     component: MainComponent,
@@ -601,21 +366,14 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         "@type": "@builder.io/sdk:Element",
         component: {
           name: "Content",
-          options: { ...contentOptions },
         },
+        responsiveStyles:{...contentResponsiveStyles}
       },
     ],
     inputs: [
       {
-        name: "emulatedBreakpoint",
-        friendlyName: "Breakpoints",
-        helperText: "Test your content at different screen sizes.",
-        type: "string",
-        defaultValue: "Off",
-        enum: ["Off", "xs", "sm", "md", "lg", "xl"],
-      },
-      {
         name: "id",
+        friendlyName: "Id",
         type: "string",
         required: true,
         defaultValue: "Section-1",
@@ -623,9 +381,9 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
       {
         name: "tag",
         type: "string",
-        hideFromUI: true,
         defaultValue: "section",
+        enum: ["header", "section", "footer"],
       },
     ],
-  }
+  },
 ];

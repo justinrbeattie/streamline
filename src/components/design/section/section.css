@@ -1,37 +1,32 @@
-.current-screen-xs .page-section {
-  --page-grid-gutter: 2rem;
+@media (max-width: 640px) {
+  .page-section {
+    --page-grid-gutter: 2rem;
+  }
 }
 
 .page-section {
   --page-grid-column-gap: var(--size-fluid-1);
-  --page-grid-rows: 5;
-  --page-grid-row-height: 9vh;
-  --page-grid-row-gap: 1vh;
+  --page-grid-row-gap: 0;
   --page-grid-gutter: clamp(1rem, 5vw, 10rem);
   --page-grid-template-columns: [left-gutter] var(--page-grid-gutter) [col] 1fr
     [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col]
     1fr [col] 1fr [col] 1fr [col] 1fr [col] var(--page-grid-gutter)
     [right-gutter];
-  --page-grid-template-rows: repeat(
-    var(--page-grid-rows),
-    [row] var(--page-grid-row-height)
-  );
+  --page-grid-template-vertical-gutter: 5dvh;
+  --page-grid-template-rows: [top-gutter]
+    var(--page-grid-template-vertical-gutter) [content] minmax(20dvh, auto)
+    [content] var(--page-grid-template-vertical-gutter) [bottom-gutter];
   display: grid;
   position: relative;
   width: var(--page-width);
   grid-template-columns: var(--page-grid-template-columns);
   grid-template-rows: var(--page-grid-template-rows);
-  grid-auto-rows: var(--page-grid-row-height);
+  grid-auto-rows: 0;
   column-gap: var(--page-grid-column-gap);
   row-gap: var(--page-grid-row-gap);
-  padding-block-end: var(--page-grid-row-gap);
   clip-path: inset(0px 0px);
 
-  > img {
-    display: none;
-  }
-
- .grid-column-guide {
+  .grid-column-guide {
     display: grid;
     grid-column: left-gutter / span 14;
     grid-template-columns: inherit;
@@ -41,51 +36,53 @@
     height: 100%;
     z-index: 99;
     pointer-events: none;
-    mix-blend-mode:screen;
+    mix-blend-mode: screen;
     .column {
       background-image: linear-gradient(
         to bottom,
         rgba(255, 252, 24, 0.25) 0vh,
-        rgba(255, 252, 24, 0.25) 9vh,
-        transparent 9vh,
-        transparent 10vh
+        rgba(255, 252, 24, 0.25) var(--page-grid-template-vertical-gutter),
+        rgba(255, 182, 24, 0.25) var(--page-grid-template-vertical-gutter),
+        rgba(255, 182, 24, 0.25)
+          calc(100% - var(--page-grid-template-vertical-gutter)),
+        rgba(243, 240, 83, 0.25)
+          calc(100% - var(--page-grid-template-vertical-gutter)),
+        rgba(255, 252, 24, 0.25) calc(100% - 0vh)
       );
-      background-size: 100% 10vh;
+      background-size: 100% 100%;
       background-repeat: repeat-y;
       position: relative;
-      opacity:0;
+      opacity: 0;
+
+      &:first-child:before {
+        content: "Left Gutter";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        font-weight: bold;
+      }
+
+      &:last-child:before {
+        content: "Right Gutter";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        font-weight: bold;
+      }
     }
   }
 
-  &:not(.hide-grid-guide):hover .grid-column-guide .column {
+  &:hover > .grid-column-guide > .column {
     opacity: 1;
-  }
-
-  &:not(.hide-grid-guide):hover > .grid-column-guide > .column:first-child:before {
-    content: "Column Zero - Left Gutter";
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    font-weight: bold;
-    color:white;
-  }
-
-  &:not(.hide-grid-guide):hover > .grid-column-guide > .column:last-child:before {
-    content: "Column Fourteen - Right Gutter";
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    font-weight: bold;
-    color:white;
   }
 }
