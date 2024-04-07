@@ -25,6 +25,7 @@
   column-gap: var(--page-grid-column-gap);
   row-gap: var(--page-grid-row-gap);
   clip-path: inset(0px 0px);
+  background-color: var(--surface-2);
 
   .grid-column-guide {
     display: grid;

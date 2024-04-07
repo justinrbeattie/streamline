@@ -355,6 +355,12 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     image: "https://img.icons8.com/ios/50/width.png",
     noWrap: true,
     canHaveChildren: true,
+    defaults: {responsiveStyles:{
+      large: {
+        "--palette-hue": "inherit",
+        "--palette-chroma": "inherit",
+      } as any,
+    }},
     childRequirements: {
       message: "You can only put Content in a Section",
       query: {
