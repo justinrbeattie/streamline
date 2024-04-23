@@ -12,8 +12,18 @@
   src: url("../fonts/Inter-roman.var.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "Heading";
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: "Regular";
+  src: url("../fonts/heading.woff2") format("woff2");
+}
+
+
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 100 900;
@@ -53,10 +63,9 @@
 
   --palette-hue: 249;
   --palette-hue-rotate-by: 0;
-  --palette-chroma: 2;
-  
-  :where(:root,.page-section) {
-      --surface-1: light-dark(var(--color-white), var(--color-15));
+  --palette-chroma: 0;
+
+  --surface-1: light-dark(var(--color-white), var(--color-15));
   --surface-2: light-dark(var(--color-1), var(--color-13));
   --surface-3: light-dark(var(--color-2), var(--color-10));
   --surface-4: light-dark(var(--color-3), var(--color-9));
@@ -65,8 +74,16 @@
   --border-color: light-dark(var(--color-4), var(--color-12));
   --link: oklch(65% 0.18 var(--palette-hue));
 
+  .page-section {
+    --surface-1: light-dark(var(--color-white), var(--color-15));
+    --surface-2: light-dark(var(--color-1), var(--color-13));
+    --surface-3: light-dark(var(--color-2), var(--color-10));
+    --surface-4: light-dark(var(--color-3), var(--color-9));
+    --text-1: light-dark(var(--color-14), var(--color-2));
+    --text-2: light-dark(var(--color-12), var(--color-7));
+    --border-color: light-dark(var(--color-4), var(--color-12));
+    --link: oklch(65% 0.18 var(--palette-hue));
   }
-
 
   --space-xxs: var(--size-1);
   --space-xs: var(--size-2);
@@ -105,14 +122,133 @@ body {
     color: var(--text-1);
   }
 
-  .heading-prefix {
-    margin-block-end: calc(var(--size-3) * -1.5);
+  :where(
+      .heading-prefix,
+      .heading-prefix h1,
+      .heading-prefix h2,
+      .heading-prefix h3,
+      .heading-prefix h4,
+      .heading-prefix h5,
+      .heading-prefix h6
+    ) {
+    margin-block-end: calc(var(--size-3) * -0.75);
+    font-size: var(--font-size-body);
+    font-family: "Inter", sans-serif;
+    line-height: var(--font-size-body);
+    text-transform: uppercase;
+    color:currentColor;
   }
 
   .heading-suffix {
     margin-block-start: calc(var(--size-3) * -1.5);
+    font-size: var(--font-size-body);
+    text-transform: uppercase;
   }
+
+
+  }
+
+:where(h1,h2,h3,h4,h5,h6) {
+
+  font-family: "Heading", sans-serif;
+
 }
+
+:where(h1) {
+/*   font-size: 4.5rem!important;
+  max-inline-size: unset!important;
+  line-height:1!important; */
+}
+
+
+
+  .override-typography  * {
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  max-inline-size: unset;
+  color:inherit!important;
+}
+
+.brand-blue {
+  --palette-hue: 259;
+  --palette-hue-rotate-by: 0;
+  --palette-chroma: 1;
+  background-color: var(--color-9);
+  .builder-text * {
+    color: var(--color-12);
+  }
+  --bg:var(--color-9);
+  --fg:var(--color-12);
+}
+
+.brand-navy {
+  --palette-hue: 259;
+  --palette-hue-rotate-by: 0;
+  --palette-chroma: 1;
+  background-color: var(--color-14);
+  .builder-text * {
+    color: var(--color-1);
+  }
+  --bg:var(--color-14);
+  --fg:var(--color-1);
+}
+
+
+.brand-baby-blue {
+  --palette-hue: 259;
+  --palette-hue-rotate-by: 0;
+  --palette-chroma: 1;
+  background-color: var(--color-6);
+  .builder-text * {
+    color: var(--color-14);
+  }
+  --bg:var(--color-6);
+  --fg:var(--color-14);
+}
+
+
+.brand-mint {
+  --palette-hue: 163;
+  --palette-hue-rotate-by: 0;
+  --palette-chroma: 1.5;
+  background-color: var(--color-3);
+  .builder-text * {
+    --palette-hue: 259;
+    --palette-hue-rotate-by: 0;
+    --palette-chroma: 1;
+    color: var(--color-13);
+  }
+  --bg:var(--color-3);
+  --fg:var(--color-14);
+}
+
+
+.brand-pink {
+  --palette-hue: 322;
+  --palette-hue-rotate-by: 0;
+  --palette-chroma: 1;
+  background-color: var(--color-3);
+  .builder-text * {
+    color: var(--color-14);
+  }
+  --bg:var(--color-3);
+  --fg:var(--color-14);
+}
+
+
+.brand-yellow {
+  --palette-hue: 85;
+  --palette-hue-rotate-by: 0;
+  --palette-chroma: 1.2;
+  background-color: var(--color-3);
+  .builder-text * {
+    color: var(--color-14);
+  }
+  --bg:var(--color-3);
+  --fg:var(--color-14);
+}
+
 
 /*
 

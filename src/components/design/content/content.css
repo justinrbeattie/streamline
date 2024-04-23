@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 .section-content {
   display: var(--xs-hidden);
   grid-column: var(--cols);
@@ -14,8 +21,21 @@
 
     > .section-content-inner {
       height: 100%;
+      padding:0;
     }
   }
+
+  &.no-padding {
+    > .section-content-inner {
+      height: 100%;
+      padding:0;
+    }
+  }
+
+  &.no-clip {
+   clip-path: unset;
+  }
+
 
   .section-content-inner {
     position: relative;
@@ -39,5 +59,11 @@
         border-color:rgba(255, 0, 0, 0.25);
       }
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .section-content {
+    align-items: flex-start;
   }
 }

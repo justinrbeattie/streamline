@@ -8,6 +8,7 @@ import { ContentComponent } from "./design/content/content";
 import { MainComponent } from "./design/main/main";
 import { SectionComponent } from "./design/section/section";
 import type { BuilderElement } from "@builder.io/sdk-qwik/types/src/types/element";
+import { CustomStylesComponent } from "./design/custom-styles/custom-styles";
 /**
  * This array is used to integrate custom components within Builder.
  * https://www.builder.io/c/docs/custom-components-intro
@@ -343,6 +344,20 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     defaults: {responsiveStyles:{...contentResponsiveStyles}},
   },
   {
+    component: CustomStylesComponent,
+    name: "Styles",
+    canHaveChildren: true,
+    noWrap: true,
+    image: "https://img.icons8.com/ios/50/css.png",
+    inputs: [
+      {
+        name: "styles",
+        type: "code",
+        required: true,
+        defaultValue: "/* Write your CSS Code Here */",
+      }]
+  },
+  {
     component: MainComponent,
     name: "MainComponent",
     image: "https://img.icons8.com/ios/50/single-page-mode.png",
@@ -361,12 +376,6 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         "--palette-chroma": "inherit",
       } as any,
     }},
-    childRequirements: {
-      message: "You can only put Content in a Section",
-      query: {
-        "component.name": { $in: ["Content"] },
-      },
-    },
     defaultChildren: [
       {
         "@type": "@builder.io/sdk:Element",

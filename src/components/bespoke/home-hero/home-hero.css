@@ -215,3 +215,7 @@
     transform: translateX(-200dvw) rotateZ(var(--grid-item-rotation));
   }
 }
+
+* {
+  transform: translate(calc(-40dvw + (var(--translate-x) * -1)), calc(25dvh + (var(--translate-y) * 1))) rotate(0deg);
+}

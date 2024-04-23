@@ -1,8 +1,4 @@
-@media (max-width: 640px) {
-  .page-section {
-    --page-grid-gutter: 2rem;
-  }
-}
+
 
 .page-section {
   --page-grid-column-gap: var(--size-fluid-1);
@@ -14,7 +10,7 @@
     [right-gutter];
   --page-grid-template-vertical-gutter: 5dvh;
   --page-grid-template-rows: [top-gutter]
-    var(--page-grid-template-vertical-gutter) [content] minmax(20dvh, auto)
+    var(--page-grid-template-vertical-gutter) [content] minmax(20dvh, auto)  minmax(20dvh, auto)
     [content] var(--page-grid-template-vertical-gutter) [bottom-gutter];
   display: grid;
   position: relative;
@@ -25,7 +21,6 @@
   column-gap: var(--page-grid-column-gap);
   row-gap: var(--page-grid-row-gap);
   clip-path: inset(0px 0px);
-  background-color: var(--surface-2);
 
   .grid-column-guide {
     display: grid;
@@ -37,23 +32,25 @@
     height: 100%;
     z-index: 99;
     pointer-events: none;
+    background-color: rgba(255,255,255,.75);
     mix-blend-mode: screen;
+    opacity: 0;
     .column {
       background-image: linear-gradient(
         to bottom,
-        rgba(255, 252, 24, 0.25) 0vh,
-        rgba(255, 252, 24, 0.25) var(--page-grid-template-vertical-gutter),
-        rgba(255, 182, 24, 0.25) var(--page-grid-template-vertical-gutter),
-        rgba(255, 182, 24, 0.25)
+        rgba(0, 0, 0, 0.5) 0vh,
+        rgba(0, 0, 0, 0.5) var(--page-grid-template-vertical-gutter),
+        rgba(0, 0, 0, 1) var(--page-grid-template-vertical-gutter),
+        rgba(0, 0, 0, 1)
           calc(100% - var(--page-grid-template-vertical-gutter)),
-        rgba(243, 240, 83, 0.25)
+        rgba(0, 0, 0, 0.5)
           calc(100% - var(--page-grid-template-vertical-gutter)),
-        rgba(255, 252, 24, 0.25) calc(100% - 0vh)
+        rgba(0, 0, 0, 0.5) calc(100% - 0vh)
       );
       background-size: 100% 100%;
       background-repeat: repeat-y;
       position: relative;
-      opacity: 0;
+  
 
       &:first-child:before {
         content: "Left Gutter";
@@ -83,7 +80,20 @@
     }
   }
 
-  &:hover > .grid-column-guide > .column {
+  &:hover > .grid-column-guide {
     opacity: 1;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .page-section {
+    --page-grid-gutter: 2rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .page-section {
+    --page-grid-gutter: 10vw;
   }
 }
