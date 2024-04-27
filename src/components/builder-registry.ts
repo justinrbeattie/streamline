@@ -9,6 +9,7 @@ import { MainComponent } from "./design/main/main";
 import { SectionComponent } from "./design/section/section";
 import type { BuilderElement } from "@builder.io/sdk-qwik/types/src/types/element";
 import { CustomStylesComponent } from "./design/custom-styles/custom-styles";
+import { LayoutComponent } from "./design/layout/layout";
 /**
  * This array is used to integrate custom components within Builder.
  * https://www.builder.io/c/docs/custom-components-intro
@@ -401,4 +402,46 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
       },
     ],
   },
+  {
+    component: LayoutComponent,
+    name: "Layout",
+    image: "https://img.icons8.com/ios/50/template.png",
+    noWrap: true,
+    canHaveChildren:true,
+    inputs: [
+      {
+        name: "layout",
+        type: "string",
+        enum: [
+          { label: "1x Column", value: "1fr" },
+          { label: "2x Even Columns", value: "1fr 1fr" },
+          { label: "1x 1/4 + 1x 3/4 Columns", value: "3fr 9fr" },
+          { label: "1x 3/4 + 1x 1/4 Columns", value: "9fr 3fr" },
+          { label: "1x 1/3 + 1x 2/3 Columns", value: "4fr 8fr" },
+          { label: "1x 2/3 + 1x 1/1 Columns", value: "8fr 4fr" },
+          { label: "1x 5/12 + 1x 7/12 Columns", value: "5fr 7fr" },
+          { label: "1x 7/12 + 1x 5/12 Columns", value: "7fr 5fr" },
+          { label: "3x Even Columns", value: "1fr 1fr 1fr" },
+          { label: "4x Even Columns", value: "1fr 1fr 1fr 1fr" },
+        ],
+        defaultValue: "1fr 1fr",
+      },
+      {
+        name: "layoutExtend",
+        friendlyName:"Extend Layout to Edge",
+        type: "string",
+        enum: [
+          { label: "None", value: "" },
+          { label: "Extend layout to left", value: "extend-left" },
+          { label: "Extend layout to right", value: "extend-right" },
+          { label: "Extend layout to horizontal edges", value: "extend-horizontal" },
+          { label: "Extend layout to top", value: "extend-top" },
+          { label: "Extend layout to bottom", value: "extend-bottom" },
+          { label: "Extend layout to vertical edges", value: "extend-vertical" },
+          { label: "Extend layout to all edges", value: "extend-all" }
+        ],
+        defaultValue: "1fr 1fr",
+      },
+    ]
+    }
 ];

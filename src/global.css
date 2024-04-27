@@ -154,21 +154,6 @@ body {
 
 }
 
-:where(h1) {
-/*   font-size: 4.5rem!important;
-  max-inline-size: unset!important;
-  line-height:1!important; */
-}
-
-
-
-  .override-typography  * {
-  font-size: inherit;
-  font-family: inherit;
-  line-height: inherit;
-  max-inline-size: unset;
-  color:inherit!important;
-}
 
 .brand-blue {
   --palette-hue: 259;

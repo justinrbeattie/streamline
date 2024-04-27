@@ -29,26 +29,6 @@ export const SectionComponent = component$<SectionProps>((props) => {
     >
       <Slot></Slot>
 
-      {isEditing ? (
-        <div class="grid-column-guide">
-          <div class="column"></div>
-          <div class="column"></div>
-          <div class="column"></div>
-          <div class="column"></div>
-          <div class="column"></div>
-          <div class="column"></div>
-          <div class="column"></div>
-          <div class="column"></div>
-          <div class="column"></div>
-          <div class="column"></div>
-          <div class="column"></div>
-          <div class="column"></div>
-          <div class="column"></div>
-          <div class="column"></div>
-        </div>
-      ) : (
-        ""
-      )}
     </TAG>
   );
 });
