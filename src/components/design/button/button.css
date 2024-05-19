@@ -24,17 +24,17 @@
 }
 
 .size-small {
-    width: auto;
+    width:max-content;
     min-height: 24px
 }
 
 .size-medium {
-    width: auto;
+    width:max-content;
     min-height: 44px;
 }
 
 .size-large {
-    width: auto;
+    width:max-content;
     min-height: 56px;
 }
 
@@ -42,18 +42,85 @@
 
 .variant-default {
 
+    &.style-standard {
+        box-shadow: none;
+        border-color: transparent;
+        background: var(--color-1);
+        .builder-text {
+            color:var(--color-14);
+        }
+    }
+
+
+
     &.style-outlined {
-        border-color: var(--surface-3);
-        background: transparent;
+        box-shadow: none;
+        border-color:  currentColor;
+        background:transparent;
+        .builder-text {
+            text-shadow: none;
+        }
     }
 
     &.style-filled {
-        color: var(--surface-2);
-        background: var(--surface-8);
+        box-shadow: none;
+        border-color:transparent;
+        background: var(--color-11);
+
+        .builder-text {
+            text-shadow: none;
+        }
     }
 }
 
 
+.style-transparent {
+    box-shadow: none;
+    background: transparent;
+    border-color: transparent;
+    .builder-text {
+        text-shadow: none;
+    }
+}
+
+.style-blurred {
+    box-shadow: none;
+    color:currentColor;
+    background: transparent;
+    border-color: transparent;
+    backdrop-filter: blur(2px);
+    .builder-text {
+        text-shadow: none;
+    }
+}
+
+
+.shape-circle {
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-round);
+
+    &.size-small {
+        width: var(--size-fluid-4);
+        height: auto;
+        box-shadow: var(--shadow-2) !important;
+    }
+
+    &.size-medium {
+        width: var(--size-fluid-5);
+        height: auto;
+        box-shadow: var(--shadow-4) !important;
+    }
+
+    &.size-large {
+        width: var(--size-fluid-7);
+        height: auto;
+        box-shadow: var(--shadow-5) !important;
+    }
+}
+
+
+/*
 .variant-primary {
     color: var(--primary);
 
@@ -139,40 +206,4 @@
     }
 }
 
-.style-transparent {
-    color:currentColor;
-    background: transparent;
-    border-color: transparent;
-}
-
-.style-blurred {
-    color:currentColor;
-    background: transparent;
-    border-color: transparent;
-    backdrop-filter: blur(2px);
-}
-
-
-.shape-circle {
-    padding: 0;
-    aspect-ratio: 1 / 1;
-    border-radius: var(--radius-round);
-
-    &.size-small {
-        width: var(--size-fluid-4);
-        height: auto;
-        box-shadow: var(--shadow-2) !important;
-    }
-
-    &.size-medium {
-        width: var(--size-fluid-5);
-        height: auto;
-        box-shadow: var(--shadow-4) !important;
-    }
-
-    &.size-large {
-        width: var(--size-fluid-7);
-        height: auto;
-        box-shadow: var(--shadow-5) !important;
-    }
-}
+*/

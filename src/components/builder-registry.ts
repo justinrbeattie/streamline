@@ -66,6 +66,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         defaultValue: "medium",
       },
       {
+        hideFromUI:true,
         name: "variant",
         type: "string",
         enum: [
