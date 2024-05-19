@@ -19,7 +19,6 @@
   grid-template-areas: var(--page-grid-areas);
   column-gap: var(--page-grid-column-gap);
   row-gap: var(--page-grid-row-gap);
-  clip-path: inset(0px 0px);
   justify-content: flex-start;
   align-content: flex-start;
 

@@ -4,7 +4,6 @@ import {
   CarouselComponent,
   CarouselItemComponent,
 } from "./design/carousel/carousel";
-import { ContentComponent } from "./design/content/content";
 import { MainComponent } from "./design/main/main";
 import { SectionComponent } from "./design/section/section";
 import type { BuilderElement } from "@builder.io/sdk-qwik/types/src/types/element";
@@ -40,16 +39,6 @@ const defaultCarouselChildConfig: BuilderElement[] = [
   },
 ];
 
-const contentResponsiveStyles: any = {
-    large: {
-      display: "flex",
-      "--cols": "col 1 / span 6",
-      "--rows": "content",
-      "--layer": "var(--layer-1)",
-    },
-    medium: { display: "flex", "--cols": "col 1 / span 7" },
-    small: { display: "flex", "--cols": "col 1 / span 12" },
-};
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -337,14 +326,6 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     ],
   },
   {
-    component: ContentComponent,
-    name: "Content",
-    canHaveChildren: true,
-    noWrap: true,
-    image: "https://img.icons8.com/ios/50/media-queries.png",
-    defaults: {responsiveStyles:{...contentResponsiveStyles}},
-  },
-  {
     component: CustomStylesComponent,
     name: "Styles",
     canHaveChildren: true,
@@ -381,9 +362,8 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
       {
         "@type": "@builder.io/sdk:Element",
         component: {
-          name: "Content",
+          name: "Layout",
         },
-        responsiveStyles:{...contentResponsiveStyles}
       },
     ],
     inputs: [
