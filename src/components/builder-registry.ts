@@ -9,6 +9,8 @@ import { SectionComponent } from "./design/section/section";
 import type { BuilderElement } from "@builder.io/sdk-qwik/types/src/types/element";
 import { CustomStylesComponent } from "./design/custom-styles/custom-styles";
 import { LayoutComponent } from "./design/layout/layout";
+import { ContentColumnComponent } from "./design/column/column";
+import { IconComponent } from "./design/icon/icon";
 /**
  * This array is used to integrate custom components within Builder.
  * https://www.builder.io/c/docs/custom-components-intro
@@ -128,6 +130,24 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
           name: "Text",
           options: { text: "I am child text block!" },
         },
+      },
+    ],
+  },
+  {
+    component: IconComponent,
+    name: "Icon",
+    image: "https://img.icons8.com/ios/50/picture.png",
+    noWrap: true,
+    inputs: [
+      {
+        name: "size",
+        type: "string",
+        enum: ["small", "medium", "large"],
+        defaultValue: "medium",
+      },
+      {
+        name: "svg",
+        type: "code",
       },
     ],
   },
@@ -341,6 +361,20 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
       }]
   },
   {
+    component: ContentColumnComponent,
+    name: "Content Column",
+    canHaveChildren: true,
+    noWrap: true,
+    image: "https://img.icons8.com/ios/50/select-column.png",
+    defaults: {responsiveStyles:{
+      large: {
+        "display": "flex",
+        "flex-direction": "column",
+        "gap":"var( --space-md)"
+      } as any,
+    }},
+  },
+  {
     component: MainComponent,
     name: "MainComponent",
     image: "https://img.icons8.com/ios/50/single-page-mode.png",
@@ -353,12 +387,6 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     image: "https://img.icons8.com/ios/50/width.png",
     noWrap: true,
     canHaveChildren: true,
-    defaults: {responsiveStyles:{
-      large: {
-        "--palette-hue": "inherit",
-        "--palette-chroma": "inherit",
-      } as any,
-    }},
     defaultChildren: [
       {
         "@type": "@builder.io/sdk:Element",

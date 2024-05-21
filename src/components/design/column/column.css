@@ -1,0 +1,8 @@
+div:empty:before {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: "Empty Column";
+  background: var(--color-2);
+  min-height: 320px;
+}

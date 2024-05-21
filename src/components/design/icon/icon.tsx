@@ -2,23 +2,28 @@ import { Slot, component$, useStyles$ } from "@builder.io/qwik";
 import styles from "./icon.css?inline";
 
 export interface IconProps {
+  attributes?:any,
+  svg?:any,
   size?: "small" | "medium" | "large";
-  variant?:
-    | "default"
-    | "primary"
-    | "secondary"
-    | "warning"
-    | "success"
-    | "danger";
 }
 export const IconComponent = component$<IconProps>(
-  ({ size = "small", variant = "default" }) => {
+  ({ size = "small", attributes=null, svg=null, }) => {
     useStyles$(styles);
 
     return (
-      <span class={`icon size-${size} variant-${variant}`}>
-        <Slot />
-      </span>
+
+
+            <span {...attributes}>
+              <div  class={`icon size-${size}`}>
+              <span dangerouslySetInnerHTML={svg}></span>
+                    <Slot />
+              </div>
+
+          </span>
+
+
+      
     );
   }
 );
+/* dangerouslySetInnerHTML={svg} */

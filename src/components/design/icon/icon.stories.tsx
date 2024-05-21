@@ -12,7 +12,6 @@ export default meta;
 export const Icon: Story = {
   args: {
     size: "medium",
-    variant: "primary",
   },
   argTypes: {
 
@@ -20,11 +19,6 @@ export const Icon: Story = {
       options: ["small", "medium", "large"],
       control: { type: 'select' },
     },
-
-    variant: {
-      options: ["default", "primary", "secondary", "warning", "success", "danger"],
-      control: { type: 'select' },
-    }
   },
   render: (props) => <IconComponent {...props}></IconComponent>,
 };

@@ -2,10 +2,10 @@
   --page-grid-column-gap: 0;
   --page-grid-row-gap: 0;
   --page-grid-horizontal-gutter: 5vw;
-  --page-grid-template-vertical-gutter: 5dvh;
+  --page-grid-vertical-gutter: 12dvh;
   --page-grid-template-columns: var(--page-grid-horizontal-gutter) 1fr var(--page-grid-horizontal-gutter);
-  --page-grid-template-rows: var(--page-grid-template-vertical-gutter)
-   auto var(--page-grid-template-vertical-gutter);
+  --page-grid-template-rows: var(--page-grid-vertical-gutter)
+   auto var(--page-grid-vertical-gutter);
 
   --page-grid-areas: "top-left-gutter top-center-gutter top-right-gutter"
     "middle-left-gutter content middle-right-gutter"
