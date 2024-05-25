@@ -163,6 +163,12 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         "component.name": { $in: ["CarouselItemComponent"] },
       },
     },
+    defaults: {responsiveStyles:{
+      large: {
+        "display": "grid",
+        "margin-top": "unset"
+      } as any,
+    }},
     inputs: [
       {
         name: "ariaLabel",

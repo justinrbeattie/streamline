@@ -20,6 +20,7 @@
   src: url("../fonts/heading.woff2") format("woff2");
 }
 
+/* remove */
 
 :where(:root) {
   --palette-hue: 250;
@@ -93,7 +94,7 @@
   );
 }
 
-
+/* remove end*/
 
 
 :root {
@@ -465,4 +466,9 @@ text-transform: uppercase;
   }
 }
 
-/* move marquee, make heading classes for sizing */
+/* make heading classes for sizing
+Redo theming from brand.css
+can we remove text theme classes and relace with wones for svg fill 
+replace svg with mask psedo class auto on section with overlap 
+marquee shape and marquee component 
+*/
