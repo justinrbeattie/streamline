@@ -2,6 +2,12 @@
   --palette-hue: 278;
   --palette-hue-rotate-by: -2;
   --palette-chroma: 0;
+  --blue-hue: 278;
+  --pink-hue: 28;
+  --green-hue: 172;
+  --orange-hue: 66;
+  --yellow-hue: 92;
+  --purple-hue: 295;
 }
 * {
   --color-1: oklch(
@@ -73,56 +79,86 @@
 [class*="brand"] {
   --palette-hue-rotate-by: -2;
   --palette-chroma: 1;
-  background-color: var(--color-2);
-  color: var(--color-7);
+
   accent-color: var(--color-7);
+
+  :where(&.page-section,.pill,:has(> .icon > span > svg)) {
+    background-color: var(--color-2);
+  }
+
+
+  &.brand-strong {
+    background-color: var(--color-3);
+  }
+
+  &:has(> .icon > span > svg) {
+    background-color: var(--color-3);
+
+    .icon > span > svg > path {
+        fill:var(--color-7);
+    }
+
+  }
+
+
 }
 
 .brand-text {
   color: var(--color-7);
 }
 
-:where(.brand-icon, [class*="brand"] svg * ) {
-  fill: var(--color-7);
-}
-
-
 .brand-primary {
   --palette-hue: 278;
+  background-color: var(--color-8);
+  color: var(--color-1);
+  accent-color: var(--color-1);
 
-  .accent-text {
+  * {
+    color: var(--color-1);
+  }
+
+  .accent-text .builder-text * {
     --palette-hue: 28;
-    color: var(--color-2);
+    color: var(--color-3);
   }
 
   .accent {
     --palette-hue: 28;
-    color: var(--color-7);
+    background-color: var(--color-7);
   }
 }
 
 .brand-neutral {
     --palette-hue: 278;
-    background-color: unset;
-    color: var(--color-7);
+    --palette-chroma: 1;
+  background-color: var(--surface-1);
+
+  .builder-text :where(h1,h2,h3,h4,h5,h6) {
+    --palette-chroma: 1;
   }
+ 
+}
+
+.brand-blue {
+    --palette-hue: var(--blue-hue);
+  }  
 
 .brand-pink {
-  --palette-hue: 28;
+  --palette-hue:  var(--pink-hue);
 }
 
 .brand-green {
-  --palette-hue: 172;
+  --palette-hue:  var(--green-hue);
 }
 
 .brand-orange {
-  --palette-hue: 66;
+  --palette-hue:  var(--orange-hue);
 }
 
 .brand-yellow {
-  --palette-hue: 92;
+  --palette-hue:   var(--yellow-hue);
 }
 
 .brand-purple {
-  --palette-hue: 295;
+  --palette-hue:   var(--purple-hue);
 }

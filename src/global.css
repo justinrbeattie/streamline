@@ -1,6 +1,7 @@
 @import "open-props/postcss/style";
 @import "open-props/postcss/normalize";
 @import "open-props/postcss/buttons";
+@import "./brand";
 
 @font-face {
   font-family: "Inter";
@@ -19,83 +20,6 @@
   font-named-instance: "Regular";
   src: url("../fonts/heading.woff2") format("woff2");
 }
-
-/* remove */
-
-:where(:root) {
-  --palette-hue: 250;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 0.15;
-}
-* {
-  --color-1: oklch(
-    98% calc(0.03 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (0 * var(--palette-hue-rotate-by)))
-  );
-  --color-2: oklch(
-    97% calc(0.06 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (1 * var(--palette-hue-rotate-by)))
-  );
-  --color-3: oklch(
-    93% calc(0.1 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (2 * var(--palette-hue-rotate-by)))
-  );
-  --color-4: oklch(
-    84% calc(0.12 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (3 * var(--palette-hue-rotate-by)))
-  );
-  --color-5: oklch(
-    80% calc(0.16 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (4 * var(--palette-hue-rotate-by)))
-  );
-  --color-6: oklch(
-    71% calc(0.19 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (5 * var(--palette-hue-rotate-by)))
-  );
-  --color-7: oklch(
-    66% calc(0.2 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (6 * var(--palette-hue-rotate-by)))
-  );
-  --color-8: oklch(
-    58% calc(0.21 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (7 * var(--palette-hue-rotate-by)))
-  );
-  --color-9: oklch(
-    53% calc(0.2 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (8 * var(--palette-hue-rotate-by)))
-  );
-  --color-10: oklch(
-    49% calc(0.19 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (9 * var(--palette-hue-rotate-by)))
-  );
-  --color-11: oklch(
-    42% calc(0.17 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (10 * var(--palette-hue-rotate-by)))
-  );
-  --color-12: oklch(
-    35% calc(0.15 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (11 * var(--palette-hue-rotate-by)))
-  );
-  --color-13: oklch(
-    27% calc(0.12 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (12 * var(--palette-hue-rotate-by)))
-  );
-  --color-14: oklch(
-    20% calc(0.09 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (13 * var(--palette-hue-rotate-by)))
-  );
-  --color-15: oklch(
-    16% calc(0.07 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (14 * var(--palette-hue-rotate-by)))
-  );
-  --color-16: oklch(
-    10% calc(0.05 * var(--palette-chroma, 1))
-      calc(var(--palette-hue) + (15 * var(--palette-hue-rotate-by)))
-  );
-}
-
-/* remove end*/
-
 
 :root {
   color-scheme: light;
@@ -141,21 +65,11 @@
   --surface-2: light-dark(var(--color-1), var(--color-13));
   --surface-3: light-dark(var(--color-2), var(--color-10));
   --surface-4: light-dark(var(--color-3), var(--color-9));
-  --text-1: light-dark(var(--color-14), var(--color-2));
-  --text-2: light-dark(var(--color-12), var(--color-7));
+  --text-heading: light-dark(var(--color-7), var(--color-2));
+  --text-1: light-dark(var(--color-12), var(--color-2));
+  --text-2: light-dark(var(--color-10), var(--color-7));
   --border-color: light-dark(var(--color-4), var(--color-12));
   --link: oklch(65% 0.18 var(--palette-hue));
-
-  .page-section {
-    --surface-1: light-dark(var(--color-white), var(--color-15));
-    --surface-2: light-dark(var(--color-1), var(--color-13));
-    --surface-3: light-dark(var(--color-2), var(--color-10));
-    --surface-4: light-dark(var(--color-3), var(--color-9));
-    --text-1: light-dark(var(--color-14), var(--color-2));
-    --text-2: light-dark(var(--color-12), var(--color-7));
-    --border-color: light-dark(var(--color-4), var(--color-12));
-    --link: oklch(65% 0.18 var(--palette-hue));
-  }
 
   --space-xxs: var(--size-1);
   --space-xs: var(--size-2);
@@ -210,7 +124,7 @@ body {
       text-transform: inherit;
     }
 
-    :where(p,span) {
+    :where(p, span) {
       font-size: inherit;
       font-family: inherit;
       line-height: inherit;
@@ -222,240 +136,87 @@ body {
     font-family: "Heading", sans-serif;
     line-height: 1 !important;
     max-inline-size: unset;
+    color: var(--text-heading);
+  }
+
+  :where(h1) {
+    font-size: var(--font-size-8);
+  }
+  :where(h2) {
+    font-size: var(--font-size-7);
+  }
+  :where(h3) {
+    font-size: var(--font-size-6);
+  }
+  :where(h4) {
+    font-size: var(--font-size-5);
+  }
+  :where(h5) {
+    font-size: var(--font-size-4);
+  }
+  :where(.h1 .builder-text :where(h1, h2, h3, h4, h5, h6)) {
+    font-size: var(--font-size-8);
+  }
+  :where(.h2 .builder-text :where(h1, h2, h3, h4, h5, h6)) {
+    font-size: var(--font-size-7);
+  }
+  :where(.h3 .builder-text :where(h1, h2, h3, h4, h5, h6)) {
+    font-size: var(--font-size-6);
+  }
+  :where(.h4 .builder-text :where(h1, h2, h3, h4, h5, h6)) {
+    font-size: var(--font-size-5);
+  }
+  :where(.h5 .builder-text :where(h1, h2, h3, h4, h5, h6)) {
+    font-size: var(--font-size-4);
   }
 }
 
 :where(
-  .heading-prefix,
-  .heading-prefix h1,
-  .heading-prefix h2,
-  .heading-prefix h3,
-  .heading-prefix h4,
-  .heading-prefix h5,
-  .heading-prefix h6
-) {
-margin-block-end: calc(var(--size-3) * -0.75);
-font-size: var(--font-size-sm)!important;
-font-family: "Inter", sans-serif;
-line-height: var(--font-size-body)!important;
-text-transform: uppercase;
-color: currentColor;
-max-width: max-content;
-border-radius: 1000px;
-&.pill {
-  padding-inline: var(--space-sm);
-  padding-block:var(--space-xs);
-}
+    .heading-prefix,
+    .heading-prefix h1,
+    .heading-prefix h2,
+    .heading-prefix h3,
+    .heading-prefix h4,
+    .heading-prefix h5,
+    .heading-prefix h6
+  ) {
+  margin-block-end: calc(var(--size-3) * -0.75);
+  font-size: var(--font-size-sm) !important;
+  font-family: "Inter", sans-serif;
+  line-height: var(--font-size-body) !important;
+  text-transform: uppercase;
+  color: currentColor;
+  max-width: max-content;
+  border-radius: 1000px;
+  &.pill {
+    padding-inline: var(--space-sm);
+    padding-block: var(--space-xs);
+  }
 }
 
 .heading-suffix {
-margin-block-start: calc(var(--size-3) * -1.5);
-font-size: var(--font-size-body);
-text-transform: uppercase;
+  margin-block-start: calc(var(--size-3) * -1.5);
+  font-size: var(--font-size-body);
+  text-transform: uppercase;
 }
-
-.brand-blue {
-  --palette-hue: 260;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 1.2;
-  background-color: var(--color-8);
-  /* oklch(0.58 0.252 260) */
-  :where(.builder-text *, svg *, button .builder-text, .style-outlined) {
-    --palette-chroma: 0;
-    color: var(--color-1);
-    fill:  var(--color-1);
-    /* oklch(0.98 0 260) */
-  }
-}
-
-.brand-blue-text{
-  --palette-hue: 260;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 1.2;
- color: var(--color-8);
- fill: var(--color-8);
-}
-
-.brand-medium-blue {
-  --palette-hue: 260;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 1.8;
-  background-color: var(--color-6);
-  /* oklch(0.71 0.342 260) */
-  :where(.builder-text *, svg *, button .builder-text, .style-outlined) {
-    --palette-chroma: 1;
-    color: var(--color-14);
-    fill:  var(--color-14);
-    /* oklch(0.27 0.12 260) */
-  }
-}
-
-
-.brand-medium-blue-text{
-  --palette-hue: 260;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 1.8;
-  color: var(--color-6);
-  fill: var(--color-6);
-}
-
-
-.brand-light-blue {
-  --palette-hue: 260;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 0.2;
-  background-color: var(--color-3);
-  /* oklch(0.93 0.03 260) */
-  :where(.builder-text *, svg *, button .builder-text, .style-outlined) {
-    --palette-chroma: 1;
-    color: var(--color-13);
-    fill:  var(--color-13);
-    /* oklch(0.27 0.12 260)*/
-  }
-  
-}
-
-.brand-light-blue-text{
-  --palette-hue: 260;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 0.2;
-
- fill: var(--color-3);
-}
-
-.brand-navy-blue {
-  --palette-hue: 260;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 1;
-  background-color: var(--color-13);
-  /* oklch(0.27 0.12 260)*/
-  :where(.builder-text *, svg *, button .builder-text, .style-outlined) {
-    --palette-chroma: 0;
-    color: var(--color-1);
-    fill:  var(--color-1);
-    /* oklch(0.98 0 260) */
-  }
-}
-
-.brand-navy-blue-text{
-  --palette-hue: 260;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 1;
-  color: var(--color-13);
-  fill: var(--color-13);
-}
-
-.brand-mint {
-  --palette-hue: 160;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 1.8;
-  background-color: var(--color-4);
-  /* oklch(0.84 0.216 160) */
-  :where(.builder-text *, svg *, button .builder-text, .style-outlined) {
-    --palette-chroma: 0.9;
-    color: var(--color-12);
-    fill:  var(--color-12);
-    /* oklch(0.42 0.153 160) */
-  }
-}
-
-.brand-mint-text{
-  --palette-hue: 160;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 1.8;
-  color: var(--color-4);
-  fill: var(--color-4);
-}
-
-
-.brand-purple {
-  --palette-hue: 320;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 1.5;
-  background-color: var(--color-4);
-  /*  oklch(0.84 0.18 320) */
-  :where(.builder-text *, svg *, button .builder-text, .style-outlined) {
-    color: var(--color-12);
-    fill:  var(--color-12);
-    /*  oklch(0.35 0.225 320) */
-  }
-}
-
-.brand-purple-text{
-  --palette-hue: 320;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 1.5;
-  color: var(--color-4);
-  fill: var(--color-4);
-}
-
-.brand-pink {
-  --palette-hue: 18;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 0.75;
-  background-color: var(--color-3);
-  /* oklch(0.93 0.075 18) */
-  :where(.builder-text *, svg *, button .builder-text, .style-outlined) {
-    --palette-chroma: 1;
-    color: var(--color-9);
-    fill:  var(--color-9);
-    /* oklch(0.53 0.2 18) */
-  }
-}
-
-.brand-pink-text{
-  --palette-hue: 18;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 1;
-  color: var(--color-9);
-  fill:  var(--color-9);
-}
-
-.brand-yellow {
-  --palette-hue: 98;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 1.5;
-  background-color: var(--color-3);
-  /*  oklch(0.93 0.15 98) */
-  :where(.builder-text *, svg *, button .builder-text, .style-outlined) {
-    --palette-hue: 60;
-    --palette-chroma: 1;
-    color: var(--color-6);
-    fill:  var(--color-6);
-    /*  oklch(0.71 0.19 60) */
-  }
-}
-
-.brand-yellow-text{
-  --palette-hue: 60;
-  --palette-hue-rotate-by: 0;
-  --palette-chroma: 1;
-  color: var(--color-6);
-  fill:  var(--color-6);
-
-}
-
 
 .text-marquee {
-  max-width:100%;
-  white-space: nowrap; 
+  max-width: 100%;
+  white-space: nowrap;
   position: static;
-
 
   > .builder-text {
     position: static;
     max-width: max-content;
     > * {
       animation: marquee 40s linear infinite;
-      white-space: nowrap; 
+      white-space: nowrap;
       padding-block: var(--space-md);
       position: relative;
-      width:fit-content;
+      width: fit-content;
     }
- 
   }
 }
-
 
 @keyframes marquee {
   0% {
@@ -466,9 +227,7 @@ text-transform: uppercase;
   }
 }
 
-/* make heading classes for sizing
-Redo theming from brand.css
-can we remove text theme classes and relace with wones for svg fill 
-replace svg with mask psedo class auto on section with overlap 
+/*
+wave compinent 
 marquee shape and marquee component 
 */
