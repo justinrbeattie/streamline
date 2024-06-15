@@ -79,13 +79,12 @@
 [class*="brand"] {
   --palette-hue-rotate-by: -2;
   --palette-chroma: 1;
+  background-color: var(--color-2);
+  accent-color: var(--text-1);
 
-  accent-color: var(--color-7);
-
-  :where(&.page-section,.pill,:has(> .icon > span > svg)) {
-    background-color: var(--color-2);
+  &:has(> .builder-text) {
+    background-color: transparent;
   }
-
 
   &.brand-strong {
     background-color: var(--color-3);
@@ -95,26 +94,31 @@
     background-color: var(--color-3);
 
     .icon > span > svg > path {
-        fill:var(--color-7);
+      fill: var(--text-heading);
     }
-
   }
 
-
+  svg > path {
+    fill: var(--text-heading);
+  }
 }
 
 .brand-text {
-  color: var(--color-7);
+  color: var(--text-1);
 }
 
 .brand-primary {
   --palette-hue: 278;
   background-color: var(--color-8);
-  color: var(--color-1);
+  --text-heading: var(--color-1);
+  --text-1: var(--color-1);
+  color:var(--color-1);
   accent-color: var(--color-1);
 
   * {
-    color: var(--color-1);
+    --text-heading: var(--color-1);
+    --text-1: var(--color-1);
+    color:var(--color-1);
   }
 
   .accent-text .builder-text * {
@@ -129,36 +133,35 @@
 }
 
 .brand-neutral {
-    --palette-hue: 278;
-    --palette-chroma: 1;
-  background-color: var(--surface-1);
+  --palette-hue: var(--blue-hue);
+  --palette-chroma: 1;
+  background-color: oklch(.98 1 278);
 
-  .builder-text :where(h1,h2,h3,h4,h5,h6) {
+  .builder-text :where(h1, h2, h3, h4, h5, h6) {
     --palette-chroma: 1;
   }
- 
 }
 
 .brand-blue {
-    --palette-hue: var(--blue-hue);
-  }  
+  --palette-hue: var(--blue-hue);
+}
 
 .brand-pink {
-  --palette-hue:  var(--pink-hue);
+  --palette-hue: var(--pink-hue);
 }
 
 .brand-green {
-  --palette-hue:  var(--green-hue);
+  --palette-hue: var(--green-hue);
 }
 
 .brand-orange {
-  --palette-hue:  var(--orange-hue);
+  --palette-hue: var(--orange-hue);
 }
 
 .brand-yellow {
-  --palette-hue:   var(--yellow-hue);
+  --palette-hue: var(--yellow-hue);
 }
 
 .brand-purple {
-  --palette-hue:   var(--purple-hue);
+  --palette-hue: var(--purple-hue);
 }

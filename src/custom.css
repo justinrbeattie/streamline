@@ -1,0 +1,83 @@
+
+#home-page-story {
+    view-timeline-name: --section-pin-tl;
+  view-timeline-axis: block;
+  }
+  
+  
+  #home-page-story .scroll-wrapper .scroll-layout-page {
+    --palette-chroma: 1;
+    --palette-hue:  var(--green-hue);
+  will-change: transform;
+  animation: homePageStoryTransformAnimation linear both;
+  animation-timeline: --section-pin-tl;
+  animation-range: contain 0% contain 100%;
+  
+   background-color: var(--color-2);
+  
+   * {
+    --palette-hue:  inherit;
+     color:var(--color-7);
+   }
+  
+  }
+  
+  
+  @keyframes homePageStoryTransformAnimation {
+  0% {
+    --palette-hue:  var(--yellow-hue);
+  transform: translateX(0dvw);
+  
+  }
+  33% {
+    --palette-hue:  var(--orange-hue);
+  }
+  
+  
+  66% {
+    --palette-hue:  var(--pink-hue);
+  }
+  
+  100% {
+  transform: translateX(-300dvw);
+  --palette-hue:  var(--purple-hue);
+  }
+  }
+  
+
+  .text-marquee {
+    max-width: 100%;
+    white-space: nowrap;
+    position: static;
+  
+    > .builder-text {
+      position: static;
+      max-width: max-content;
+      > * {
+        animation: marquee 40s linear infinite;
+        white-space: nowrap;
+        padding-block: var(--space-md);
+        position: relative;
+        width: fit-content;
+      }
+    }
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%); /* Start from the right */
+    }
+    100% {
+      transform: translateX(-50%); /* Move to the left */
+    }
+  }
+  
+
+  
+  /*
+  wave compinent 
+  marquee shape and marquee component 
+  */
+  
+  
+  

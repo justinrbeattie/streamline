@@ -1,14 +1,15 @@
 
 .aside-inline-end {
     padding-block-start: calc(var(--announcement-bar-height) + var(--nav-block-start-height) );
-    background:var(--surface-3);
+    background:var(--color-8);
     min-width: 0px;
     max-width: 0px;
     width:20dvw;
-    transform:translateX(100vw);
-    transition: all .5s var(--ease-in-out-2);
+    transform:translateX(20vw);
+    transition: all .25s var(--ease-in-out-2);
     height: calc(var(--announcement-bar-height) + var(--nav-block-start-height) + var(--viewport-height));
     box-shadow:var(--shadow-3);
+    z-index: var(--layer-4);
 }
 
 body:has(#aside-inline-end-button[aria-expanded="true"]) .aside-inline-end {

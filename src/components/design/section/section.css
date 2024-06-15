@@ -46,6 +46,19 @@
   }
 }
 
+section.page-section::before {
+  content: "";
+  position: sticky;
+  width:100dvw;
+  inset-block-start: 0px;
+  inset-inline-start: 0px;
+  height: var(--nav-block-start-height);
+  z-index:var(--layer-2);
+  background-color: inherit;
+}
+
+
+
 .page-section[class*="section-bottom-wave"]::after {
   content: "";
   width: 200dvw;
@@ -84,3 +97,7 @@
     --page-grid-horizontal-gutter: 10vw;
   }
 }
+
+
+
+  

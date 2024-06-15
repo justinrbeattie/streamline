@@ -64,6 +64,7 @@ export default component$(() => {
     headerRef: useSignal(undefined),
     mainRef: useSignal(undefined),
     footerRef: useSignal(undefined),
+    navBlockStartRef: useSignal(undefined),
   });
   useContextProvider(LayoutContext, layout);
   // eslint-disable-next-line qwik/no-use-visible-task
@@ -128,4 +129,5 @@ export type LayoutContext = {
   headerRef: Signal<Element | undefined>;
   mainRef: Signal<Element | undefined>;
   footerRef: Signal<Element | undefined>;
+  navBlockStartRef: Signal<Element | undefined>;
 };

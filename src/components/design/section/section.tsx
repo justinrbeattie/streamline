@@ -1,9 +1,15 @@
-import { component$, Slot, useContext, useStyles$ } from "@builder.io/qwik";
+import {
+  component$,
+  Slot,
+  useContext,
+  useSignal,
+  useStyles$,
+} from "@builder.io/qwik";
 import styles from "./section.css?inline";
 import { LayoutContext } from "~/routes/layout";
 export interface SectionProps {
   tag: "header" | "section" | "footer";
-  $name:'',
+  $name: "";
   id: string;
   attributes: any;
 }
@@ -17,8 +23,8 @@ export const SectionComponent = component$<SectionProps>((props) => {
       ? layoutContext.headerRef
       : TAG === "footer"
         ? layoutContext.footerRef
-        : undefined;
-      const isEditing = layoutContext.isEditing;
+        : useSignal<Element>();
+
 
   return (
     <TAG
@@ -28,7 +34,6 @@ export const SectionComponent = component$<SectionProps>((props) => {
       class={`page-section ${layoutContext.isEditing ? "is-editing" : ""}  ${props.attributes?.class || ""}`}
     >
       <Slot></Slot>
-
     </TAG>
   );
 });

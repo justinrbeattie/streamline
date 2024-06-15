@@ -200,34 +200,5 @@ body {
   text-transform: uppercase;
 }
 
-.text-marquee {
-  max-width: 100%;
-  white-space: nowrap;
-  position: static;
 
-  > .builder-text {
-    position: static;
-    max-width: max-content;
-    > * {
-      animation: marquee 40s linear infinite;
-      white-space: nowrap;
-      padding-block: var(--space-md);
-      position: relative;
-      width: fit-content;
-    }
-  }
-}
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0%); /* Start from the right */
-  }
-  100% {
-    transform: translateX(-50%); /* Move to the left */
-  }
-}
-
-/*
-wave compinent 
-marquee shape and marquee component 
-*/
