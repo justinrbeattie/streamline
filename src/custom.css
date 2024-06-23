@@ -1,7 +1,6 @@
 /* Write your CSS Code Here */
 
 
-
 #hero-header .spray-1 {
   animation: spray-1-animation 4s ease-in-out both;
 }
@@ -33,7 +32,7 @@
 
 #hero-header .spray-2 {
   animation: spray-2-animation 4s ease-in-out both;
-  
+
 }
 
 
@@ -90,9 +89,6 @@
       opacity:1;
   }
 }
-
-
-
 
 #home-page-story {
   view-timeline-name: --section-pin-tl;

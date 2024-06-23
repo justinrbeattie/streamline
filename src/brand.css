@@ -9,6 +9,7 @@
   --yellow-hue: 92;
   --purple-hue: 295;
 }
+
 * {
   --color-1: oklch(
     98% calc(0.03 * var(--palette-chroma, 1))
