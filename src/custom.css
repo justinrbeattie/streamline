@@ -1,3 +1,97 @@
+/* Write your CSS Code Here */
+
+
+
+#hero-header .spray-1 {
+  animation: spray-1-animation 4s ease-in-out both;
+}
+
+@keyframes  spray-1-animation {
+  0% {
+    transform:  scale(1.5)  rotate(0deg);
+  }
+
+  20% {
+    transform:  scale(1.5) rotate(45deg);
+  }
+
+75% {
+    transform: scale(2) rotate(135deg);
+  }
+
+98% {
+   opacity:1;
+  }
+  99% {
+    transform: scale(8) rotate(225deg);
+       opacity:0;
+  }
+      100% {
+      transform: scale(0) rotate(225deg);
+  }
+}
+
+#hero-header .spray-2 {
+  animation: spray-2-animation 4s ease-in-out both;
+}
+
+@keyframes  spray-2-animation {
+  0% {
+    transform:  scale(1.5)  rotate(0deg);
+  }
+
+  20% {
+    transform:  scale(1.5) rotate(45deg);
+  }
+
+75% {
+    transform: scale(2) rotate(180deg);
+  }
+
+  98% {
+   opacity:1;
+  }
+
+  99% {
+    transform: scale(8) rotate(270deg);
+   opacity:0;
+  }
+
+      100% {
+      transform: scale(0) rotate(225deg);
+  }
+}
+
+
+#hero-header .heading {
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap:1dvw;
+  clip-path: inset(-.5dvw);
+}
+
+#hero-header .heading > * {
+    transform-origin:0% 0%;
+   transform:skewY(10deg) translateY(100%);
+   opacity:0;
+
+}
+
+#hero-header .heading * {
+   animation: heading-parallax-effect 1.5s var(--animation-delay) cubic-bezier(0.87, 0, 0.13, 1) both;
+}
+
+@keyframes heading-parallax-effect {
+  to {
+      transform:skewY(0deg) translateY(0%);
+      opacity:1;
+  }
+}
+
+
+
+
 #home-page-story {
   view-timeline-name: --section-pin-tl;
   view-timeline-axis: block;
