@@ -33,7 +33,7 @@ export const SectionComponent = component$<SectionProps>((props) => {
       ref={currentRef}
       id={props.id}
       class={`page-section ${layoutContext.isEditing ? "is-editing" : ""}  ${props.attributes?.class || ""}`}
-    >
+    > a
       <Slot></Slot>
     </TAG>
   );
