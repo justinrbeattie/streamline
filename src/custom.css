@@ -1,83 +1,129 @@
-
 #home-page-story {
-    view-timeline-name: --section-pin-tl;
+  view-timeline-name: --section-pin-tl;
   view-timeline-axis: block;
-  }
-  
-  
-  #home-page-story .scroll-wrapper .scroll-layout-page {
-    --palette-chroma: 1;
-    --palette-hue:  var(--green-hue);
+  position: relative;
+}
+
+#home-page-story .home-page-story-scroll-wrapper .home-page-story-section {
+  --palette-chroma: 1;
+  --palette-hue: var(--green-hue);
   will-change: transform;
   animation: homePageStoryTransformAnimation linear both;
   animation-timeline: --section-pin-tl;
   animation-range: contain 0% contain 100%;
-  
-   background-color: var(--color-2);
-  
-   * {
-    --palette-hue:  inherit;
-     color:var(--color-7);
-   }
-  
+  align-content: flex-start;
+  background-color: var(--color-3);
+
+  &:before {
+    content: "";
+    position: sticky;
+    width: 100%;
+    inset-block-start: 0px;
+    inset-inline-start: 0px;
+    height: var(--nav-block-start-height);
+    z-index: var(--layer-2);
+    background-color:inherit;
+    opacity: var(--story-nav-opacity);
+    animation: homePageStoryNavTransformAnimation linear both;
+    animation-timeline: --section-pin-tl;
+    animation-range: contain 100% cover 100%;
   }
-  
-  
-  @keyframes homePageStoryTransformAnimation {
+
+
+}
+
+@keyframes homePageStoryTransformAnimation {
   0% {
-    --palette-hue:  var(--yellow-hue);
-  transform: translateX(0dvw);
-  
+    --palette-hue: var(--orange-hue);
+    background-color: oklch(
+      97% calc(0.06 * var(--palette-chroma, 1))
+        calc(var(--palette-hue) + (1 * var(--palette-hue-rotate-by)))
+    );
+
+    transform: translateX(0dvw);
   }
-  33% {
-    --palette-hue:  var(--orange-hue);
+  25% {
+    --palette-hue: var(--pink-hue);
+    background-color: oklch(
+      97% calc(0.06 * var(--palette-chroma, 1))
+        calc(var(--palette-hue) + (1 * var(--palette-hue-rotate-by)))
+    );
   }
-  
-  
-  66% {
-    --palette-hue:  var(--pink-hue);
+  50% {
+    --palette-hue: var(--purple-hue);
+    background-color:oklch(
+      97% calc(0.06 * var(--palette-chroma, 1))
+        calc(var(--palette-hue) + (1 * var(--palette-hue-rotate-by)))
+    );
   }
-  
+
+  75% {
+    --palette-hue: var(--blue-hue);
+    background-color: oklch(
+      97% calc(0.06 * var(--palette-chroma, 1))
+        calc(var(--palette-hue) + (1 * var(--palette-hue-rotate-by)))
+    );
+  }
+
   100% {
-  transform: translateX(-300dvw);
-  --palette-hue:  var(--purple-hue);
+    transform: translateX(-440dvw);
+    --palette-hue: var(--green-hue);
+    background-color: oklch(
+      97% calc(0.06 * var(--palette-chroma, 1))
+        calc(var(--palette-hue) + (1 * var(--palette-hue-rotate-by)))
+    );
   }
+}
+
+@keyframes homePageStoryNavTransformAnimation {
+  to {
+    transform: translateY(100dvh);
+  }
+}
+
+
+#home-page-story .home-page-story-scroll-wrapper .home-page-story-section .builder-block > .builder-block:has(> picture) {
+  animation: homePageStoryImageTransformAnimation linear both;
+  animation-timeline: --section-pin-tl;
+  animation-range: contain 0% contain 100%;
+}
+
+@keyframes homePageStoryImageTransformAnimation {
+
+  to {
+    transform:var(--parallax-transform);
   }
   
+} 
 
-  .text-marquee {
-    max-width: 100%;
-    white-space: nowrap;
+.text-marquee {
+  max-width: 100%;
+  white-space: nowrap;
+  position: static;
+
+  > .builder-text {
     position: static;
-  
-    > .builder-text {
-      position: static;
-      max-width: max-content;
-      > * {
-        animation: marquee 40s linear infinite;
-        white-space: nowrap;
-        padding-block: var(--space-md);
-        position: relative;
-        width: fit-content;
-      }
+    max-width: max-content;
+    > * {
+      animation: marquee 40s linear infinite;
+      white-space: nowrap;
+      padding-block: var(--space-md);
+      position: relative;
+      width: fit-content;
     }
   }
-  
-  @keyframes marquee {
-    0% {
-      transform: translateX(0%); /* Start from the right */
-    }
-    100% {
-      transform: translateX(-50%); /* Move to the left */
-    }
-  }
-  
+}
 
-  
-  /*
+@keyframes marquee {
+  0% {
+    transform: translateX(0%); /* Start from the right */
+  }
+  100% {
+    transform: translateX(-50%); /* Move to the left */
+  }
+}
+
+/*
   wave compinent 
   marquee shape and marquee component 
   */
-  
-  
-  

@@ -111,6 +111,10 @@ body {
     color: var(--text-1);
   }
 
+  .override-text-color > .builder-text > *,   .override-text-color > .builder-text {
+    color:inherit!important;
+  }
+
   .override-typography .builder-text {
     font-size: inherit;
     font-family: inherit;
@@ -199,6 +203,33 @@ body {
   font-size: var(--font-size-body);
   text-transform: uppercase;
 }
+
+
+.card-image-overlay ::before {
+content:'';
+pointer-events: none;
+width:100%;
+height:100%;
+position:absolute;
+background-color: black;
+mask-image: linear-gradient(transparent 0%, transparent 25%, black 100%);
+z-index:var(--layer-4);
+opacity: 0.3;
+}
+
+/* TO do 
+resposive scroller 
+upgrade to latest 
+clean up styles 
+tidy up linking link to some diferrent pages 
+Add Nav Secion 
+Add Nav + responsive 
+
+
+
+*/
+
+
 
 
 

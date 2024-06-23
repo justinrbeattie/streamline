@@ -34,6 +34,7 @@
   }
 
   .logo { 
+    color:transparent;
     display:block;
     height:80%;
     width:160px;
@@ -45,6 +46,8 @@
   }
 
   button .menu-icon {
+    text-shadow: none;
+    color:transparent;
     width: 24px;
     height: 24px;
     backdrop-filter:var(--backdrop-filter);
@@ -68,7 +71,7 @@
   }
   99%,
   100% {
-    --backdrop-filter:hue-rotate(-2deg) brightness(60%) saturate(10);
+    --backdrop-filter:hue-rotate(-2deg) brightness(50%) saturate(10);
   }
 }
 

@@ -135,7 +135,8 @@
 .brand-neutral {
   --palette-hue: var(--blue-hue);
   --palette-chroma: 1;
-  background-color: oklch(.98 1 278);
+  background-color: var(--surface-1);
+
 
   .builder-text :where(h1, h2, h3, h4, h5, h6) {
     --palette-chroma: 1;

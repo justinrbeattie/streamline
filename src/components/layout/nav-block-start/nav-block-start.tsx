@@ -21,7 +21,7 @@ export const NavBlockStart = component$(() => {
   return (
     <div ref={layoutContext.navBlockStartRef} class="nav-block-start">
       <a href="" class="logo">
-   
+        Dr Amran Dhillon - Enhancing medicine through diversity
       </a>
       <nav class="nav-bar"></nav>
       <ButtonComponent
@@ -39,7 +39,7 @@ export const NavBlockStart = component$(() => {
       >
 
         <span class="menu-icon">
-
+          Menu Button
         </span>
       </ButtonComponent>
     </div>
