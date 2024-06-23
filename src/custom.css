@@ -33,7 +33,9 @@
 
 #hero-header .spray-2 {
   animation: spray-2-animation 4s ease-in-out both;
+  
 }
+
 
 @keyframes  spray-2-animation {
   0% {
