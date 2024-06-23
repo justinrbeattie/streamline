@@ -6,11 +6,11 @@ import { LayoutContext } from "~/routes/layout";
 export const NavBlockStart = component$(() => {
   useStyles$(styles);
   const layoutContext = useContext(LayoutContext);
-  const asideInlineStartButtonToggle = $(() => {
+/*   const asideInlineStartButtonToggle = $(() => {
     const { asideInlineStartOpened } = layoutContext;
 
     layoutContext.asideInlineStartOpened = !asideInlineStartOpened;
-  });
+  }); */
 
   const asideInlineEndButtonToggle = $(() => {
     const { asideInlineEndOpened } = layoutContext;

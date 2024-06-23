@@ -18,12 +18,13 @@ export const SectionComponent = component$<SectionProps>((props) => {
   useStyles$(styles);
   const layoutContext = useContext(LayoutContext);
   const TAG = props.tag;
+  const sectionRef = useSignal<Element>();
   const currentRef =
     TAG === "header"
       ? layoutContext.headerRef
       : TAG === "footer"
         ? layoutContext.footerRef
-        : useSignal<Element>();
+        : sectionRef;
 
 
   return (
