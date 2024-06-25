@@ -12,7 +12,7 @@ export default extendConfig(baseConfig, () => {
     },
     plugins: [
       staticAdapter({
-        origin: "https://glittery-chimera-38e34a.netlify.app/",
+        origin: "https://glittery-chimera-38e34a.netlify.app",
       }),
     ],
   };
