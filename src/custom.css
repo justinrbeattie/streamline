@@ -69,6 +69,10 @@
   display:none;
 }
 
+section {
+  display:none;
+}
+
 
 #hero-header .heading {
   display:flex;
