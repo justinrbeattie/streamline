@@ -26,7 +26,6 @@ export const SectionComponent = component$<SectionProps>((props) => {
         ? layoutContext.footerRef
         : sectionRef;
 
-
   return (
     <TAG
       {...props.attributes}
