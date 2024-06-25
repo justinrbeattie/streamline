@@ -78,7 +78,7 @@
   clip-path: inset(-.5dvw);
 }
 
- #hero-header .heading > * {
+/* #hero-header .heading > * {
     transform-origin:0% 0%;
    transform:skewY(10deg) translateY(100%);
    opacity:0;
